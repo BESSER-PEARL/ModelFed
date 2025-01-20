@@ -1,0 +1,29 @@
+{
+    "@context": {
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "as": "https://www.w3.org/ns/activitystreams#",
+      "mv": "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld",
+      
+      "DomainModel": "mv:DomainModel",
+      "ModelElement": "mv:ModelElement",
+      "Package": "mv:Package",
+      "Class": "mv:Class",
+      "DataType": "mv:DataType",
+      "Enumeration": "mv:Enumeration",
+      "EnumerationLiteral": "mv:EnumerationLiteral",
+      "PrimitiveType": "mv:PrimitiveType",
+      "Property": "mv:Property",
+      "Association": "mv:Association",
+      "BynaryAssociation": "mv:BynaryAssociation",
+      "Multiplicity": "mv:Multiplicity",
+      "Method": "mv:Method",
+      "Parameter": "mv:Parameter",
+  
+      "timestamp": {
+        "@id": "mv:timestamp",
+        "@type": "xsd:dateTime"
+      }
+    }
+  }
+  
