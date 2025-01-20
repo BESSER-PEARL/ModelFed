@@ -1,0 +1,10 @@
+# Read the Docs build artifacts
+/site/
+/docs/_build/
+/docs/build/
+/docs/.doctrees/
+/docs/.buildinfo
+
+# Pipenv files
+Pipfile
+Pipfile.lock
