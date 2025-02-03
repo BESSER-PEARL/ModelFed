@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Viewer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        h1 {
+            color: #1d3557;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #2a9d8f;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        .container {
+            display: block; /* Cambiado de flex a block para que las secciones se apilen */
+        }
+
+        .column {
+            width: 100%; /* Ocupar todo el ancho para cada "fila" */
+            margin-bottom: 40px; /* Añadido espacio entre las filas */
+        }
+
+        .column h2 {
+            font-size: 24px;
+            color: #1d3557;
+            margin-bottom: 10px;
+        }
+
+        .json-container {
+            background-color: #fff;
+            border: 1px solid #d3d3d3;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .json-container:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .toggle-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 15px;
+            background-color: #1d3557;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-button:hover {
+            background-color: #457b9d;
+        }
+
+        .model-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #e63946;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .model-button:hover {
+            background-color: #d62828;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background-color: #f1faee;
+            padding: 15px;
+            border: 1px solid #e5e5e5;
+            border-radius: 5px;
+            overflow: auto;
+            display: none;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .visible {
+            display: block;
+        }
+
+        h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #457b9d;
+        }
+
+        p {
+            color: #666;
+        }
+
+        .no-data {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Add a soft transition to the content */
+        .json-container, .pre {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>Activities</h1>
+    <h2>--- {{ user }} ---</h2>
+
+    <div class="container">
+        <!-- Inbox section -->
+        <div class="column">
+            <h2>Inbox (federation)</h2>
+            {% if inbox %}
+                {% for activity in inbox %}
+                    <div class="json-container">
+                        <h3>{{ activity.type }}</h3>
+                        <button class="toggle-button" onclick="toggleVisibility(this)">Show</button>
+                        <pre>{{ activity | tojson(indent=2) }}</pre>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="no-data">
+                    <p>No data in inbox</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Outbox section -->
+        <div class="column">
+            <h2>Outbox</h2>
+            {% if outbox %}
+                {% for activity in outbox %}
+                    <div class="json-container">
+                        <h3>{{ activity.type }}</h3>
+                        <button class="toggle-button" onclick="toggleVisibility(this)">Show</button>
+                        <pre>{{ activity | tojson(indent=2) }}</pre>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="no-data">
+                    <p>No data in outbox</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Button to redirect to the model page for the user -->
+    <div style="text-align: center; margin-top: 30px;">
+        <button class="model-button" onclick="redirectToModel()">Go to Model</button>
+    </div>
+
+    <script>
+        function toggleVisibility(button) {
+            const pre = button.nextElementSibling; // The <pre> element after the button
+            if (pre.classList.contains('visible')) {
+                pre.classList.remove('visible');
+                button.textContent = 'Show';
+            } else {
+                pre.classList.add('visible');
+                button.textContent = 'Hide';
+            }
+        }
+
+        function redirectToModel() {
+            const username = "{{ user }}"; // Get the username dynamically from the template
+            window.location.href = `/${username}/model`; // Redirect to the URL with the username
+        }
+    </script>
+</body>
+</html>
