@@ -8,3 +8,6 @@
 # Pipenv files
 Pipfile
 Pipfile.lock
+
+# env
+.env
