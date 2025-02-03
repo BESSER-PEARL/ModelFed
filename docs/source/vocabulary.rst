@@ -312,7 +312,7 @@ Property
         "name": "title",
         "timestamp": "2025-01-20T08:30:00Z",
         "elementType": "http://www.modeling-platform/primitivedatatype/t1d2e3",
-        "isId": false,
+        "isId": False,
         "multiplicity": "http://www.modeling-platform/multiplicity/m1n2o3"
     }
 
@@ -408,8 +408,8 @@ Generalization
         "timestamp": "2025-01-20T08:30:00Z",
         "general": "http://www.modeling-platform/class/c1d2e3",
         "specific": "http://www.modeling-platform/class/c4d5e6",
-        "isDisjoint": true,
-        "isComplete": true
+        "isDisjoint": True,
+        "isComplete": True
     }
 
 .. _multiplicity_obj:
@@ -502,7 +502,7 @@ Method
         "timestamp": "2025-01-20T08:30:00Z",
         "owner": "http://www.modeling-platform/class/c1d2e3",
         "elementType": "http://www.modeling-platform/primitivedatatype/t1d2e3",
-        "isAbstract": false,
+        "isAbstract": False,
         "parameters": [
             "http://www.modeling-platform/parameter/p1q2r3"
         ],
@@ -963,7 +963,7 @@ isComposite
         "name": "has_books",
         "timestamp": "2025-01-20T08:30:00Z",
         "elementType": "http://www.modeling-platform/class/t1d2e3",
-        "isComposite": true,
+        "isComposite": True,
         "multiplicity": "http://www.modeling-platform/multiplicity/m1n2o3"
     }
 
@@ -995,8 +995,8 @@ isNavigable
         "name": "has_books",
         "timestamp": "2025-01-20T08:30:00Z",
         "elementType": "http://www.modeling-platform/class/t1d2e3",
-        "isComposite": true,
-        "isNavigable": true,
+        "isComposite": True,
+        "isNavigable": True,
         "multiplicity": "http://www.modeling-platform/multiplicity/m1n2o3"
     }
 
@@ -1220,7 +1220,7 @@ isAbstract
         "id": "http://www.modeling-platform/class/c1d2e3",
         "name": "AbstractClass",
         "timestamp": "2025-01-20T08:30:00Z",
-        "isAbstract": true
+        "isAbstract": True
     }
 
 .. _isId:
@@ -1251,7 +1251,7 @@ isId
         "name": "identifier",
         "timestamp": "2025-01-20T08:30:00Z",
         "elementType": "http://www.modeling-platform/primitivedatatype/t1d2e3",
-        "isId": true
+        "isId": True
     }
 
 .. _isReadOnly:
@@ -1282,7 +1282,7 @@ isReadOnly
         "name": "readOnlyProperty",
         "timestamp": "2025-01-20T08:30:00Z",
         "elementType": "http://www.modeling-platform/primitivedatatype/t1d2e3",
-        "isReadOnly": true
+        "isReadOnly": True
     }
 
 .. _ends:
@@ -1411,7 +1411,7 @@ isDisjoint
         "timestamp": "2025-01-20T08:30:00Z",
         "general": "http://www.modeling-platform/class/c1d2e3",
         "specific": "http://www.modeling-platform/class/c4d5e6",
-        "isDisjoint": true
+        "isDisjoint": True
     }
 
 .. _isComplete:
@@ -1443,8 +1443,8 @@ isComplete
         "timestamp": "2025-01-20T08:30:00Z",
         "general": "http://www.modeling-platform/class/c1d2e3",
         "specific": "http://www.modeling-platform/class/c4d5e6",
-        "isComplete": true,
-        "isDisjoint": true
+        "isComplete": True,
+        "isDisjoint": True
     }
 
 .. _generalizations:
@@ -1721,7 +1721,7 @@ adaptability
         "id": "http://www.modeling-platform/agent/a1b2c3",
         "name": "AI Agent",
         "summary": "An agent acting on behalf of a user",
-        "adaptability": true
+        "adaptability": True
     }
 
 .. _mediaTypes:
