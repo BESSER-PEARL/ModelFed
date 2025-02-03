@@ -11,3 +11,6 @@ Pipfile.lock
 
 # env
 .env
+
+# pycache
+*__pycache__
