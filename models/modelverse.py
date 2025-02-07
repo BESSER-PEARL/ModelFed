@@ -32,7 +32,7 @@ def users(self) -> [str]:
 def users(self, value: [str]):
     setattr(self, _private_users, value)
 
-# Apply monkey patching: Add the property to the Element class
+# Apply monkey patching in BESSER: Add the property to the Element class
 Element.id = id
 Element.attributed_to = attributed_to
 Element.users = users

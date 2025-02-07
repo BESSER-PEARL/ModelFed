@@ -15,7 +15,8 @@ class Activity(BaseModel):
     id: HttpUrl
     to: Optional[List[HttpUrl]] = None
     actor: HttpUrl
-    object: Union[Object, dict] 
+    object: Union[Object, dict]
+    target: Optional[HttpUrl]
 
     class Config:
         fields = {
