@@ -33,7 +33,7 @@ Domain Model
 +--------------+---------------------------------------------------------------------------------------------------------------+
 | Extends:     | `Object <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-object>`_                                      |
 +--------------+---------------------------------------------------------------------------------------------------------------+
-| Properties:  | :ref:`timestamp` | :ref:`types` | :ref:`associations` | :ref:`packages` | :ref:`generalizations`              |
+| Properties:  | :ref:`types` | :ref:`associations` | :ref:`packages` | :ref:`generalizations`                                 |
 |              |                                                                                                               |
 |              | Other properties are inherited from `Object <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-object>`_. |
 +--------------+---------------------------------------------------------------------------------------------------------------+
@@ -57,7 +57,7 @@ ModelElement
 +--------------+---------------------------------------------------------------------------------------------------------------+
 | URI:         | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#ModelElement                                   |
 +--------------+---------------------------------------------------------------------------------------------------------------+
-| Description: | Represents a model element as part of a domain model.                                                         |
+| Description: | Represents a model element as part of a domain model. This class is **abstract**.                             |
 +--------------+---------------------------------------------------------------------------------------------------------------+
 | Extends:     | `Object <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-object>`_                                      |
 +--------------+---------------------------------------------------------------------------------------------------------------+
@@ -65,19 +65,6 @@ ModelElement
 |              |                                                                                                               |
 |              | Other properties are inherited from `Object <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-object>`_. |
 +--------------+---------------------------------------------------------------------------------------------------------------+
-
-.. code-block:: json-ld
-    
-    {
-        "@context": [
-            "https://www.w3.org/ns/activitystreams",
-            "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
-        ],
-        "type": "ModelElement",
-        "id": "http://www.modeling-platform/modelelement/W3E3R4",
-        "name": "A simple Model Element"
-        "timestamp": "2025-01-20T08:30:00Z"
-    }
 
 .. _package:
 
@@ -105,9 +92,9 @@ Package
         "type": "Package",
         "id": "http://www.modeling-platform/package/p1d2e3",
         "name": "A simple Package",
-        "timestamp": "2025-01-20T08:30:00Z",
         "classes": [
-            "http://www.modeling-platform/class/C1D2E3"
+            "http://www.modeling-platform/class/C1D2E3",
+            "http://www.modeling-platform/class/a3m4bs",
         ]
     }
 
@@ -118,25 +105,12 @@ Type
 +--------------+------------------------------------------------------------------------+
 | URI:         | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#Type    |
 +--------------+------------------------------------------------------------------------+
-| Description: | Represents a type in the model.                                        |
+| Description: | Represents a type in the model. This class is **abstract**             |
 +--------------+------------------------------------------------------------------------+
 | Extends:     | :ref:`modelElement`                                                    |
 +--------------+------------------------------------------------------------------------+
 | Properties:  | Inherits all properties from :ref:`modelElement`.                      |
 +--------------+------------------------------------------------------------------------+
-
-.. code-block:: json-ld
-    
-    {
-        "@context": [
-            "https://www.w3.org/ns/activitystreams",
-            "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
-        ],
-        "type": "Type",
-        "id": "http://www.modeling-platform/type/t1d2e3",
-        "name": "A simple Type",
-        "timestamp": "2025-01-20T08:30:00Z"
-    }
 
 .. _class:
 
@@ -149,7 +123,7 @@ Class
 +--------------+----------------------------------------------------------------------------+
 | Extends:     | :ref:`type`                                                                |
 +--------------+----------------------------------------------------------------------------+
-| Properties:  | :ref:`attributes` | :ref:`methods` | :ref:`isAbstract` | :ref:`isReadOnly` |
+| Properties:  | :ref:`attributes` | :ref:`methods` | :ref:`isAbstract`                     |
 |              |                                                                            |
 |              | Other properties are inherited from :ref:`type`.                           |
 +--------------+----------------------------------------------------------------------------+
@@ -164,9 +138,9 @@ Class
         "type": "Class",
         "id": "http://www.modeling-platform/class/c1d2e3",
         "name": "A simple Class",
-        "timestamp": "2025-01-20T08:30:00Z",
         "attributes": [
-            "http://www.modeling-platform/attribute/a1b2c3"
+            "http://www.modeling-platform/attribute/a1b2c3",
+            "http://www.modeling-platform/attribute/aasdf3",
         ],
         "methods": []
     }
@@ -175,6 +149,15 @@ Class
 
 DataType
 ^^^^^^^^
++--------------+----------------------------------------------------------------------------------+
+| URI:         | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#Enumeration       |
++--------------+----------------------------------------------------------------------------------+
+| Description: | This class is **abstract** and represents data types.                            |
++--------------+----------------------------------------------------------------------------------+
+| Extends:     | :ref:`type`                                                                      |
++--------------+----------------------------------------------------------------------------------+
+| Properties:  | Inherits all properties from :ref:`type`.                                        |
++--------------+----------------------------------------------------------------------------------+
 
 .. _enumeration:
 
@@ -200,12 +183,11 @@ Enumeration
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Enumeration",
-        "id": "http://www.modeling-platform/enumeration/e1f2g3",
+        "id": "http://www.modeling-platform/enumerations/e1f2g3",
         "name": "A simple Enumeration",
-        "timestamp": "2025-01-20T08:30:00Z",
         "literals": [
-            "http://www.modeling-platform/enumerationliteral/l1m2n3",
-            "http://www.modeling-platform/enumerationliteral/l3m5n7"
+            "http://www.modeling-platform/enumerationliterals/l1m2n3",
+            "http://www.other-platform/enumerationliterals/l3m5n7"
         ]
     }
 
@@ -233,11 +215,10 @@ EnumerationLiteral
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "EnumerationLiteral",
-        "id": "http://www.modeling-platform/enumerationliteral/l1m2n3",
+        "id": "http://www.modeling-platform/enumerationliterals/l1m2n3",
         "name": "A simple Enumeration Literal",
-        "timestamp": "2025-01-20T08:30:00Z",
         "value": "LiteralValue",
-        "owner": "http://www.modeling-platform/enumeration/e1f2g3"
+        "owner": "http://www.modeling-platform/enumerations/e1f2g3"
     }
 
 .. _primitiveDataType:
@@ -263,7 +244,7 @@ PrimitiveDataType
         ],
         "type": "PrimitiveDataType",
         "id": "http://www.modeling-platform/primitivedatatype/p1d2e3",
-        "name": "IntegerType",
+        "name": "type name",
         "timestamp": "2025-01-20T08:30:00Z"
     }
 
@@ -295,8 +276,8 @@ Property
 +--------------+-------------------------------------------------------------------------------------+
 | Extends:     | :ref:`typedElement`                                                                 |
 +--------------+-------------------------------------------------------------------------------------+
-| Properties:  | :ref:`owner` | :ref:`multiplicity_prop` | :ref:`isComposite` | :ref:`isNavigable` | |
-|              | :ref:`isId` | :ref:`isReadOnly`                                                     |
+| Properties:  | :ref:`owner` | :ref:`multiplicity` | :ref:`isComposite` | :ref:`isNavigable` |      |
+|              | :ref:`isId`                                                                         |
 |              | Other properties are inherited from :ref:`typedElement`.                            |
 +--------------+-------------------------------------------------------------------------------------+
 
@@ -310,10 +291,9 @@ Property
         "type": "Property",
         "id": "http://www.modeling-platform/property/p1d2e3",
         "name": "title",
-        "timestamp": "2025-01-20T08:30:00Z",
         "elementType": "http://www.modeling-platform/primitivedatatype/t1d2e3",
-        "isId": False,
-        "multiplicity": "http://www.modeling-platform/multiplicity/m1n2o3"
+        "isId": false,
+        "multiplicity": "0..1"
     }
 
 .. _association:
@@ -340,12 +320,12 @@ Association
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Association",
-        "id": "http://www.modeling-platform/association/a1b2c3",
+        "id": "http://www.modeling-platform/associations/a1b2c3",
         "name": "has_books",
-        "timestamp": "2025-01-20T08:30:00Z",
         "ends": [
-            "http://www.modeling-platform/property/p1r2y3",
-            "http://www.modeling-platform/property/p4r5y6"
+            "http://www.modeling-platform/properties/p1r2y3",
+            "http://www.modeling-platform/properties/p4r5y6",
+            "http://www.other-platform/properties/p555y6"
         ]
     }
 
@@ -371,12 +351,11 @@ BinaryAssociation
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "BinaryAssociation",
-        "id": "http://www.modeling-platform/binaryassociation/b1c2d3",
+        "id": "http://www.modeling-platform/associations/b1c2d3",
         "name": "belongs_to",
-        "timestamp": "2025-01-20T08:30:00Z",
         "ends": [
-            "http://www.modeling-platform/property/p1f2g3",
-            "http://www.modeling-platform/property/p4f5g6"
+            "http://www.modeling-platform/properties/p1f2g3",
+            "http://www.modeling-platform/properties/p4f5g6"
         ]
     }
 
@@ -404,42 +383,11 @@ Generalization
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Generalization",
-        "id": "http://www.modeling-platform/generalization/g1h2i3",
-        "timestamp": "2025-01-20T08:30:00Z",
+        "id": "http://www.modeling-platform/generalizations/g1h2i3",
         "general": "http://www.modeling-platform/class/c1d2e3",
         "specific": "http://www.modeling-platform/class/c4d5e6",
-        "isDisjoint": True,
-        "isComplete": True
-    }
-
-.. _multiplicity_obj:
-
-Multiplicity
-^^^^^^^^^^^^
-+--------------+----------------------------------------------------------------------------------+
-| URI:         | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#Multiplicity      |
-+--------------+----------------------------------------------------------------------------------+
-| Description: | Represents the multiplicity of a property.                                       |
-+--------------+----------------------------------------------------------------------------------+
-| Extends:     | :ref:`modelElement`                                                              |
-+--------------+----------------------------------------------------------------------------------+
-| Properties:  | :ref:`minMultiplicity` | :ref:`maxMultiplicity`                                  |
-|              |                                                                                  |
-|              | Other properties are inherited from :ref:`modelElement`.                         |
-+--------------+----------------------------------------------------------------------------------+
-
-.. code-block:: json-ld
-    
-    {
-        "@context": [
-            "https://www.w3.org/ns/activitystreams",
-            "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
-        ],
-        "type": "Multiplicity",
-        "id": "http://www.modeling-platform/multiplicity/m1n2o3",
-        "timestamp": "2025-01-20T08:30:00Z",
-        "minMultiplicity": 0,
-        "maxMultiplicity": 1
+        "isDisjoint": true,
+        "isComplete": true
     }
 
 .. _parameter:
@@ -468,8 +416,7 @@ Parameter
         "type": "Parameter",
         "id": "http://www.modeling-platform/parameter/p1q2r3",
         "name": "Age",
-        "timestamp": "2025-01-20T08:30:00Z",
-        "typeElement": "http://www.modeling-platform/type/t1d2e3",
+        "elementType": "int",
         "defaultValue": 20
     }
 
@@ -497,14 +444,14 @@ Method
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Method",
-        "id": "http://www.modeling-platform/method/m1n2o3",
+        "id": "http://www.modeling-platform/methods/m1n2o3",
         "name": "Example Method",
         "timestamp": "2025-01-20T08:30:00Z",
-        "owner": "http://www.modeling-platform/class/c1d2e3",
-        "elementType": "http://www.modeling-platform/primitivedatatype/t1d2e3",
-        "isAbstract": False,
+        "owner": "http://www.modeling-platform/classes/c1d2e3",
+        "elementType": "datetime",
+        "isAbstract": false,
         "parameters": [
-            "http://www.modeling-platform/parameter/p1q2r3"
+            "http://www.modeling-platform/parameters/p1q2r3"
         ],
         "code": "return 42"
     }
@@ -515,7 +462,7 @@ Modelverse define some additional activities that inherit from the
 `Activity <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-activity>`_ type.
 
 Reclassify
-^^^^^^
+^^^^^^^^^^
 +--------------+----------------------------------------------------------------------------------+
 | URI:         | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#Reclassify        |
 +--------------+----------------------------------------------------------------------------------+
@@ -571,6 +518,8 @@ The ActivityPub Vocabulary alredy defines a list of actors. The Modelverse Vocab
 one additional actor (Agent), which is a specialized type inherited from 
 `Application <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-application>`_.
 
+.. _agent:
+
 Agent
 ^^^^^
 +--------------+--------------------------------------------------------------------------------------+
@@ -580,7 +529,7 @@ Agent
 +--------------+--------------------------------------------------------------------------------------+
 | Extends:     | `Application <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-application>`_   |
 +--------------+--------------------------------------------------------------------------------------+
-| Properties:  | :ref:`interfaces` | :ref:`underlyingModel` | :ref:`_daptability` | :ref:`mediaTypes` |
+| Properties:  | :ref:`interfaces` | :ref:`underlyingModel` | :ref:`adaptability` | :ref:`mediaTypes` |
 |              |                                                                                      |
 |              | Other properties are inherited from                                                  |
 |              | `Application <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-application>`_.  |
@@ -594,7 +543,7 @@ Agent
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Agent",
-        "id": "http://www.modeling-platform/agent/a1b2c3",
+        "id": "http://www.modeling-platform/agents/a1b2c3",
         "name": "AI Agent",
         "summary": "An agent acting on behalf of a user"
     }
@@ -629,10 +578,10 @@ Grant
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Grant",
-        "id": "http://www.modeling-platform/domainmodel/grant/a1b2c3",
+        "id": "http://www.modeling-platform/domainmodel/grants/a1b2c3",
         "actor": "https://modeling-platform/maintainer-user",
         "to": "https://other-platform/modeler-user",,
-        "target": "http://www.modeling-platform/domainmodel/m1o2d3",
+        "target": "http://www.modeling-platform/domainmodels/m1o2d3",
         "role": "write"
     }
 
@@ -645,7 +594,7 @@ Revoke
 +--------------+----------------------------------------------------------------------------------+
 | Extends:     | `Activity <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-activity>`_     |
 +--------------+----------------------------------------------------------------------------------+
-| Properties:  | :ref:`grant`                                                                    |
+| Properties:  | :ref:`grant`                                                                     |
 |              |                                                                                  |
 |              | Other properties are inherited from                                              |
 |              | `Activity <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-activity>`_.    |
@@ -661,7 +610,7 @@ Revoke
         "type": "Revoke",
         "id": "http://www.modeling-platform/activity/revoke/a1b2c3",
         "actor": "https://modeling-platform/maintainer-user",
-        "grant": "http://www.modeling-platform/domainmodel/grant/a1b2c3"
+        "grant": "http://www.modeling-platform/grants/a1b2c3"
     }
 
 
@@ -680,7 +629,8 @@ timestamp
 +-----------------+--------------------------------------------------------------------------+
 | URI:            | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#timestamp |
 +-----------------+--------------------------------------------------------------------------+
-| Description:    | Represents the object creation datetime.                                 |
+| Description:    | Represents the object creation datetime. The timestamp value should be   |
+|                 | auto-generated for all kind of activities and objects.                   |
 +-----------------+--------------------------------------------------------------------------+
 | Domain:         | `Object <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-object>`_ |
 +-----------------+--------------------------------------------------------------------------+
@@ -726,9 +676,8 @@ visibility
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Class",
-        "id": "http://www.modeling-platform/class/c1d2e3",
+        "id": "http://www.modeling-platform/classes/c1d2e3",
         "name": "A simple Class",
-        "timestamp": "2025-01-20T08:30:00Z",
         "visibility": "public"
     }
 
@@ -757,10 +706,9 @@ owner
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Method",
-        "id": "http://www.modeling-platform/method/m1e2t3",
+        "id": "http://www.modeling-platform/methods/m1e2t3",
         "name": "average",
-        "timestamp": "2025-01-20T08:30:00Z",
-        "owner": "http://www.modeling-platform/class/c1l2a3"
+        "owner": "http://www.modeling-platform/classes/c1l2a3"
     }
 
 .. _attributes:
@@ -788,17 +736,15 @@ attributes
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Class",
-        "id": "http://www.modeling-platform/class/c1d2e3",
+        "id": "http://www.modeling-platform/classes/c1d2e3",
         "name": "Library",
-        "timestamp": "2025-01-20T08:30:00Z",
         "attributes": [
-            "http://www.modeling-platform/attribute/a1b2c3",
+            "http://www.modeling-platform/attributes/a1b2c3",
             {
                 "type": "Property",
-                "id": "http://www.modeling-platform/property/p1d2e3",
+                "id": "http://www.modeling-platform/properties/p1d2e3",
                 "name": "location",
-                "timestamp": "2025-01-20T08:30:00Z",
-                "elementType": "http://www.modeling-platform/primitivedatatype/t1d2e3",
+                "elementType": "str",
             }
         ]
     }
@@ -832,82 +778,21 @@ literals
         "name": "Metric",
         "timestamp": "2025-01-20T08:30:00Z",
         "literals": [
-            "http://www.modeling-platform/enumerationliteral/l1m2n3",
+            "http://www.modeling-platform/enumerationliterals/l1m2n3",
             {
                 "type": "EnumerationLiteral",
-                "id": "http://www.modeling-platform/enumerationliteral/l3m5n7",
+                "id": "http://www.modeling-platform/enumerationliterals/l3m5n7",
                 "name": "temperature",
                 "timestamp": "2025-01-20T08:30:00Z",
-                "owner": "http://www.modeling-platform/enumeration/e1f2g3"
+                "owner": "http://www.modeling-platform/enumerations/e1f2g3"
             }
         ]
     }
 
-
-.. _minMultiplicity:
-
-minMultiplicity
-~~~~~~~~~~~~~~~
-+-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#minMultiplicity   |
-+-----------------+----------------------------------------------------------------------------------+
-| Description:    | Represents the minimum multiplicity.                                             |
-+-----------------+----------------------------------------------------------------------------------+
-| Domain:         | :ref:`multiplicity_obj`                                                          |
-+-----------------+----------------------------------------------------------------------------------+
-| Range:          | xsd:integer                                                                      |
-+-----------------+----------------------------------------------------------------------------------+
-| Allow multiple: | False                                                                            |
-+-----------------+----------------------------------------------------------------------------------+
-
-.. code-block:: json-ld
-    
-    {
-        "@context": [
-            "https://www.w3.org/ns/activitystreams",
-            "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
-        ],
-        "type": "Multiplicity",
-        "id": "http://www.modeling-platform/multiplicity/m1n2o3",
-        "timestamp": "2025-01-20T08:30:00Z",
-        "minMultiplicity": 0
-        "maxMultiplicity": 1
-    }
-
-.. _maxMultiplicity:
-
-maxMultiplicity
-~~~~~~~~~~~~~~~
-+-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#maxMultiplicity   |
-+-----------------+----------------------------------------------------------------------------------+
-| Description:    | Represents the maximum multiplicity. Use 9999 for unlimited.                     |
-+-----------------+----------------------------------------------------------------------------------+
-| Domain:         | :ref:`multiplicity_obj`                                                          |
-+-----------------+----------------------------------------------------------------------------------+
-| Range:          | xsd:integer                                                                      |
-+-----------------+----------------------------------------------------------------------------------+
-| Allow multiple: | False                                                                            |
-+-----------------+----------------------------------------------------------------------------------+
-
-.. code-block:: json-ld
-    
-    {
-        "@context": [
-            "https://www.w3.org/ns/activitystreams",
-            "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
-        ],
-        "type": "Multiplicity",
-        "id": "http://www.modeling-platform/multiplicity/m1n2o3",
-        "timestamp": "2025-01-20T08:30:00Z",
-        "maxMultiplicity": 0
-        "maxMultiplicity": 9999
-    }
-
-.. _multiplicity_prop:
+.. _multiplicity:
 
 multiplicity
-~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
 | URI:            | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#multiplicity      |
 +-----------------+----------------------------------------------------------------------------------+
@@ -915,7 +800,7 @@ multiplicity
 +-----------------+----------------------------------------------------------------------------------+
 | Domain:         | :ref:`property`                                                                  |
 +-----------------+----------------------------------------------------------------------------------+
-| Range:          | :ref:`multiplicity_obj`                                                          |
+| Range:          | xsd:string                                                                       |
 +-----------------+----------------------------------------------------------------------------------+
 | Allow multiple: | False                                                                            |
 +-----------------+----------------------------------------------------------------------------------+
@@ -928,11 +813,10 @@ multiplicity
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Property",
-        "id": "http://www.modeling-platform/property/p1d2e3",
-        "name": "title",
-        "timestamp": "2025-01-20T08:30:00Z",
-        "elementType": "http://www.modeling-platform/primitivedatatype/t1d2e3",
-        "multiplicity": "http://www.modeling-platform/multiplicity/m1n2o3"
+        "id": "http://www.modeling-platform/properties/p1r2op3",
+        "name": "scores"
+        "elementType": "int",
+        "multiplicity": "0..*"
     }
 
 .. _isComposite:
@@ -959,12 +843,11 @@ isComposite
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Property",
-        "id": "http://www.modeling-platform/property/p1d2e3",
+        "id": "http://www.modeling-platform/properties/p1d2e3",
         "name": "has_books",
         "timestamp": "2025-01-20T08:30:00Z",
-        "elementType": "http://www.modeling-platform/class/t1d2e3",
-        "isComposite": True,
-        "multiplicity": "http://www.modeling-platform/multiplicity/m1n2o3"
+        "elementType": "http://www.modeling-platform/classes/t1d2e3",
+        "isComposite": true
     }
 
 .. _isNavigable:
@@ -991,13 +874,12 @@ isNavigable
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Property",
-        "id": "http://www.modeling-platform/property/p1d2e3",
+        "id": "http://www.modeling-platform/properties/p1d2e3",
         "name": "has_books",
         "timestamp": "2025-01-20T08:30:00Z",
-        "elementType": "http://www.modeling-platform/class/t1d2e3",
-        "isComposite": True,
-        "isNavigable": True,
-        "multiplicity": "http://www.modeling-platform/multiplicity/m1n2o3"
+        "elementType": "http://www.modeling-platform/classes/t1d2e3",
+        "isComposite": true,
+        "isNavigable": true
     }
 
 .. _elementType:
@@ -1017,6 +899,12 @@ elementType
 | Allow multiple: | False                                                                            |
 +-----------------+----------------------------------------------------------------------------------+
 
+
+.. note::
+
+   In Modelverse, the following default primitive data types can be defined as strings, for simplicity:  
+   "str", "int", "float", "boolean", "date", "time", "datetime", and "timedelta".
+
 .. code-block:: json-ld
     
     {
@@ -1025,15 +913,10 @@ elementType
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Method",
-        "id": "http://www.modeling-platform/method/m1d2e3",
+        "id": "http://www.modeling-platform/methods/m1d2e3",
         "name": "get_alias",
         "timestamp": "2025-01-20T08:30:00Z",
-        "elementType": {
-            "type": "PrimitiveDataType",
-            "id": "http://www.modeling-platform/primitivedatatype/t1d2e3",
-            "name": "String",
-            "timestamp": "2025-01-20T08:30:00Z"
-        }
+        "elementType": "str"
     }
 .. _defaultValue:
 
@@ -1059,15 +942,11 @@ defaultValue
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Parameter",
-        "id": "http://www.modeling-platform/parameter/p1q2r3",
+        "id": "http://www.modeling-platform/parameters/p1q2r3",
         "name": "age",
         "timestamp": "2025-01-20T08:30:00Z",
         "defaultValue": 20
-        "elementType": {
-            "type": "PrimitiveDataType",
-            "id": "http://www.modeling-platform/primitivedatatype/t1d2e3",
-            "name": "Integer"
-        }
+        "elementType": "int"
     }
 
 .. _parameters:
@@ -1095,24 +974,22 @@ parameters
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Method",
-        "id": "http://www.modeling-platform/method/m1n2o3",
+        "id": "http://www.modeling-platform/methods/m1n2o3",
         "name": "calculateSum",
         "timestamp": "2025-01-20T08:30:00Z",
         "parameters": [
             {
                 "type": "Parameter",
-                "id": "http://www.modeling-platform/parameter/p1q2r3",
+                "id": "http://www.modeling-platform/parameters/p1q2r3",
                 "name": "a",
-                "timestamp": "2025-01-20T08:30:00Z",
-                "elementType": "http://www.modeling-platform/primitivedatatype/t1d2e3",
+                "elementType": "float",
                 "defaultValue": 0
             },
             {
                 "type": "Parameter",
-                "id": "http://www.modeling-platform/parameter/p4q5r6",
+                "id": "http://www.modeling-platform/parameters/p4q5r6",
                 "name": "b",
-                "timestamp": "2025-01-20T08:30:00Z",
-                "elementType": "http://www.modeling-platform/primitivedatatype/t1d2e3",
+                "elementType": "int",
                 "defaultValue": 0
             }
         ]
@@ -1177,17 +1054,18 @@ methods
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Class",
-        "id": "http://www.modeling-platform/class/c1d2e3",
+        "id": "http://www.modeling-platform/classes/c1d2e3",
         "name": "Library",
         "timestamp": "2025-01-20T08:30:00Z",
         "methods": [
-            "http://www.modeling-platform/method/m1n2o3",
+            "http://www.modeling-platform/methods/m1n2o3",
             {
                 "type": "Method",
-                "id": "http://www.modeling-platform/method/m4n5o6",
-                "name": "getBooks",
+                "id": "http://www.modeling-platform/methods/m4n5o6",
+                "name": "getBook",
                 "timestamp": "2025-01-20T08:30:00Z",
-                "code": "return books;",
+                "code": "return book;",
+                "elementType": "http://www.modeling-platform/classes/book1234"
                 "parameters": []
             }
         ]
@@ -1217,10 +1095,10 @@ isAbstract
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Class",
-        "id": "http://www.modeling-platform/class/c1d2e3",
+        "id": "http://www.modeling-platform/classes/c1d2e3",
         "name": "AbstractClass",
         "timestamp": "2025-01-20T08:30:00Z",
-        "isAbstract": True
+        "isAbstract": true
     }
 
 .. _isId:
@@ -1247,42 +1125,11 @@ isId
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Property",
-        "id": "http://www.modeling-platform/property/p1d2e3",
+        "id": "http://www.modeling-platform/properties/p1d2e3",
         "name": "identifier",
         "timestamp": "2025-01-20T08:30:00Z",
-        "elementType": "http://www.modeling-platform/primitivedatatype/t1d2e3",
-        "isId": True
-    }
-
-.. _isReadOnly:
-
-isReadOnly
-~~~~~~~~~~
-+-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#isReadOnly        |
-+-----------------+----------------------------------------------------------------------------------+
-| Description:    | Indicates whether the property is read-only.                                     |
-+-----------------+----------------------------------------------------------------------------------+
-| Domain:         | :ref:`property`                                                                  |
-+-----------------+----------------------------------------------------------------------------------+
-| Range:          | xsd:boolean                                                                      |
-+-----------------+----------------------------------------------------------------------------------+
-| Allow multiple: | False                                                                            |
-+-----------------+----------------------------------------------------------------------------------+
-
-.. code-block:: json-ld
-    
-    {
-        "@context": [
-            "https://www.w3.org/ns/activitystreams",
-            "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
-        ],
-        "type": "Property",
-        "id": "http://www.modeling-platform/property/p1d2e3",
-        "name": "readOnlyProperty",
-        "timestamp": "2025-01-20T08:30:00Z",
-        "elementType": "http://www.modeling-platform/primitivedatatype/t1d2e3",
-        "isReadOnly": True
+        "elementType": "str",
+        "isId": true
     }
 
 .. _ends:
@@ -1310,12 +1157,12 @@ ends
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Association",
-        "id": "http://www.modeling-platform/association/a1b2c3",
+        "id": "http://www.modeling-platform/associations/a1b2c3",
         "name": "has_books",
         "timestamp": "2025-01-20T08:30:00Z",
         "ends": [
-            "http://www.modeling-platform/property/p1r2y3",
-            "http://www.modeling-platform/property/p4r5y6"
+            "http://www.modeling-platform/properties/p1r2y3",
+            "http://www.modeling-platform/properties/p4r5y6"
         ]
     }
 
@@ -1346,8 +1193,8 @@ general
         "type": "Generalization",
         "id": "http://www.modeling-platform/generalization/g1h2i3",
         "timestamp": "2025-01-20T08:30:00Z",
-        "general": "http://www.modeling-platform/class/c1d2e3",
-        "specific": "http://www.modeling-platform/class/c4d5e6"
+        "general": "http://www.modeling-platform/classes/c1d2e3",
+        "specific": "http://www.modeling-platform/classes/c4d5e6"
     }
 
 .. _specific:
@@ -1375,11 +1222,11 @@ specific
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Generalization",
-        "id": "http://www.modeling-platform/generalization/g1h2i3",
+        "id": "http://www.modeling-platform/generalizations/g1h2i3",
         "name": "Generalization Example",
         "timestamp": "2025-01-20T08:30:00Z",
-        "general": "http://www.modeling-platform/class/c1d2e3",
-        "specific": "http://www.modeling-platform/class/c4d5e6"
+        "general": "http://www.modeling-platform/classes/c1d2e3",
+        "specific": "http://www.modeling-platform/classes/c4d5e6"
     }
 
 .. _isDisjoint:
@@ -1406,12 +1253,12 @@ isDisjoint
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Generalization",
-        "id": "http://www.modeling-platform/generalization/g1h2i3",
+        "id": "http://www.modeling-platform/generalizations/g1h2i3",
         "name": "Generalization Example",
         "timestamp": "2025-01-20T08:30:00Z",
-        "general": "http://www.modeling-platform/class/c1d2e3",
-        "specific": "http://www.modeling-platform/class/c4d5e6",
-        "isDisjoint": True
+        "general": "http://www.modeling-platform/classes/c1d2e3",
+        "specific": "http://www.modeling-platform/classes/c4d5e6",
+        "isDisjoint": true
     }
 
 .. _isComplete:
@@ -1438,13 +1285,13 @@ isComplete
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "Generalization",
-        "id": "http://www.modeling-platform/generalization/g1h2i3",
+        "id": "http://www.modeling-platform/generalizations/g1h2i3",
         "name": "Generalization Example",
         "timestamp": "2025-01-20T08:30:00Z",
-        "general": "http://www.modeling-platform/class/c1d2e3",
-        "specific": "http://www.modeling-platform/class/c4d5e6",
-        "isComplete": True,
-        "isDisjoint": True
+        "general": "http://www.modeling-platform/classes/c1d2e3",
+        "specific": "http://www.modeling-platform/classes/c4d5e6",
+        "isComplete": true,
+        "isDisjoint": true
     }
 
 .. _generalizations:
@@ -1474,15 +1321,13 @@ generalizations
         "type": "DomainModel",
         "id": "http://www.modeling-platform/domainmodel/m1d2e3",
         "name": "Domain Model Example",
-        "timestamp": "2025-01-20T08:30:00Z",
         "generalizations": [
-            "http://www.modeling-platform/generalization/g1h2i3",
+            "http://www.modeling-platform/generalizations/g1h2i3",
             {
                 "type": "Generalization",
-                "id": "http://www.modeling-platform/generalization/g4h5i6",
-                "timestamp": "2025-01-20T08:30:00Z",
-                "general": "http://www.modeling-platform/class/c7d8e9",
-                "specific": "http://www.modeling-platform/class/c1d2e3"
+                "id": "http://www.modeling-platform/generalizations/g4h5i6",
+                "general": "http://www.modeling-platform/classes/c7d8e9",
+                "specific": "http://www.modeling-platform/classes/c1d2e3"
             }
         ]
     }
@@ -1514,7 +1359,6 @@ classes
         "type": "Package",
         "id": "http://www.modeling-platform/package/p1d2e3",
         "name": "LibraryPackage",
-        "timestamp": "2025-01-20T08:30:00Z",
         "classes": [
             "http://www.modeling-platform/class/c1d2e3",
             "http://www.modeling-platform/class/c1l3k4",
@@ -1526,18 +1370,18 @@ classes
 
 types
 ~~~~~
-+-----------------+---------------------------------------------------------------------------+
-| URI:            | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#types      |
-+-----------------+---------------------------------------------------------------------------+
-| Description:    | Represents the types contained in a domain model.                         |
-+-----------------+---------------------------------------------------------------------------+
-| Domain:         | :ref:`domainModel`                                                        |
-+-----------------+---------------------------------------------------------------------------+
-| Range:          | :ref:`class` | :ref:`enumeration` | :ref:`primitivedatatype`              |
-|                 | `Link <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-link>`_      |
-+-----------------+---------------------------------------------------------------------------+
-| Allow multiple: | True                                                                      |
-+-----------------+---------------------------------------------------------------------------+
++-----------------+----------------------------------------------------------------------------------------+
+| URI:            | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#types                   |
++-----------------+----------------------------------------------------------------------------------------+
+| Description:    | Represents the types contained in a domain model including classes, enumerations, etc. |
++-----------------+----------------------------------------------------------------------------------------+
+| Domain:         | :ref:`domainModel`                                                                     |
++-----------------+----------------------------------------------------------------------------------------+
+| Range:          | :ref:`class` | :ref:`enumeration` | :ref:`primitivedatatype`                           |
+|                 | `Link <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-link>`_                   |
++-----------------+----------------------------------------------------------------------------------------+
+| Allow multiple: | True                                                                                   |
++-----------------+----------------------------------------------------------------------------------------+
 
 .. code-block:: json-ld
     
@@ -1550,9 +1394,8 @@ types
         "id": "http://www.modeling-platform/domainmodel/a1b2c3",
         "name": "A simple Domain Model",
         "types": [
-            "http://www.modeling-platform/class/t1d2e3",
-            "http://www.modeling-platform/enumeration/e1n2m3",
-            "http://www.modeling-platform/primitivedatatype/p1d2t3",
+            "http://www.modeling-platform/classes/t1d2e3",
+            "http://www.modeling-platform/enumerations/e1n2m3"
         ]
     }
 
@@ -1581,18 +1424,18 @@ associations
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "DomainModel",
-        "id": "http://www.modeling-platform/domainmodel/a1b2c3",
+        "id": "http://www.modeling-platform/domainmodels/a1b2c3",
         "name": "A simple Domain Model",
         "associations": [
-            "http://www.modeling-platform/association/a1b2c3",
+            "http://www.modeling-platform/associations/a1b2c3",
             {
                 "type": "BynaryAssociation",
-                "id": "http://www.modeling-platform/association/a4b5c6",
+                "id": "http://www.modeling-platform/associations/a4b5c6",
                 "name": "Another Association",
                 "timestamp": "2025-01-20T08:30:00Z",
                 "ends": [
-                    "http://www.modeling-platform/property/p1r2y3",
-                    "http://www.modeling-platform/property/p4r5y6"
+                    "http://www.modeling-platform/properties/p1r2y3",
+                    "http://www.modeling-platform/properties/p4r5y6"
                 ]
             }
         ]
@@ -1623,11 +1466,11 @@ packages
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
         ],
         "type": "DomainModel",
-        "id": "http://www.modeling-platform/domainmodel/a1b2c3",
+        "id": "http://www.modeling-platform/domainmodels/a1b2c3",
         "name": "A simple Domain Model",
         "packages": [
-            "http://www.modeling-platform/package/p1d2e3",
-            "http://www.modeling-platform/package/p5d6e7",
+            "http://www.modeling-platform/packages/p1d2e3",
+            "http://www.modeling-platform/packages/p5d6e7",
         ]
     }
 
@@ -1721,7 +1564,7 @@ adaptability
         "id": "http://www.modeling-platform/agent/a1b2c3",
         "name": "AI Agent",
         "summary": "An agent acting on behalf of a user",
-        "adaptability": True
+        "adaptability": true
     }
 
 .. _mediaTypes:
