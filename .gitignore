@@ -14,3 +14,6 @@ Pipfile.lock
 
 # pycache
 *__pycache__
+
+# pylintrc
+.pylintrc
