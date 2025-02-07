@@ -13,13 +13,13 @@ json_data = {
     "type": "DomainModel",
     "id": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3",
     "name": "MyModel",
-    "summary": "This is a domain model.",
     "attributedTo": "http://127.0.0.1:8000/freddie/",
     "users": [
       "http://127.0.0.1:8000/freddie/",
       "http://127.0.0.1:8001/marie/"
     ]
-  }
+  },
+  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
 }
 
 # Send the request

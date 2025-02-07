@@ -14,12 +14,12 @@ json_data = {
     "id": "http://127.0.0.1:8000/freddie/packages/p7a8k9",
     "name": "packageA",
     "owner": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3",
-    "context": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3",
     "classes": [
         "http://127.0.0.1:8000/freddie/classes/a1b2c3",
         "http://127.0.0.1:8000/freddie/classes/c7l8s9"
     ]
-  }
+  },
+  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
 }
 
 # Send the request

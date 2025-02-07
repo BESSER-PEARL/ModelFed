@@ -14,10 +14,10 @@ json_data = {
     "id": "http://127.0.0.1:8000/freddie/methods/m7e8t9",
     "name": "average",
     "owner": "http://127.0.0.1:8000/freddie/classes/a1b2c3",
-    "elementType": "str",
-    "isAbstract": False,
-    "context": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
-  }
+    "elementType": "float",
+    "isAbstract": False
+  },
+  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
 }
 
 # Send the request

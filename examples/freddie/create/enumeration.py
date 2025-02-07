@@ -11,7 +11,7 @@ json_data = {
   "to": ["http://127.0.0.1:8001/marie/"],
   "object": {
     "type": "Enumeration",
-    "id": "http://127.0.0.1:8000/freddie/enumeration/e1n2u3",
+    "id": "http://127.0.0.1:8000/freddie/enumerations/e1n2u3",
     "name": "Category",
     "literals": [
         {
@@ -26,9 +26,9 @@ json_data = {
             "name": "Academic",
             "value": "2",
         }
-    ],
-    "context": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
-  }
+    ]
+  },
+  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
 }
 
 # Send the request

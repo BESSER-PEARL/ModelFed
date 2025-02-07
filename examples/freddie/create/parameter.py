@@ -15,9 +15,9 @@ json_data = {
     "name": "value",
     "owner": "http://127.0.0.1:8000/freddie/methods/m7e8t9",
     "elementType": "int",
-    "defaultValue": 10,
-    "context": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
-  }
+    "defaultValue": 10
+  },
+  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
 }
 
 # Send the request

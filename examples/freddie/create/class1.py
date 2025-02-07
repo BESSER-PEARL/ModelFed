@@ -13,9 +13,9 @@ json_data = {
     "type": "Class",
     "id": "http://127.0.0.1:8000/freddie/classes/a1b2c3",
     "name": "Library",
-    "summary": "Represents a class for libraries.",
-    "context": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
-  }
+    "summary": "Represents a class for libraries."
+  },
+  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
 }
 
 # Send the request

@@ -5,15 +5,14 @@ url = "http://127.0.0.1:8000/freddie/outbox"
 # JSON activity definition
 json_data = {
   "@context": "https://www.w3.org/ns/activitystreams",
-  "type": "Create",
-  "id": "http://127.0.0.1:8000/freddie/activities/a10c20t30",
+  "type": "Update",
+  "id": "http://127.0.0.1:8000/freddie/activities/up1en0u30",
   "actor": "http://127.0.0.1:8000/freddie/",
   "to": ["http://127.0.0.1:8001/marie/"],
   "object": {
-    "type": "Generalization",
-    "id": "http://127.0.0.1:8000/freddie/generalization/a1s2d3",
-    "general": "http://127.0.0.1:8000/freddie/classes/c7l8s9",
-    "specific": "http://127.0.0.1:8000/freddie/classes/a1b2c3"
+    "type": "Enumeration",
+    "id": "http://127.0.0.1:8000/freddie/enumerations/e1n2u3",
+    "name": "New_Category"
   },
   "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
 }

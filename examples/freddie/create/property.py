@@ -16,7 +16,8 @@ json_data = {
     "elementType": "str",
     "summary": "Represents the name of a Library.",
     "owner": "http://127.0.0.1:8000/freddie/classes/a1b2c3"
-  }
+  },
+  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
 }
 
 # Send the request

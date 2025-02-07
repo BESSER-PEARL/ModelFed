@@ -19,28 +19,20 @@ json_data = {
         "id": "http://127.0.0.1:8000/freddie/property/e1n2d3",
         "name": "end1",
         "elementType": "http://127.0.0.1:8000/freddie/classes/a1b2c3",
-        "multiplicity": {
-          "type": "Multiplicity",
-          "minMultiplicity": 0,
-          "maxMultiplicity": 1
-        }
+        "multiplicity": "0..1"
       },
       {
         "type": "Property",
         "id": "http://127.0.0.1:8000/freddie/properties/e5n7d9",
         "name": "end2",
         "elementType": "http://127.0.0.1:8000/freddie/classes/c7l8s9",
-        "multiplicity": {
-          "type": "Multiplicity",
-          "minMultiplicity": 1,
-          "maxMultiplicity": 1
-        },
+        "multiplicity": "1",
         "isComposite": True,
       }
     ],
-    "summary": "Represents the name of a Library.",
-    "context": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
-  }
+    "summary": "Represents the name of a Library."
+  },
+  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
 }
 
 # Send the request
