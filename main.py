@@ -9,9 +9,9 @@ from besser.BUML.metamodel.structural import *
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import JSONResponse, HTMLResponse, PlainTextResponse
 from fastapi.templating import Jinja2Templates
-from activities import create, update_class
+from activities import create, update, delete
 from federation import federate_activity
-from storage import get_model, get_domain_models, get_inbox, get_outbox, save_outbox_activity, save_inbox_activity
+from storage import get_inbox, get_outbox, save_outbox_activity, save_inbox_activity, get_object
 from models.modelverse import *
 from besser.utilities import domain_model_to_code
 
@@ -25,42 +25,36 @@ templates = Jinja2Templates(directory="templates")
 
 # Execute the activity in the current server
 def process_activity(activity: Activity):
-    if activity.type == "Create":
-        if activity.object["type"] == "DomainModel":
-            create(activity.object)
-        
-        if activity.object["type"] == "Class":
-            create(activity.object)
+    # Define valid types once to avoid repetition
+    valid_types = {
+        "DomainModel",
+        "Class",
+        "Property",
+        "BinaryAssociation",
+        "Generalization",
+        "Method",
+        "Parameter",
+        "Package",
+        "Enumeration",
+        "EnumerationLiteral",
+    }
 
-        if activity.object["type"] == "Property":
-            create(activity.object)
-        
-        if activity.object["type"] == "BinaryAssociation":
-            create(activity.object)
+    # Map activity types to their corresponding functions
+    activity_handlers = {
+        "Create": create,
+        "Update": update,
+        "Delete": delete,
+    }
 
-        if activity.object["type"] == "Generalization":
-            create(activity.object)
-
-        if activity.object["type"] == "Method":
-            create(activity.object)
-
-        if activity.object["type"] == "Parameter":
-            create(activity.object)
-
-        if activity.object["type"] == "Package":
-            create(activity.object)
-
-        if activity.object["type"] == "Enumeration":
-            create(activity.object)
-
-        return {"status": "success", "message": "Object created successfully."}
-
-    if activity.type == "Update":
-        pass
-        #update_class(activity.object, model_classes[activity.object["id"]])
-        #return {"status": "success", "message": "Class updated successfully."}
-
-    return {"status": "success", "message": "Unprocessed activity."}
+    # Check if the activity type is supported
+    if activity.type in activity_handlers:
+        # Check if the object type is valid
+        if activity.object["type"] in valid_types:
+            # Call the appropriate handler function
+            activity_handlers[activity.type](activity)
+            return {"status": "success", "message": f"Object {activity.type.lower()}d successfully."}
+        return {"status": "error", "message": f"Unsupported object type: {activity.object['type']}"}
+    return {"status": "error", "message": f"Unsupported activity type: {activity.type}"}
 
 @app.post("/{username}/outbox")
 async def post_user_outbox(request: Request, username: str):
@@ -142,14 +136,16 @@ async def get_user(username: str):
 
 @app.get("/{username}/domainmodels")
 async def get_domainmodels(username: str, request: Request):
-    output = "\n".join(str(model) for model in get_domain_models().values())
+    #output = "\n".join(str(model) for model in get_domain_models().values())
+    model = get_object(id_="http://127.0.0.1:8000/freddie/domainmodel/a1b2c3")
+    output = str(model)
     return output
 
 @app.post("/generate_model")
-async def post_user_outbox(request: Request):
+async def generate_model(request: Request):
     body = await request.json()
     model_id = body.get("model_id")
-    domain_model_to_code(model=get_model(model_id),
+    domain_model_to_code(model=get_object(model_id),
                                 file_path="besser_model/model.py")
 
 if __name__ == "__main__":
