@@ -1,18 +1,20 @@
-domain_models = {}
 user_inbox = {}
 user_outbox = {}
+objects = {}
 
-def save_model(id, domain_model):
-    """Save the domain model in a dictionary."""
-    domain_models[id] = domain_model
+def save_object(obj):
+    objects[obj.id] = obj
 
-def get_model(id):
-    """Get the domain model."""
-    return domain_models.get(id)
+def get_object(id_, raise_error=True):
+    obj = objects.get(id_)
+    if obj is None and raise_error:
+        raise ValueError(f"Object with id '{id_}' does not exist")
+    return obj
 
-def get_domain_models():
-    """Get the dictionary of domain models."""
-    return domain_models
+def delete_object(id_):
+    if objects.pop(id_, None) is None:
+        raise ValueError(f"Object with id '{id_}' does not exist")
+    return True
 
 def save_inbox_activity(username, activity):
     if username in user_inbox:
