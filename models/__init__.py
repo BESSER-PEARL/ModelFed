@@ -1,2 +1,2 @@
-#from .modelverse import *
+from .modelverse import *
 from .activitypub import *
