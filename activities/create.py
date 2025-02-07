@@ -1,159 +1,175 @@
-from models import Activity
-from storage import save_model, get_model, get_domain_models
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel, PrimitiveDataType, StringType,
-    BinaryAssociation, Multiplicity, Generalization, Method,
-    Parameter, IntegerType, Package, Enumeration, EnumerationLiteral
+    Class, Property, DomainModel, BinaryAssociation,
+    Multiplicity, Generalization, Method, Parameter,
+    Package, Enumeration, EnumerationLiteral
 )
+from pydantic import HttpUrl
+from storage import save_object, get_object
+from models import Activity
+from utils import map_type, parse_multiplicity
 
-def create_domain_model(object: dict) -> None:
+def create_domain_model(obj: dict, target: HttpUrl) -> None:
     """Creates a DomainModel from a dictionary object."""
-    new_model = DomainModel(name=object["name"])
-    new_model.id = object["id"]
-    new_model.attributed_to = object["attributedTo"]
-    new_model.users = object.get("users", [])
-    save_model(id=new_model.id, domain_model=new_model)
+    new_model = DomainModel(name=obj["name"])
+    new_model.id = obj["id"]
+    new_model.attributed_to = obj["attributedTo"]
+    new_model.users = obj.get("users", [])
+    save_object(new_model)
 
-def create_class(object: dict) -> None:
+def create_class(obj: dict, target: HttpUrl) -> None:
     """Creates a Class with attributes if provided."""
-    is_abstract = object.get("isAbstract", False)
-    is_read_only = object.get("isReadOnly", False)
-    new_class = Class(name=object["name"],
+    is_abstract = obj.get("isAbstract", False)
+    is_read_only = obj.get("isReadOnly", False)
+    new_class = Class(name=obj["name"],
                       is_abstract=is_abstract,
                       is_read_only=is_read_only)
-    new_class.id = object["id"]
+    new_class.id = obj["id"]
 
-    # Add attributes if present
-    '''if "attributes" in object and object["attributes"]:
-        new_class.attributes = {
-            Property(name=attr["name"], type=PrimitiveDataType(attr["elementType"]), id=attr["id"])
-            for attr in object["attributes"]
-        }'''
-    
+    if "attributes" in obj:
+        attrs = set()
+        for attr in obj["attributes"]:
+            attr_obj = create_property(obj=attr, target=target)
+            attrs.add(attr_obj)
+        new_class.attributes = attrs
+
+    if "methods" in obj:
+        methods = set()
+        for method in obj["methods"]:
+            method_obj = create_method(obj=method, target=target)
+            methods.add(method_obj)
+        new_class.methods = methods
+
     # Add the new class to the domain model
-    domain_model = get_model(id=object["context"])
+    domain_model = get_object(id_=str(target))
     domain_model.types = domain_model.types | {new_class}
-    return new_class
+    save_object(new_class)
 
-def create_property(object: dict) -> None:
-    """Creates a Property with a StringType by default."""
-    new_property = Property(name=object["name"], type=StringType)
-    new_property.id = object["id"]
-    for model in get_domain_models().values():
-        for class_obj in model.types:
-            if class_obj.id == object["owner"]:
-                class_obj.attributes = class_obj.attributes | {new_property}
-                break
+def create_property(obj: dict, target: HttpUrl) -> None:
+    """Creates a Property object."""
+    is_composite = obj.get("isComposite", False)
+    is_navigable = obj.get("isNavigable", True)
+    type_ = get_object(id_=obj["elementType"], raise_error=False)
+    if type_ is None:
+        type_ = map_type(obj["elementType"])
+    if "multiplicity" in obj:
+        mult = parse_multiplicity(obj["multiplicity"])
+    else:
+        mult = Multiplicity(1,1)
 
-def create_bin_association(object: dict) -> None:
+    new_property = Property(name=obj["name"],
+                            type=type_,
+                            is_composite=is_composite,
+                            is_navigable=is_navigable,
+                            multiplicity=mult)
+    new_property.id = obj["id"]
+
+    # Add the property to the owner
+    if "owner" in obj:
+        owner = get_object(obj["owner"], raise_error=False)
+        if owner is not None:
+            if type(owner).__name__ == "Class":
+                owner.attributes = owner.attributes | {new_property}
+            elif type(owner).__name__ == "Association" or "BinaryAssociation":
+                owner.ends = owner.ends | {new_property}
+
+    save_object(new_property)
+    return new_property
+
+def create_bin_association(obj: dict, target: HttpUrl) -> None:
     """Creates a Binary Association"""
-    domain_model = get_model(id=object["context"])
-    end1 = object["ends"][0]
-    end2 = object["ends"][1]
-    composition1 = end1.get("isComposite", False)
-    composition2 = end2.get("isComposite", False)
-    navigability1 = end1.get("isNavigable", False)
-    navigability2 = end2.get("isNavigable", False)
+    domain_model = get_object(id_=str(target))
+    end1 = obj["ends"][0]
+    end2 = obj["ends"][1]
 
-    class1 = next(
-        (class_obj for class_obj in domain_model.get_classes() if class_obj.id == end1["elementType"]),
-        None
-    )
+    end1_obj = create_property(obj=end1, target=target)
+    end2_obj = create_property(obj=end2, target=target)
 
-    class2 = next(
-        (class_obj for class_obj in domain_model.get_classes() if class_obj.id == end2["elementType"]),
-        None
-    )
-
-    new_end1 = Property(name=end1["name"],
-                    type=class1,
-                    is_composite=composition1,
-                    is_navigable=navigability1,
-                    multiplicity=Multiplicity(end1["multiplicity"]["minMultiplicity"],
-                                                end1["multiplicity"]["maxMultiplicity"]))
-    new_end1.id = end1["id"]
-
-    new_end2 = Property(name=end2["name"],
-                    type=class2,
-                    is_composite=composition2,
-                    is_navigable=navigability2,
-                    multiplicity=Multiplicity(end2["multiplicity"]["minMultiplicity"],
-                                                end2["multiplicity"]["maxMultiplicity"]))
-    new_end2.id = end2["id"]
-
-    new_association = BinaryAssociation(name=object["name"],
-                                        ends={new_end1, new_end2})
-    new_association.id = object["id"]
+    new_association = BinaryAssociation(name=obj["name"],
+                                        ends={end1_obj, end2_obj})
+    new_association.id = obj["id"]
 
     # Add the new association to the domain model
     domain_model.associations = domain_model.associations | {new_association}
+    save_object(new_association)
 
-def create_generalization(object: dict) -> None:
+def create_generalization(obj: dict, target: HttpUrl) -> None:
     """Creates a Generalization"""
-    domain_model = get_model(id=object["context"])
+    domain_model = get_object(id_=str(target))
 
     general_class = next(
-        (class_obj for class_obj in domain_model.get_classes() if class_obj.id == object["general"]),
+        (class_obj for class_obj in domain_model.get_classes() if class_obj.id == obj["general"]),
         None
     )
 
     specific_class = next(
-        (class_obj for class_obj in domain_model.get_classes() if class_obj.id == object["specific"]),
+        (class_obj for class_obj in domain_model.get_classes() if class_obj.id == obj["specific"]),
         None
     )
 
     new_generalization = Generalization(general=general_class,
                                         specific=specific_class)
-    new_generalization.id = object["id"]
+    new_generalization.id = obj["id"]
 
     # Add the new generalization to the domain model
     domain_model.generalizations = domain_model.generalizations | {new_generalization}
+    save_object(new_generalization)
 
-def create_method(object: dict) -> None:
+def create_method(obj: dict, target: HttpUrl) -> Method:
     """Creates a Method"""
-    domain_model = get_model(id=object["context"])
-    owner_class = next(
-        (class_obj for class_obj in domain_model.get_classes() if class_obj.id == object["owner"]),
-        None
-    )
+    visibility = obj.get("visibility", "public")
+    is_abstract = obj.get("isAbstract", False)
+    type_ = get_object(id_=obj["elementType"], raise_error=False)
+    if type_ is None:
+        type_ = map_type(obj["elementType"])
 
-    visibility = object.get("visibility", "public")
-    is_abstract = object.get("isAbstract", False)
-    navigability1 = object.get("isNavigable", False)
-    navigability2 = object.get("isNavigable", False)
-    new_method = Method(name=object["name"],
+    new_method = Method(name=obj["name"],
                         visibility=visibility,
                         is_abstract=is_abstract,
-                        type=StringType,
-                        owner=owner_class)
-    new_method.id = object["id"]
+                        type=type_)
+    new_method.id = obj["id"]
 
-    # Add the new method to the class
-    owner_class.methods = owner_class.methods | {new_method}
+    if "parameters" in obj:
+        params = set()
+        for param in obj["parameters"]:
+            param_obj = create_parameter(obj=param, target=target)
+            params.add(param_obj)
+        new_method.parameters = params
 
-def create_parameter(object: dict) -> None:
-    domain_model = get_model(id=object["context"])
-    owner_method = None
+    # Add the method to the owner class
+    if "owner" in obj:
+        owner = get_object(obj["owner"], raise_error=False)
+        if owner is not None:
+            if type(owner).__name__ == "Class":
+                owner.methods = owner.methods | {new_method}
 
-    for class_object in domain_model.get_classes():
-        for method in class_object.methods:
-            if method.id == object["owner"]:
-                owner_method = method
-                break
-        if owner_method:
-            break
+    save_object(new_method)
+    return new_method
 
-    new_parameter = Parameter(name=object["name"],
-                              type=IntegerType,
-                              default_value=object["defaultValue"])
-    new_parameter.id = object["id"]
+def create_parameter(obj: dict, target: HttpUrl) -> Parameter:
+    """Creates a parameter"""
+    default_value = obj.get("defaultValue", None)
+    type_ = map_type(obj["elementType"])
+    if type_ is None:
+        type_ = get_object(id_=obj["elementType"])
 
-    # Add the new method to the class
-    owner_method.parameters = owner_method.parameters | {new_parameter}
+    new_parameter = Parameter(name=obj["name"],
+                              type=type_,
+                              default_value=default_value)
+    new_parameter.id = obj["id"]
 
-def create_package(object: dict) -> None:
-    domain_model = get_model(id=object["context"])
-    class_ids_set = set(object.get("classes", []))
+    # Add the parameter to the owner method
+    if "owner" in obj:
+        owner = get_object(id_=obj["owner"], raise_error=False)
+        if owner is not None:
+            if type(owner).__name__ == "Method":
+                owner.parameters = owner.parameters | {new_parameter}
+
+    save_object(new_parameter)
+    return new_parameter
+
+def create_package(obj: dict, target: HttpUrl) -> None:
+    domain_model = get_object(id_=str(target))
+    class_ids_set = set(obj.get("classes", []))
     classes = set()
 
     # Iterate over domain classes and check for matching id
@@ -161,26 +177,41 @@ def create_package(object: dict) -> None:
         if class_obj.id in class_ids_set:
             classes.add(class_obj)
 
-    new_package = Package(name=object["name"], classes=classes)
-    new_package.id = object["id"]
-    
+    new_package = Package(name=obj["name"], classes=classes)
+    new_package.id = obj["id"]
+
     # Add the new method to the class
     domain_model.packages = domain_model.packages | {new_package}
+    save_object(new_package)
 
-def create_enumeration(object: dict) -> None:
+def create_enumeration(obj: dict, target: HttpUrl) -> None:
     literals = set()
-    for lit in object.get("literals", []):
+    for lit in obj.get("literals", []):
         enum_literal = EnumerationLiteral(name=lit["name"])
         enum_literal.id = lit["id"]
         literals.add(enum_literal)
-    new_enumeration = Enumeration(name=object["name"], literals=literals)
-    new_enumeration.id = object["id"]
+    new_enumeration = Enumeration(name=obj["name"], literals=literals)
+    new_enumeration.id = obj["id"]
 
     # Add the new enumeration to the domain model
-    domain_model = get_model(id=object["context"])
+    domain_model = get_object(id_=str(target))
     domain_model.types = domain_model.types | {new_enumeration}
+    save_object(new_enumeration)
 
-# Mapeo de tipos a funciones
+def create_enumeration_literal(obj: dict, target: HttpUrl) -> None:
+    domain_model = get_object(id_=str(target))
+    new_literal = EnumerationLiteral(name=obj["name"])
+    new_literal.id = obj["id"]
+
+    for enum in domain_model.get_enumerations():
+        if enum.id == obj["owner"]:
+            enum.literals = enum.literals | {new_literal}
+            save_object(new_literal)
+            break
+    else:
+        raise ValueError(f"Enumeration {obj["owner"]} does not exist")
+
+# Map
 type_handlers = {
     "DomainModel": create_domain_model,
     "Class": create_class,
@@ -190,14 +221,17 @@ type_handlers = {
     "Method": create_method,
     "Parameter": create_parameter,
     "Enumeration": create_enumeration,
+    "EnumerationLiteral": create_enumeration_literal,
     "Package": create_package,
 }
 
-def create(object: dict):
-    """Creates an object (DomainModel, Class, or Property) dynamically."""
-    obj_type = object.get("type")
+def create(activity: Activity):
+    """Creates an object dynamically."""
+    obj = activity.object
+    obj_type = obj.get("type")
+    target = activity.target
 
     if obj_type in type_handlers:
-        return type_handlers[obj_type](object)
+        return type_handlers[obj_type](obj, target)
 
     raise ValueError(f"Unknown object type: {obj_type}")
