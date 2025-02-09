@@ -4,7 +4,7 @@ import requests
 import logging
 import subprocess
 from fastapi.encoders import jsonable_encoder
-from models import Activity, Object
+from models import Activity
 from besser.BUML.metamodel.structural import *
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import JSONResponse, HTMLResponse, PlainTextResponse
@@ -12,7 +12,7 @@ from fastapi.templating import Jinja2Templates
 from activities import create, update, delete
 from federation import federate_activity
 from storage import get_inbox, get_outbox, save_outbox_activity, save_inbox_activity, get_object
-from models.modelverse import *
+from utils.besser_extension import *
 from besser.utilities import domain_model_to_code
 
 # debug
@@ -37,6 +37,7 @@ def process_activity(activity: Activity):
         "Package",
         "Enumeration",
         "EnumerationLiteral",
+        "Grant",
     }
 
     # Map activity types to their corresponding functions
@@ -138,7 +139,7 @@ async def get_user(username: str):
 async def get_domainmodels(username: str, request: Request):
     #output = "\n".join(str(model) for model in get_domain_models().values())
     model = get_object(id_="http://127.0.0.1:8000/freddie/domainmodel/a1b2c3")
-    output = str(model)
+    output = str(model.grants)
     return output
 
 @app.post("/generate_model")
