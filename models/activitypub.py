@@ -1,24 +1,27 @@
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel, HttpUrl, Field
 from typing import Optional, Union, List
 
 class Object(BaseModel):
+    context: List[HttpUrl] = Field(
+        default=[
+            "https://www.w3.org/ns/activitystreams",
+            "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+        ], 
+        alias="@context"
+    )
     name: Optional[str] = None
     type: str
     id: HttpUrl
-    attributedTo: Optional[HttpUrl] = None
+    to: Optional[List[HttpUrl]] = None
     content: Optional[str] = None
     context: Optional[HttpUrl] = None
-
-class Activity(BaseModel):
-    context: str = "https://www.w3.org/ns/activitystreams"
-    type: str
-    id: HttpUrl
-    to: Optional[List[HttpUrl]] = None
-    actor: HttpUrl
-    object: Union[Object, dict]
-    target: Optional[HttpUrl]
-
+    
     class Config:
         fields = {
             'context': '@context'
         }
+
+class Activity(Object):
+    actor: HttpUrl
+    object: Union[Object, dict]
+    target: Optional[HttpUrl]
