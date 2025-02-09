@@ -4,7 +4,10 @@ url = "http://127.0.0.1:8000/freddie/outbox"
 
 # JSON activity definition
 json_data = {
-  "@context": "https://www.w3.org/ns/activitystreams",
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+  ],
   "type": "Update",
   "id": "http://127.0.0.1:8000/freddie/activities/a2b2c210",
   "actor": "http://127.0.0.1:8000/freddie/",

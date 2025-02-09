@@ -8,14 +8,16 @@ json_data = {
     "https://www.w3.org/ns/activitystreams",
     "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
   ],
-  "type": "Update",
-  "id": "http://127.0.0.1:8000/freddie/activities/u1mo2d3",
+  "type": "Create",
+  "id": "http://127.0.0.1:8000/freddie/activities/gr12d3",
   "actor": "http://127.0.0.1:8000/freddie/",
   "to": ["http://127.0.0.1:8001/marie/"],
   "object": {
-    "type": "DomainModel",
-    "id": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3",
-    "name": "MyNewModel"
+    "type": "Grant",
+    "id": "http://127.0.0.1:8000/freddie/grants/grs1b2c3",
+    "user": "http://127.0.0.1:8001/marie/",
+    "role": "admin",
+    "model_element": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
   },
   "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
 }

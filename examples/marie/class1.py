@@ -8,14 +8,15 @@ json_data = {
     "https://www.w3.org/ns/activitystreams",
     "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
   ],
-  "type": "Update",
-  "id": "http://127.0.0.1:8000/freddie/activities/u1mo2d3",
-  "actor": "http://127.0.0.1:8000/freddie/",
+  "type": "Create",
+  "id": "http://127.0.0.1:8000/freddie/activities/a1b2c3",
+  "actor": "http://127.0.0.1:8001/marie/",
   "to": ["http://127.0.0.1:8001/marie/"],
   "object": {
-    "type": "DomainModel",
-    "id": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3",
-    "name": "MyNewModel"
+    "type": "Class",
+    "id": "http://127.0.0.1:8000/freddie/classes/a1b2c3",
+    "name": "Library",
+    "summary": "Represents a class for libraries."
   },
   "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
 }
