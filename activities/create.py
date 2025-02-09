@@ -3,20 +3,24 @@ from besser.BUML.metamodel.structural import (
     Multiplicity, Generalization, Method, Parameter,
     Package, Enumeration, EnumerationLiteral
 )
+from utils import check_permission
+from models import Grant
 from pydantic import HttpUrl
 from storage import save_object, get_object
 from models import Activity
 from utils import map_type, parse_multiplicity
 
-def create_domain_model(obj: dict, target: HttpUrl) -> None:
+def create_domain_model(obj: dict, target: HttpUrl, actor: HttpUrl) -> None:
     """Creates a DomainModel from a dictionary object."""
     new_model = DomainModel(name=obj["name"])
     new_model.id = obj["id"]
-    new_model.attributed_to = obj["attributedTo"]
-    new_model.users = obj.get("users", [])
+    
     save_object(new_model)
+    create_grant(obj={"model_element": new_model.id, "user": str(actor), "role": "admin"}, 
+                 target=target,
+                 actor=actor)
 
-def create_class(obj: dict, target: HttpUrl) -> None:
+def create_class(obj: dict, target: HttpUrl, actor: HttpUrl) -> None:
     """Creates a Class with attributes if provided."""
     is_abstract = obj.get("isAbstract", False)
     is_read_only = obj.get("isReadOnly", False)
@@ -28,14 +32,14 @@ def create_class(obj: dict, target: HttpUrl) -> None:
     if "attributes" in obj:
         attrs = set()
         for attr in obj["attributes"]:
-            attr_obj = create_property(obj=attr, target=target)
+            attr_obj = create_property(obj=attr, target=target, actor=actor)
             attrs.add(attr_obj)
         new_class.attributes = attrs
 
     if "methods" in obj:
         methods = set()
         for method in obj["methods"]:
-            method_obj = create_method(obj=method, target=target)
+            method_obj = create_method(obj=method, target=target, actor=actor)
             methods.add(method_obj)
         new_class.methods = methods
 
@@ -44,7 +48,7 @@ def create_class(obj: dict, target: HttpUrl) -> None:
     domain_model.types = domain_model.types | {new_class}
     save_object(new_class)
 
-def create_property(obj: dict, target: HttpUrl) -> None:
+def create_property(obj: dict, target: HttpUrl, actor: HttpUrl) -> Property:
     """Creates a Property object."""
     is_composite = obj.get("isComposite", False)
     is_navigable = obj.get("isNavigable", True)
@@ -75,14 +79,14 @@ def create_property(obj: dict, target: HttpUrl) -> None:
     save_object(new_property)
     return new_property
 
-def create_bin_association(obj: dict, target: HttpUrl) -> None:
+def create_bin_association(obj: dict, target: HttpUrl, actor: HttpUrl) -> None:
     """Creates a Binary Association"""
     domain_model = get_object(id_=str(target))
     end1 = obj["ends"][0]
     end2 = obj["ends"][1]
 
-    end1_obj = create_property(obj=end1, target=target)
-    end2_obj = create_property(obj=end2, target=target)
+    end1_obj = create_property(obj=end1, target=target, actor=actor)
+    end2_obj = create_property(obj=end2, target=target, actor=actor)
 
     new_association = BinaryAssociation(name=obj["name"],
                                         ends={end1_obj, end2_obj})
@@ -92,7 +96,7 @@ def create_bin_association(obj: dict, target: HttpUrl) -> None:
     domain_model.associations = domain_model.associations | {new_association}
     save_object(new_association)
 
-def create_generalization(obj: dict, target: HttpUrl) -> None:
+def create_generalization(obj: dict, target: HttpUrl, actor: HttpUrl) -> None:
     """Creates a Generalization"""
     domain_model = get_object(id_=str(target))
 
@@ -114,7 +118,7 @@ def create_generalization(obj: dict, target: HttpUrl) -> None:
     domain_model.generalizations = domain_model.generalizations | {new_generalization}
     save_object(new_generalization)
 
-def create_method(obj: dict, target: HttpUrl) -> Method:
+def create_method(obj: dict, target: HttpUrl, actor: HttpUrl) -> Method:
     """Creates a Method"""
     visibility = obj.get("visibility", "public")
     is_abstract = obj.get("isAbstract", False)
@@ -131,7 +135,7 @@ def create_method(obj: dict, target: HttpUrl) -> Method:
     if "parameters" in obj:
         params = set()
         for param in obj["parameters"]:
-            param_obj = create_parameter(obj=param, target=target)
+            param_obj = create_parameter(obj=param, target=target, actor=actor)
             params.add(param_obj)
         new_method.parameters = params
 
@@ -145,7 +149,7 @@ def create_method(obj: dict, target: HttpUrl) -> Method:
     save_object(new_method)
     return new_method
 
-def create_parameter(obj: dict, target: HttpUrl) -> Parameter:
+def create_parameter(obj: dict, target: HttpUrl, actor: HttpUrl) -> Parameter:
     """Creates a parameter"""
     default_value = obj.get("defaultValue", None)
     type_ = map_type(obj["elementType"])
@@ -167,7 +171,7 @@ def create_parameter(obj: dict, target: HttpUrl) -> Parameter:
     save_object(new_parameter)
     return new_parameter
 
-def create_package(obj: dict, target: HttpUrl) -> None:
+def create_package(obj: dict, target: HttpUrl, actor: HttpUrl) -> None:
     domain_model = get_object(id_=str(target))
     class_ids_set = set(obj.get("classes", []))
     classes = set()
@@ -184,7 +188,7 @@ def create_package(obj: dict, target: HttpUrl) -> None:
     domain_model.packages = domain_model.packages | {new_package}
     save_object(new_package)
 
-def create_enumeration(obj: dict, target: HttpUrl) -> None:
+def create_enumeration(obj: dict, target: HttpUrl, actor: HttpUrl) -> None:
     literals = set()
     for lit in obj.get("literals", []):
         enum_literal = EnumerationLiteral(name=lit["name"])
@@ -198,18 +202,21 @@ def create_enumeration(obj: dict, target: HttpUrl) -> None:
     domain_model.types = domain_model.types | {new_enumeration}
     save_object(new_enumeration)
 
-def create_enumeration_literal(obj: dict, target: HttpUrl) -> None:
+def create_enumeration_literal(obj: dict, target: HttpUrl, actor: HttpUrl) -> None:
     domain_model = get_object(id_=str(target))
     new_literal = EnumerationLiteral(name=obj["name"])
     new_literal.id = obj["id"]
 
-    for enum in domain_model.get_enumerations():
-        if enum.id == obj["owner"]:
-            enum.literals = enum.literals | {new_literal}
-            save_object(new_literal)
-            break
-    else:
-        raise ValueError(f"Enumeration {obj["owner"]} does not exist")
+    if "owner" in obj:
+        enum = get_object(id_=obj["owner"])
+        enum.literals = enum.literals | {new_literal}
+    
+    save_object(new_literal)
+
+def create_grant(obj: dict, target: HttpUrl, actor: HttpUrl) -> None:
+    model_element = get_object(id_=obj["model_element"])
+    grant = Grant(user=obj["user"], role=obj["role"])
+    model_element.grants.add(grant)
 
 # Map
 type_handlers = {
@@ -223,6 +230,7 @@ type_handlers = {
     "Enumeration": create_enumeration,
     "EnumerationLiteral": create_enumeration_literal,
     "Package": create_package,
+    "Grant": create_grant,
 }
 
 def create(activity: Activity):
@@ -230,8 +238,13 @@ def create(activity: Activity):
     obj = activity.object
     obj_type = obj.get("type")
     target = activity.target
+    actor = activity.actor
+
+    if obj_type != "DomainModel":
+        if check_permission(activity) is False:
+            raise PermissionError("Permission denied.")
 
     if obj_type in type_handlers:
-        return type_handlers[obj_type](obj, target)
+        return type_handlers[obj_type](obj, target, actor)
 
     raise ValueError(f"Unknown object type: {obj_type}")
