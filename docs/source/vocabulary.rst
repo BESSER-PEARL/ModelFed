@@ -202,7 +202,7 @@ EnumerationLiteral
 +--------------+----------------------------------------------------------------------------------+
 | Extends:     | :ref:`modelElement`                                                              |
 +--------------+----------------------------------------------------------------------------------+
-| Properties:  | :ref`owner`                                                                      |
+| Properties:  | :ref:`owner` | :ref:`value`                                                      |
 |              |                                                                                  |
 |              | Other properties are inherited from :ref:`modelElement`.                         |
 +--------------+----------------------------------------------------------------------------------+
@@ -278,6 +278,7 @@ Property
 +--------------+-------------------------------------------------------------------------------------+
 | Properties:  | :ref:`owner` | :ref:`multiplicity` | :ref:`isComposite` | :ref:`isNavigable` |      |
 |              | :ref:`isId`                                                                         |
+|              |                                                                                     |
 |              | Other properties are inherited from :ref:`typedElement`.                            |
 +--------------+-------------------------------------------------------------------------------------+
 
@@ -1292,6 +1293,36 @@ isComplete
         "specific": "http://www.modeling-platform/classes/c4d5e6",
         "isComplete": true,
         "isDisjoint": true
+    }
+
+.. _value:
+
+value
+~~~~~
++-----------------+----------------------------------------------------------------------------------+
+| URI:            | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#value             |
++-----------------+----------------------------------------------------------------------------------+
+| Description:    | Represents the value of an enumeration literal.                                  |
++-----------------+----------------------------------------------------------------------------------+
+| Domain:         | :ref:`enumerationLiteral`                                                        |
++-----------------+----------------------------------------------------------------------------------+
+| Range:          | xsd:string                                                                       |
++-----------------+----------------------------------------------------------------------------------+
+| Allow multiple: | False                                                                            |
++-----------------+----------------------------------------------------------------------------------+
+
+.. code-block:: json-ld
+    
+    {
+        "@context": [
+            "https://www.w3.org/ns/activitystreams",
+            "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+        ],
+        "type": "EnumerationLiteral",
+        "id": "http://www.modeling-platform/enumerationliterals/l1m2n3",
+        "name": "Public",
+        "value": "1",
+        "owner": "http://www.modeling-platform/enumerations/e1f2g3"
     }
 
 .. _generalizations:
