@@ -6,7 +6,7 @@ class Object(BaseModel):
         default=[
             "https://www.w3.org/ns/activitystreams",
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
-        ], 
+        ],
         alias="@context"
     )
     name: Optional[str] = None
@@ -15,7 +15,7 @@ class Object(BaseModel):
     to: Optional[List[HttpUrl]] = None
     content: Optional[str] = None
     context: Optional[HttpUrl] = None
-    
+
     class Config:
         fields = {
             'context': '@context'
@@ -23,5 +23,6 @@ class Object(BaseModel):
 
 class Activity(Object):
     actor: HttpUrl
-    object: Union[Object, dict]
+    #object: Union[Object, dict]
+    object: Object
     target: Optional[HttpUrl]

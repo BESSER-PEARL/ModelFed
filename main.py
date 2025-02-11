@@ -100,14 +100,11 @@ async def receive_activity(username: str, request: Request):
 
         # Add the activity to the user inbox
         save_inbox_activity(username, activity_data)
-        #if username not in user_inbox:
-        #    user_inbox[username] = []
-        #user_inbox[username].append(activity_data)
 
         # Process the activity
         response = process_activity(activity)
         return response
-    
+
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Failed to process activity: {str(e)}")
 

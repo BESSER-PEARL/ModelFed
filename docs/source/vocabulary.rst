@@ -33,7 +33,7 @@ Domain Model
 +--------------+---------------------------------------------------------------------------------------------------------------+
 | Extends:     | `Object <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-object>`_                                      |
 +--------------+---------------------------------------------------------------------------------------------------------------+
-| Properties:  | :ref:`types` | :ref:`associations` | :ref:`packages` | :ref:`generalizations`                                 |
+| Properties:  | :ref:`types` | :ref:`associations` | :ref:`packages` | :ref:`generalizations` | :ref:`grants`                 |
 |              |                                                                                                               |
 |              | Other properties are inherited from `Object <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-object>`_. |
 +--------------+---------------------------------------------------------------------------------------------------------------+
@@ -1598,6 +1598,45 @@ mediaTypes
         "mediaTypes": [
             "application/json",
             "text/html"
+        ]
+    }
+
+.. _grants:
+
+grants
+~~~~~~
++-----------------+----------------------------------------------------------------------------------+
+| URI:            | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#grants            |
++-----------------+----------------------------------------------------------------------------------+
+| Description:    | Represents the grants associated with a domain model.                            |
++-----------------+----------------------------------------------------------------------------------+
+| Domain:         | :ref:`domainModel`                                                               |
++-----------------+----------------------------------------------------------------------------------+
+| Range:          | :ref:`grant` |                                                                   |
+|                 | `Link <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-link>`_             |
++-----------------+----------------------------------------------------------------------------------+
+| Allow multiple: | True                                                                             |
++-----------------+----------------------------------------------------------------------------------+
+
+.. code-block:: json-ld
+    
+    {
+        "@context": [
+            "https://www.w3.org/ns/activitystreams",
+            "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+        ],
+        "type": "DomainModel",
+        "id": "http://www.modeling-platform/domainmodels/a1b2c3",
+        "name": "A simple Domain Model",
+        "grants": [
+            {
+                "type": "Grant",
+                "id": "http://www.modeling-platform/grants/g4h5i6",
+                "actor": "https://modeling-platform/maintainer-user",
+                "to": "https://other-platform/modeler-user",
+                "target": "http://www.modeling-platform/domainmodels/m1o2d3",
+                "role": "write"
+            }
         ]
     }
 
