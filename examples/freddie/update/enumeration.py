@@ -17,7 +17,8 @@ json_data = {
     "id": "http://127.0.0.1:8000/freddie/enumerations/e1n2u3",
     "name": "New_Category"
   },
-  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
+  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3",
+  "timestamp": "2024-04-11T15:10:45Z"
 }
 
 # Send the request

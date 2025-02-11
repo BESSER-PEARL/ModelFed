@@ -17,9 +17,10 @@ json_data = {
     "id": "http://127.0.0.1:8000/freddie/grants/grs1b2c3",
     "user": "http://127.0.0.1:8001/marie/",
     "role": "admin",
-    "model_element": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
+    "modelElement": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
   },
-  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
+  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3",
+  "timestamp": "2024-02-11T15:37:45Z"
 }
 
 # Send the request

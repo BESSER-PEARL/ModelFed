@@ -19,7 +19,8 @@ json_data = {
     "value": "2",
     "owner": "http://127.0.0.1:8000/freddie/enumerations/e1n2u3"
   },
-  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
+  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3",
+  "timestamp": "2024-02-11T15:33:45Z"
 }
 
 # Send the request
