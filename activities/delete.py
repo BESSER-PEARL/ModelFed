@@ -1,165 +1,163 @@
 from pydantic import HttpUrl
-from models import Activity
+from models import (
+    MvDomainModel, MvClass, MvProperty,
+    MvMethod, MvPackage, MvParameter, MvEnumeration,
+    MvEnumerationLiteral, MvGeneralization, Activity,
+    MvBinaryAssociation, MvGrant
+)
 from storage import get_object, delete_object
 from utils import map_type
 
-def delete_domain_model(obj: dict, target: HttpUrl) -> None:
+def delete_domain_model(obj: MvDomainModel, target: HttpUrl) -> None:
     """Delete a DomainModel."""
-    delete_object(obj["id"])
+    delete_object(obj.id)
 
-def delete_class(obj: dict, target: HttpUrl) -> None:
+def delete_class(obj: MvClass, target: HttpUrl) -> None:
     """Delete a Class."""
-    cls_id = obj["id"]
+    target_class = get_object(obj.id)
 
     # Remove class from the domain model
-    domain_model = get_object(str(target))
-    domain_model.types = {typ for typ in domain_model.types if typ.id != cls_id}
+    domain_model = get_object(target)
+    domain_model.types = {typ for typ in domain_model.types if typ != target_class}
 
     # Remove class from generalizations
     for gen in domain_model.generalizations:
-        gen.general = None if gen.general.id == cls_id else gen.general
-        gen.specific = None if gen.specific.id == cls_id else gen.specific
+        gen.general = None if gen.general == target_class else gen.general
+        gen.specific = None if gen.specific == target_class else gen.specific
 
     # Remove class from packages
     for package in domain_model.packages:
-        package.classes = {cls for cls in package.classes if cls.id != cls_id}
+        package.classes = {cls for cls in package.classes if cls != target_class}
 
     # Remove class from properties, methods, and parameters
     for cls in domain_model.get_classes():
         if cls.attributes:
             for attr in cls.attributes:
-                if attr.owner and attr.owner.id == cls_id:
+                if attr.owner and attr.owner == target_class:
                     attr.owner = None
-                if attr.type and attr.type.id == cls_id:
+                if attr.type and attr.type == target_class:
                     attr.type = None
         if cls.methods:
             for method in cls.methods:
-                if method.owner and method.owner.id == cls_id:
+                if method.owner and method.owner == target_class:
                     method.owner = None
-                if method.type and method.type.id == cls_id:
+                if method.type and method.type == target_class:
                     method.type = None
                 if method.parameters:
                     for param in method.parameters:
-                        if param.type and param.type.id == cls_id:
+                        if param.type and param.type == target_class:
                             param.type = None
 
     # Remove class from associations
     for asso in domain_model.associations:
         for end in asso.ends:
-            end.type = None if end.type.id == cls_id else end.type
+            end.type = None if end.type == target_class else end.type
 
-    delete_object(cls_id)
+    delete_object(obj.id)
 
-def delete_property(obj: dict, target: HttpUrl) -> None:
+def delete_property(obj: MvProperty, target: HttpUrl) -> None:
     """Delete a Property."""
-    prop_obj = get_object(obj["id"])
+    target_prop = get_object(obj.id)
 
-    if prop_obj.owner:
-        owner = prop_obj.owner
+    if target_prop.owner:
+        owner = target_prop.owner
         if type(owner).__name__ == "Class":
-            owner.attributes = {attr for attr in owner.attributes if attr.id != obj["id"]}
-        elif type(owner).__name__ == "Association" or "BinaryAssociation":
-            owner.ends = {end for end in owner.ends if end.id != obj["id"]}
-    delete_object(obj["id"])
+            owner.attributes = {attr for attr in owner.attributes if attr != target_prop}
+        elif type(owner).__name__ in {"Association", "BinaryAssociation"}:
+            owner.ends = {end for end in owner.ends if end != target_prop}
+    delete_object(obj.id)
 
-def delete_bin_association(obj: dict, target: HttpUrl) -> None:
+def delete_bin_association(obj: MvBinaryAssociation, target: HttpUrl) -> None:
     """Delete a BinaryAssociation."""
-    asso_id = obj["id"]
+    asso_id = obj.id
+    target_asso = get_object(obj.id)
 
-    # Remove class from the domain model
-    domain_model = get_object(str(target))
-    domain_model.associations = {asso for asso in domain_model.associations if asso.id != asso_id}
+    # Remove association in the domain model
+    domain_model = get_object(target)
+    domain_model.associations = {asso for asso in domain_model.associations if asso != target_asso}
 
-    association = get_object(id_=obj["id"])
-    for end in association.ends:
+    # Delete end owner
+    for end in target_asso.ends:
         end.owner = None
 
-    delete_object(asso_id)
+    delete_object(obj.id)
 
-def update_enumeration(obj: dict, target: HttpUrl):
-    enum = get_object(id_=obj["id"])
-
-    for key in ["name"]:
-        if key in obj:
-            setattr(enum, key, obj[key])
-
-    if "literals" in obj:
-        enum.literals = {get_object(literal) for literal in obj["literals"]}
-
-def delete_enumeration(obj: dict, target: HttpUrl) -> None:
+def delete_enumeration(obj: MvEnumeration, target: HttpUrl) -> None:
     """Delete an Enumeration."""
-    enum_id = obj["id"]
+    target_enum = get_object(obj.id)
 
     # Remove enumeration from the domain model
     domain_model = get_object(str(target))
-    domain_model.types = {typ for typ in domain_model.types if typ.id != enum_id}
+    domain_model.types = {typ for typ in domain_model.types if typ != target_enum}
 
     # Remove enumeration from properties, methods, and parameters
     for cls in domain_model.get_classes():
         if cls.attributes:
             for attr in cls.attributes:
-                if attr.type and attr.type.id == enum_id:
+                if attr.type and attr.type == target_enum:
                     attr.type = None
         if cls.methods:
             for method in cls.methods:
-                if method.type and method.type.id == enum_id:
+                if method.type and method.type == target_enum:
                     method.type = None
                 if method.parameters:
                     for param in method.parameters:
-                        if param.type and param.type.id == enum_id:
+                        if param.type and param.type == target_enum:
                             param.type = None
 
-    delete_object(enum_id)
+    delete_object(obj.id)
 
-def delete_enumeration_literal(obj: dict, target: HttpUrl) -> None:
+def delete_enumeration_literal(obj: MvEnumerationLiteral, target: HttpUrl) -> None:
     """Delete an EnumerationLiteral."""
-    literal_obj = get_object(obj["id"])
+    target_literal = get_object(obj.id)
 
-    if literal_obj.owner:
-        enum = literal_obj.owner
-        enum.literals = {literal for literal in enum.literals if literal.id != obj["id"]}
+    if target_literal.owner is not None:
+        enum = target_literal.owner
+        enum.literals = {literal for literal in enum.literals if literal != target_literal}
 
-    delete_object(obj["id"])
+    delete_object(obj.id)
 
-def delete_generalization(obj: dict, target: HttpUrl) -> None:
+def delete_generalization(obj: MvGeneralization, target: HttpUrl) -> None:
     """Delete a Generalization."""
     # Remove generalization from the domain model
-    domain_model = get_object(str(target))
-    domain_model.generalizations = {gen for gen in domain_model.generalizations if gen.id != obj["id"]}
+    target_gen = get_object(obj.id)
+    domain_model = get_object(target)
+    domain_model.generalizations = {gen for gen in domain_model.generalizations if gen != target_gen}
 
-    delete_object(obj["id"])
+    delete_object(obj.id)
 
-def delete_method(obj: dict, target: HttpUrl) -> None:
+def delete_method(obj: MvMethod, target: HttpUrl) -> None:
     """Delete a Method."""
-    method_obj = get_object(obj["id"])
+    target_method = get_object(obj.id)
 
-    if method_obj.owner:
-        cls = method_obj.owner
-        cls.methods = {method for method in cls.methods if method.id != obj["id"]}
+    if target_method.owner is not None:
+        cls = target_method.owner
+        cls.methods = {method for method in cls.methods if method != target_method}
 
-    if method_obj.parameters:
-        for param in method_obj.parameters:
+    if target_method.parameters is not None:
+        for param in target_method.parameters:
             param.owner = None
 
-    delete_object(obj["id"])
+    delete_object(obj.id)
 
-def delete_parameter(obj: dict, target: HttpUrl) -> None:
+def delete_parameter(obj: MvParameter, target: HttpUrl) -> None:
     """Delete a Parameter."""
-    parameter_obj = get_object(obj["id"])
+    target_param = get_object(obj.id)
 
-    if parameter_obj.owner:
-        method = parameter_obj.owner
-        method.parameters = {param for param in method.parameters if param.id != obj["id"]}
+    if target_param.owner is not None:
+        method = target_param.owner
+        method.parameters = {param for param in method.parameters if param != target_param}
 
-    delete_object(obj["id"])
+    delete_object(obj.id)
 
-def delete_package(obj: dict, target: HttpUrl) -> None:
+def delete_package(obj: MvPackage, target: HttpUrl) -> None:
     """Delete a Package."""
     # Remove package from the domain model
+    target_package = get_object(obj.id)
     domain_model = get_object(str(target))
-    domain_model.packages = {package for package in domain_model.packages if package.id != obj["id"]}
+    domain_model.packages = {package for package in domain_model.packages if package != target_package}
 
-    delete_object(obj["id"])
+    delete_object(obj.id)
 
 # Map of object types to their update and delete functions
 type_handlers = {
@@ -178,7 +176,7 @@ type_handlers = {
 def delete(activity: Activity):
     """Delete an object dynamically based on its type."""
     obj = activity.object
-    obj_type = obj.get("type")
+    obj_type = obj.type
     target = activity.target
 
     if obj_type in type_handlers:

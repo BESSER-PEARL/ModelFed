@@ -17,7 +17,8 @@ json_data = {
     "id": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3",
     "name": "MyNewModel"
   },
-  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
+  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3",
+  "timestamp": "2024-03-11T15:30:45Z"
 }
 
 # Send the request

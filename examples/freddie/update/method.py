@@ -19,7 +19,8 @@ json_data = {
     "owner": "http://127.0.0.1:8000/freddie/classes/a1b2c3",
     "parameters": ["http://127.0.0.1:8000/freddie/parameters/p7a8r9"]
   },
-  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
+  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3",
+  "timestamp": "2024-04-11T15:30:15Z"
 }
 
 # Send the request

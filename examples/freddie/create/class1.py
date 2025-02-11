@@ -15,10 +15,10 @@ json_data = {
   "object": {
     "type": "Class",
     "id": "http://127.0.0.1:8000/freddie/classes/a1b2c3",
-    "name": "Library",
-    "summary": "Represents a class for libraries."
+    "name": "Library"
   },
-  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3"
+  "target": "http://127.0.0.1:8000/freddie/domainmodel/a1b2c3",
+  "timestamp": "2024-02-11T15:31:45Z"
 }
 
 # Send the request
