@@ -1,4 +1,3 @@
-import os
 import uvicorn
 import requests
 import logging
@@ -12,7 +11,6 @@ from fastapi.templating import Jinja2Templates
 from activities import create, update, delete
 from federation import federate_activity
 from storage import get_inbox, get_outbox, save_outbox_activity, save_inbox_activity, get_object
-from utils.besser_extension import *
 from besser.utilities import domain_model_to_code
 
 # debug
@@ -50,7 +48,7 @@ def process_activity(activity: Activity):
     # Check if the activity type is supported
     if activity.type in activity_handlers:
         # Check if the object type is valid
-        if activity.object["type"] in valid_types:
+        if activity.object.type in valid_types:
             # Call the appropriate handler function
             activity_handlers[activity.type](activity)
             return {"status": "success", "message": f"Object {activity.type.lower()}d successfully."}
@@ -136,7 +134,7 @@ async def get_user(username: str):
 async def get_domainmodels(username: str, request: Request):
     #output = "\n".join(str(model) for model in get_domain_models().values())
     model = get_object(id_="http://127.0.0.1:8000/freddie/domainmodel/a1b2c3")
-    output = str(model.grants)
+    output = str(model)
     return output
 
 @app.post("/generate_model")
