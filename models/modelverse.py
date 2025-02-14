@@ -3,7 +3,7 @@ from datetime import datetime
 from pydantic import BaseModel, HttpUrl, Field
 
 class Object(BaseModel):
-    context: Union[HttpUrl, List[HttpUrl]] = Field(
+    context: List[HttpUrl] = Field(
         default=[
             "https://www.w3.org/ns/activitystreams",
             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
@@ -21,7 +21,7 @@ class Object(BaseModel):
         }
 
 class MvDomainModel(Object):
-    types: Optional[List[Union[Object, HttpUrl]]]
+    types: Optional[List[Union[Object, HttpUrl]]] = None
     packages: Optional[List[Union[Object, HttpUrl]]] = None
     associations: Optional[List[Union[Object, HttpUrl]]] = None
     generalizations: Optional[List[Union[Object, HttpUrl]]] = None
@@ -84,7 +84,7 @@ class MvClass(MvType):
     isAbstract: Optional[bool] = None
 
 class MvPackage(MvModelElement):
-    classes: Optional[List[Union[MvClass, HttpUrl]]] = None
+    elements: Optional[List[Union[HttpUrl]]] = None
 
 class MvAssociation(MvModelElement):
     ends: Optional[List[Union[MvProperty, HttpUrl]]] = None
@@ -110,6 +110,7 @@ class MvGrant(Object):
 
 # Mapping of type to Pydantic classes
 object_type_map = {
+    "DomainModel": MvDomainModel,
     "Class": MvClass,
     "PrimitiveDataType": MvPrimitiveDataType,
     "EnumerationLiteral": MvEnumerationLiteral,
@@ -126,7 +127,11 @@ object_type_map = {
 
 class Activity(Object):
     actor: HttpUrl
-    object: Union[Object, HttpUrl]
+    object: Union[
+        Object, MvDomainModel, MvClass, MvPrimitiveDataType, MvEnumerationLiteral, 
+        MvEnumeration, MvParameter, MvMethod, MvPackage, MvProperty, 
+        MvAssociation, MvBinaryAssociation, MvGrant, HttpUrl
+    ]
     target: Optional[HttpUrl] = None
     timestamp: datetime
 
@@ -143,3 +148,8 @@ class Activity(Object):
                 data["object"] = Object(**obj_data)
 
         super().__init__(**data)
+
+    class Config:
+        json_encoders = {
+            HttpUrl: lambda v: str(v)
+        }

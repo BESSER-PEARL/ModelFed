@@ -13,12 +13,12 @@ from models import (
     MvBinaryAssociation, MvGrant
 )
 from utils import check_permission
-from utils import map_type, parse_multiplicity
+from model_slot.besser.helpers import map_type, parse_multiplicity
 from storage import save_object, get_object, save_grant
 
 
 def create_domain_model(obj: MvDomainModel, target: HttpUrl) -> None:
-    """Creates a DomainModel from a dictionary object."""
+    """Creates a DomainModel."""
     new_model = DomainModel(name=obj.name)
 
     save_object(obj.id, new_model)
@@ -42,7 +42,6 @@ def create_class(obj: MvClass, target: HttpUrl) -> None:
     if obj.methods is not None:
         methods = set()
         for method in obj.methods:
-            print(method)
             method_obj = create_method(obj=method, target=target)
             methods.add(method_obj)
         new_class.methods = methods
@@ -69,11 +68,13 @@ def create_property(obj: MvProperty, target: HttpUrl) -> Property:
     else:
         mult = Multiplicity(1,1)
 
+    if obj.isId is not None:
+        params["is_id"] = bool(obj.isId)
+
     params["type"] = type_
     params["multiplicity"] = mult
 
     new_property = Property(**params)
-    #new_property.id = obj["id"]
 
     # Add the property to its owner
     if obj.owner is not None:
@@ -168,15 +169,15 @@ def create_parameter(obj: MvParameter, target: HttpUrl) -> Parameter:
 
 def create_package(obj: MvPackage, target: HttpUrl) -> None:
     domain_model = get_object(id_=target)
-    classes = set()
+    elements = set()
 
-    for class_id in obj.classes:
-        cls = get_object(id_=class_id)
-        classes.add(cls)
+    for element_id in obj.elements:
+        element = get_object(id_=element_id)
+        elements.add(element)
 
-    new_package = Package(name=obj.name, classes=classes)
+    new_package = Package(name=obj.name, classes=elements)
 
-    # Add the new method to the class
+    # Add the new package to its domain model
     domain_model.packages = domain_model.packages | {new_package}
     save_object(obj.id, new_package)
 
@@ -193,7 +194,6 @@ def create_enumeration(obj: MvEnumeration, target: HttpUrl) -> None:
     save_object(obj.id, new_enumeration)
 
 def create_enumeration_literal(obj: MvEnumerationLiteral, target: HttpUrl) -> None:
-    domain_model = get_object(id_=target)
     new_literal = EnumerationLiteral(name=obj.name)
 
     if obj.owner is not None:
@@ -229,19 +229,21 @@ def create(activity: Activity):
     obj_type = obj.type
     target = activity.target
 
-    if obj_type != "DomainModel":
-        if check_permission(activity) is False:
-            raise PermissionError("Permission denied.")
+    #if obj_type != "DomainModel":
+    #    if check_permission(activity) is False:
+    #        raise PermissionError("Permission denied.")
 
     if obj_type in type_handlers:
         result = type_handlers[obj_type](obj, target)
-        create_grant(obj=MvGrant(type="Grant",
-                                 id="http://localhost:8000/grants/" + generate_id(),
-                                 modelElement=obj.id,
-                                 user=activity.actor,
-                                 role="admin"
-                                 ),
-                    target=target)
+        # Create a grant for the object if it is not a grant
+        if obj_type != "Grant":
+            create_grant(obj=MvGrant(type="Grant",
+                                    id="http://localhost:8000/grants/" + generate_id(),
+                                    modelElement=obj.id,
+                                    user=activity.actor,
+                                    role="admin"
+                                    ),
+                        target=target)
         return result
 
     raise ValueError(f"Unknown object type: {obj_type}")

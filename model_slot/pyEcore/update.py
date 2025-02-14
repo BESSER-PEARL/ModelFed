@@ -5,51 +5,64 @@ from models import (
     MvEnumerationLiteral, MvGeneralization, Activity,
     MvBinaryAssociation, MvGrant
 )
+from pyecore.ecore import EAttribute
 from storage import get_object
-from utils import map_type
+from model_slot.pyEcore.helpers import map_type, parse_multiplicity
 
 def update_domain_model(obj: MvDomainModel, target: HttpUrl) -> None:
     """Update a DomainModel from a dictionary object."""
     model = get_object(obj.id)
 
+    if getattr(obj, "name", None) is not None:
+        model.name = obj.name
+
     # Use a loop to update multiple fields dynamically
-    for key in ["name", "types", "associations", "packages", "generalizations", "users"]:
-        value = getattr(obj, key, None)
-        if value is not None:
-            setattr(model, key, set(value) if isinstance(value, list) else value)
+    # for key in ["name", "types", "associations", "packages", "generalizations"]:
+    #     value = getattr(obj, key, None)
+    #     if value is not None:
+    #         setattr(model, key, set(value) if isinstance(value, list) else value)
 
 def update_class(obj: MvClass, target: HttpUrl) -> None:
-    """Update a Class from a dictionary object."""
+    """Update a Class in PyEcore."""
     class_obj = get_object(obj.id)
 
-    for key, attr_name in {"name": "name", "isAbstract": "is_abstract"}.items():
-        value = getattr(obj, key, None)
-        if value is not None:
-            setattr(class_obj, attr_name, value)
+    if obj.name is not None:
+        class_obj.name = obj.name
+    if obj.isAbstract is not None:
+        class_obj.abstract = obj.isAbstract
 
     if obj.attributes is not None:
-        class_obj.attributes = {get_object(attr) for attr in obj.attributes}
+        attrs = [get_object(attr) for attr in obj.attributes]
+        # Remove old attributes
+        for feature in list(class_obj.eStructuralFeatures):
+            if isinstance(feature, EAttribute):
+                class_obj.eStructuralFeatures.remove(feature)
+        # Add new attributes
+        class_obj.eStructuralFeatures.extend(attrs)
 
 def update_property(obj: MvProperty, target: HttpUrl) -> None:
-    """Update a Property from a dictionary object."""
-    # Common attributes to update
-    common_attrs = {"name": "name", "isComposite": "is_composite", "isNavigable": "is_navigable"}
-
+    """Update a Property - EAttribute in PyEcore."""
     property_obj = get_object(id_=obj.id)
 
-    # Update common attributes
-    for key, attr_name in common_attrs.items():
-        value = getattr(obj, key, None)
-        if value is not None:
-            setattr(property_obj, attr_name, value)
+    if obj.name is not None:
+        property_obj.name = obj.name
+
+    if obj.isId is not None:
+        property_obj.iD = bool(obj.isId)
+
+    # Handle `multiplicity`
+    if obj.multiplicity is not None:
+        mult = parse_multiplicity(obj.multiplicity)
+        property_obj.lower = mult[0]
+        property_obj.upper = mult[1]
 
     # Handle elementType
     if obj.elementType is not None:
-        type_ = get_object(id_=value, raise_error=False)
+        type_ = get_object(id_=obj.elementType, raise_error=False)
         if type_ is None:
-            type_ = map_type(value)
-        property_obj.type = type_
-
+            type_ = map_type(obj.elementType)
+        property_obj.eType = type_
+'''
 def update_bin_association(obj: MvBinaryAssociation, target: HttpUrl):
     association = get_object(id_=obj.id)
 
@@ -131,12 +144,15 @@ def update_package(obj: MvPackage, target: HttpUrl):
 
     if obj.classes is not None:
         package.classes = {get_object(cls) for cls in obj.classes}
-
+'''
 # Map of object types to their update functions
 type_handlers = {
     "DomainModel": update_domain_model,
     "Class": update_class,
     "Property": update_property,
+}
+'''
+    
     "BinaryAssociation": update_bin_association,
     "Enumeration": update_enumeration,
     "EnumerationLiteral": update_enumeration_literal,
@@ -144,7 +160,7 @@ type_handlers = {
     "Method": update_method,
     "Parameter": update_parameter,
     "Package": update_package,
-}
+}'''
 
 def update(activity: Activity):
     """Update an object dynamically based on its type."""

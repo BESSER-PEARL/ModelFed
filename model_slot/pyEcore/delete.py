@@ -5,8 +5,7 @@ from models import (
     MvEnumerationLiteral, MvGeneralization, Activity,
     MvBinaryAssociation, MvGrant
 )
-from storage import get_object, delete_object
-from utils import map_type
+from storage import get_object, delete_object, delete_grant
 
 def delete_domain_model(obj: MvDomainModel, target: HttpUrl) -> None:
     """Delete a DomainModel."""
@@ -69,7 +68,6 @@ def delete_property(obj: MvProperty, target: HttpUrl) -> None:
 
 def delete_bin_association(obj: MvBinaryAssociation, target: HttpUrl) -> None:
     """Delete a BinaryAssociation."""
-    asso_id = obj.id
     target_asso = get_object(obj.id)
 
     # Remove association in the domain model
@@ -159,6 +157,10 @@ def delete_package(obj: MvPackage, target: HttpUrl) -> None:
 
     delete_object(obj.id)
 
+def remove_grant(obj: MvGrant, target: HttpUrl) -> None:
+    """Delete a Grant."""
+    delete_grant(obj.id)
+
 # Map of object types to their update and delete functions
 type_handlers = {
     "DomainModel": (delete_domain_model),
@@ -171,6 +173,7 @@ type_handlers = {
     "Method": (delete_method),
     "Parameter": (delete_parameter),
     "Package": (delete_package),
+    "Grant": (remove_grant),
 }
 
 def delete(activity: Activity):
