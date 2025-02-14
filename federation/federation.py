@@ -18,9 +18,9 @@ def send_activity(url: str, activity_data: dict):
     except requests.exceptions.RequestException as e:
         print(f"❌ Failed to federate activity to {url}: {str(e)}")
 
-def federate_activity(activity):
+def federate_activity(activity_data: dict):
     """Federates an activity in a separate thread."""
-    activity_data = jsonable_encoder(activity)
+    #activity_data = jsonable_encoder(activity)
     to_urls = activity_data.get("to", [])
 
     if not to_urls:
