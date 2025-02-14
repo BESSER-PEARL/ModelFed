@@ -30,6 +30,11 @@ def get_grants(obj_id):
     matching_grants = [grant for grant in grants.values() if str(grant.modelElement) == str(obj_id)]
     return matching_grants
 
+def delete_grant(id_):
+    if grants.pop(str(id_), None) is None:
+        raise ValueError(f"Object with id '{id_}' does not exist")
+    return True
+
 def save_inbox_activity(username, activity):
     if username in user_inbox:
         user_inbox[username].append(activity)
