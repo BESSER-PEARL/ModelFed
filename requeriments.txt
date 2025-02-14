@@ -1,1 +1,2 @@
 besser==2.2.0
+pyecore==0.15.2
