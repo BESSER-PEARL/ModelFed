@@ -73,11 +73,11 @@ Package
 +--------------+------------------------------------------------------------------------+
 | URI:         | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#Package |
 +--------------+------------------------------------------------------------------------+
-| Description: | Represents a package that groups a set of classes.                     |
+| Description: | Represents a package that groups a set of model elements.              |
 +--------------+------------------------------------------------------------------------+
 | Extends:     | :ref:`modelElement`                                                    |
 +--------------+------------------------------------------------------------------------+
-| Properties:  | :ref:`classes`                                                         |
+| Properties:  | :ref:`elements`                                                        |
 |              |                                                                        |
 |              | Other properties are inherited from :ref:`modelElement`.               |
 +--------------+------------------------------------------------------------------------+
@@ -92,9 +92,10 @@ Package
         "type": "Package",
         "id": "http://www.modeling-platform/package/p1d2e3",
         "name": "A simple Package",
-        "classes": [
-            "http://www.modeling-platform/class/C1D2E3",
-            "http://www.modeling-platform/class/a3m4bs",
+        "elements": [
+            "http://www.modeling-platform/classes/C1D2E3",
+            "http://www.modeling-platform/classes/a3m4bs",
+            "http://www.modeling-platform/packages/pckbs",
         ]
     }
 
@@ -371,7 +372,7 @@ Generalization
 +--------------+----------------------------------------------------------------------------------+
 | Extends:     | :ref:`modelElement`                                                              |
 +--------------+----------------------------------------------------------------------------------+
-| Properties:  | :ref:`general` | :ref:`specific` | :ref:`isDisjoint` | :ref:`isComplete`         |
+| Properties:  | :ref:`general` | :ref:`specific`                                                 |
 |              |                                                                                  |
 |              | Other properties are inherited from :ref:`modelElement`.                         |
 +--------------+----------------------------------------------------------------------------------+
@@ -386,9 +387,7 @@ Generalization
         "type": "Generalization",
         "id": "http://www.modeling-platform/generalizations/g1h2i3",
         "general": "http://www.modeling-platform/class/c1d2e3",
-        "specific": "http://www.modeling-platform/class/c4d5e6",
-        "isDisjoint": true,
-        "isComplete": true
+        "specific": "http://www.modeling-platform/class/c4d5e6"
     }
 
 .. _parameter:
@@ -1230,71 +1229,6 @@ specific
         "specific": "http://www.modeling-platform/classes/c4d5e6"
     }
 
-.. _isDisjoint:
-
-isDisjoint
-~~~~~~~~~~
-+-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#isDisjoint        |
-+-----------------+----------------------------------------------------------------------------------+
-| Description:    | Indicates whether the generalization is disjoint.                                |
-+-----------------+----------------------------------------------------------------------------------+
-| Domain:         | :ref:`generalization`                                                            |
-+-----------------+----------------------------------------------------------------------------------+
-| Range:          | xsd:boolean                                                                      |
-+-----------------+----------------------------------------------------------------------------------+
-| Allow multiple: | False                                                                            |
-+-----------------+----------------------------------------------------------------------------------+
-
-.. code-block:: json-ld
-    
-    {
-        "@context": [
-            "https://www.w3.org/ns/activitystreams",
-            "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
-        ],
-        "type": "Generalization",
-        "id": "http://www.modeling-platform/generalizations/g1h2i3",
-        "name": "Generalization Example",
-        "timestamp": "2025-01-20T08:30:00Z",
-        "general": "http://www.modeling-platform/classes/c1d2e3",
-        "specific": "http://www.modeling-platform/classes/c4d5e6",
-        "isDisjoint": true
-    }
-
-.. _isComplete:
-
-isComplete
-~~~~~~~~~~
-+-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#isComplete        |
-+-----------------+----------------------------------------------------------------------------------+
-| Description:    | Indicates whether the generalization is complete.                                |
-+-----------------+----------------------------------------------------------------------------------+
-| Domain:         | :ref:`generalization`                                                            |
-+-----------------+----------------------------------------------------------------------------------+
-| Range:          | xsd:boolean                                                                      |
-+-----------------+----------------------------------------------------------------------------------+
-| Allow multiple: | False                                                                            |
-+-----------------+----------------------------------------------------------------------------------+
-
-.. code-block:: json-ld
-    
-    {
-        "@context": [
-            "https://www.w3.org/ns/activitystreams",
-            "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
-        ],
-        "type": "Generalization",
-        "id": "http://www.modeling-platform/generalizations/g1h2i3",
-        "name": "Generalization Example",
-        "timestamp": "2025-01-20T08:30:00Z",
-        "general": "http://www.modeling-platform/classes/c1d2e3",
-        "specific": "http://www.modeling-platform/classes/c4d5e6",
-        "isComplete": true,
-        "isDisjoint": true
-    }
-
 .. _value:
 
 value
@@ -1363,16 +1297,16 @@ generalizations
         ]
     }
 
-.. _classes:
+.. _elements:
 
-classes
-~~~~~~~
+elements
+~~~~~~~~
 +-----------------+---------------------------------------------------------------------------+
 | URI:            | https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#classes    |
 +-----------------+---------------------------------------------------------------------------+
-| Description:    | Represents the classes contained in a package or in a domain model.       |
+| Description:    | Represents the model elements contained in a package                      |
 +-----------------+---------------------------------------------------------------------------+
-| Domain:         | :ref:`package` | :ref:`domainModel`                                       |
+| Domain:         | :ref:`package`                                                            |
 +-----------------+---------------------------------------------------------------------------+
 | Range:          | :ref:`class` |                                                            |
 |                 | `Link <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-link>`_      |
@@ -1390,7 +1324,7 @@ classes
         "type": "Package",
         "id": "http://www.modeling-platform/package/p1d2e3",
         "name": "LibraryPackage",
-        "classes": [
+        "elements": [
             "http://www.modeling-platform/class/c1d2e3",
             "http://www.modeling-platform/class/c1l3k4",
             "http://www.modeling-platform/class/c1b5n6"
