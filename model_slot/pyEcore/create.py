@@ -133,7 +133,6 @@ def create_generalization(obj: MvGeneralization, target: HttpUrl) -> None:
     # Store the new generalization
     save_object(obj.id, [general_class, specific_class])
 
-
 def create_package(obj: MvPackage, target: HttpUrl) -> None:
     domain_model = get_object(id_=target)
     elements = []
