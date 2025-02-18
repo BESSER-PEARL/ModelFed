@@ -135,7 +135,7 @@ def update_package(obj: MvPackage, target: HttpUrl):
         package.name = obj.name
 
     if obj.elements is not None:
-        package.classes = {get_object(element) for element in obj.classes}
+        package.classes = {get_object(element) for element in obj.elements}
 
 # Map of object types to their update functions
 type_handlers = {
