@@ -5,8 +5,8 @@ from models import (
     MvEnumerationLiteral, MvGeneralization, Activity,
     MvBinaryAssociation, MvGrant
 )
-from pyecore.ecore import EAttribute
-from storage import get_object
+from pyecore.ecore import EAttribute, EPackage, EClass
+from storage import get_object, save_object
 from model_slot.pyEcore.helpers import map_type, parse_multiplicity
 
 def update_domain_model(obj: MvDomainModel, target: HttpUrl) -> None:
@@ -50,7 +50,7 @@ def update_property(obj: MvProperty, target: HttpUrl) -> None:
     if obj.isId is not None:
         property_obj.iD = bool(obj.isId)
 
-    # Handle `multiplicity`
+    # Handle multiplicity
     if obj.multiplicity is not None:
         mult = parse_multiplicity(obj.multiplicity)
         property_obj.lower = mult[0]
@@ -62,16 +62,14 @@ def update_property(obj: MvProperty, target: HttpUrl) -> None:
         if type_ is None:
             type_ = map_type(obj.elementType)
         property_obj.eType = type_
-'''
+
 def update_bin_association(obj: MvBinaryAssociation, target: HttpUrl):
     association = get_object(id_=obj.id)
 
-    if obj.name is not None:
-        association.name = obj.name
-
     # Update ends
     if obj.ends is not None:
-        association.ends = {get_object(end) for end in obj.ends}
+        pass
+
 
 def update_enumeration(obj: MvEnumeration, target: HttpUrl):
     enum = get_object(id_=obj.id)
@@ -80,7 +78,11 @@ def update_enumeration(obj: MvEnumeration, target: HttpUrl):
         enum.name = obj.name
 
     if obj.literals is not None:
-        enum.literals = {get_object(literal) for literal in obj.literals}
+        literals = []
+        for lit in obj.literals:
+            enum_literal = get_object(lit.id)
+            literals.append(enum_literal)
+        enum.literals = literals
 
 def update_enumeration_literal(obj: MvEnumerationLiteral, target: HttpUrl):
     literal = get_object(id_=obj.id)
@@ -88,53 +90,27 @@ def update_enumeration_literal(obj: MvEnumerationLiteral, target: HttpUrl):
     if obj.name is not None:
         literal.name = obj.name
 
+    if obj.owner is not None:
+        new_owner = get_object(id_=obj.owner)
+        new_owner.literals.append(literal)
+
+    if obj.value is not None:
+        literal.value = obj.value
+
 def update_generalization(obj: dict, target: HttpUrl) -> None:
     """Update a Generalization from a dictionary object."""
     generalization = get_object(id_=obj.id)
+    old_general = generalization[0]
+    old_specific = generalization[1]
+    old_specific.eSuperTypes.remove(old_general)
 
-    # Update general class
-    if obj.general is not None:
-        new_general = get_object(id_=obj.general)
-        generalization.general = new_general
+    new_general = get_object(id_=obj.general)
+    new_specific = get_object(id_=obj.specific)
 
-    # Update specific class
-    if obj.specific is not None:
-        new_specific = get_object(id_=obj.specific)
-        generalization.specific = new_specific
+    new_specific.eSuperTypes.append(new_general)
 
-def update_method(obj: MvMethod, target: HttpUrl) -> None:
-    """Update a Method from a dictionary object."""
-    method = get_object(id_=obj.id)
-
-    for key, attr_name in {"name": "name", "code": "code", "isAbstract": "is_abstract"}.items():
-        if getattr(obj, key, None) is not None:
-            setattr(method, attr_name, getattr(obj, key))
-
-    # Handle `elementType`
-    if obj.elementType is not None:
-        type_ = get_object(id_=obj.elementType, raise_error=False)
-        if type_ is None:
-            type_ = map_type(obj.elementType)
-        method.type = type_
-
-    # Handle parameters
-    if obj.parameters is not None:
-        method.parameters = {get_object(param) for param in obj.parameters}
-
-def update_parameter(obj: MvParameter, target: HttpUrl):
-    parameter = get_object(id_=obj.id)
-
-    for key, attr_name in {"name": "name", "defaultValue": "default_value"}.items():
-        value = getattr(obj, key, None)
-        if value is not None:
-            setattr(parameter, attr_name, value)
-
-    # Handle `elementType`
-    if obj.elementType is not None:
-        type_ = get_object(id_=obj.elementType, raise_error=False)
-        if type_ is None:
-            type_ = map_type(obj.elementType)
-        parameter.type = type_
+    # Update the generalization in the storage
+    save_object(obj.id, [new_general, new_specific])
 
 def update_package(obj: MvPackage, target: HttpUrl):
     package = get_object(id_=obj.id)
@@ -142,25 +118,29 @@ def update_package(obj: MvPackage, target: HttpUrl):
     if obj.name is not None:
         package.name = obj.name
 
-    if obj.classes is not None:
-        package.classes = {get_object(cls) for cls in obj.classes}
-'''
+    if obj.elements is not None:
+        subpackages = []
+        elements = []
+        for element_id in obj.elements:
+            element = get_object(id_=element_id)
+            if isinstance(element, EPackage):
+                subpackages.append(element)
+            elif isinstance(element, EClass):
+                elements.append(element)
+        package.eSubpackages = subpackages
+        package.eClassifiers = elements
+
 # Map of object types to their update functions
 type_handlers = {
     "DomainModel": update_domain_model,
     "Class": update_class,
     "Property": update_property,
-}
-'''
-    
     "BinaryAssociation": update_bin_association,
     "Enumeration": update_enumeration,
     "EnumerationLiteral": update_enumeration_literal,
     "Generalization": update_generalization,
-    "Method": update_method,
-    "Parameter": update_parameter,
     "Package": update_package,
-}'''
+}
 
 def update(activity: Activity):
     """Update an object dynamically based on its type."""
