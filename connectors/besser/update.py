@@ -6,7 +6,8 @@ from models import (
     MvBinaryAssociation, MvGrant
 )
 from storage import get_object
-from model_slot.besser.helpers import map_type, parse_multiplicity
+from connectors.besser.helpers import map_type, parse_multiplicity
+from utils import check_permission
 
 def update_domain_model(obj: MvDomainModel, target: HttpUrl) -> None:
     """Update a DomainModel from a dictionary object."""
@@ -135,7 +136,7 @@ def update_package(obj: MvPackage, target: HttpUrl):
         package.name = obj.name
 
     if obj.elements is not None:
-        package.classes = {get_object(element) for element in obj.elements}
+        package.elements = {get_object(element) for element in obj.elements}
 
 # Map of object types to their update functions
 type_handlers = {

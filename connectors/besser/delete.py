@@ -5,11 +5,12 @@ from models import (
     MvEnumerationLiteral, MvGeneralization, Activity,
     MvBinaryAssociation, MvGrant
 )
-from storage import get_object, delete_object, delete_grant
+from storage import get_object, delete_object_by_id, delete_grant, delete_object
+from utils import check_permission
 
 def delete_domain_model(obj: MvDomainModel, target: HttpUrl) -> None:
     """Delete a DomainModel."""
-    delete_object(obj.id)
+    delete_object_by_id(obj.id)
 
 def delete_class(obj: MvClass, target: HttpUrl) -> None:
     """Delete a Class."""
@@ -27,10 +28,11 @@ def delete_class(obj: MvClass, target: HttpUrl) -> None:
         for method in target_class.methods:
             delete_method(method, target)
 
-    # Remove class from generalizations
-    for gen in domain_model.generalizations:
-        gen.general = None if gen.general == target_class else gen.general
-        gen.specific = None if gen.specific == target_class else gen.specific
+    # Remove generalizations
+    for gen in domain_model.generalizations.copy():  # Iterate over a copy
+        if gen.general == target_class or gen.specific == target_class:
+            domain_model.generalizations.discard(gen)
+            delete_object(gen)
 
     # Remove class from packages
     for package in domain_model.packages:
@@ -60,7 +62,7 @@ def delete_class(obj: MvClass, target: HttpUrl) -> None:
         for end in asso.ends:
             end.type = None if end.type == target_class else end.type
 
-    delete_object(obj.id)
+    delete_object_by_id(obj.id)
 
 def delete_property(obj: MvProperty, target: HttpUrl) -> None:
     """Delete a Property."""
@@ -72,7 +74,7 @@ def delete_property(obj: MvProperty, target: HttpUrl) -> None:
             owner.attributes = {attr for attr in owner.attributes if attr != target_prop}
         elif type(owner).__name__ in {"Association", "BinaryAssociation"}:
             owner.ends = {end for end in owner.ends if end != target_prop}
-    delete_object(obj.id)
+    delete_object_by_id(obj.id)
 
 def delete_bin_association(obj: MvBinaryAssociation, target: HttpUrl) -> None:
     """Delete a BinaryAssociation."""
@@ -86,7 +88,7 @@ def delete_bin_association(obj: MvBinaryAssociation, target: HttpUrl) -> None:
     for end in target_asso.ends:
         end.owner = None
 
-    delete_object(obj.id)
+    delete_object_by_id(obj.id)
 
 def delete_enumeration(obj: MvEnumeration, target: HttpUrl) -> None:
     """Delete an Enumeration."""
@@ -111,7 +113,7 @@ def delete_enumeration(obj: MvEnumeration, target: HttpUrl) -> None:
                         if param.type and param.type == target_enum:
                             param.type = None
 
-    delete_object(obj.id)
+    delete_object_by_id(obj.id)
 
 def delete_enumeration_literal(obj: MvEnumerationLiteral, target: HttpUrl) -> None:
     """Delete an EnumerationLiteral."""
@@ -121,7 +123,7 @@ def delete_enumeration_literal(obj: MvEnumerationLiteral, target: HttpUrl) -> No
         enum = target_literal.owner
         enum.literals = {literal for literal in enum.literals if literal != target_literal}
 
-    delete_object(obj.id)
+    delete_object_by_id(obj.id)
 
 def delete_generalization(obj: MvGeneralization, target: HttpUrl) -> None:
     """Delete a Generalization."""
@@ -130,7 +132,7 @@ def delete_generalization(obj: MvGeneralization, target: HttpUrl) -> None:
     domain_model = get_object(target)
     domain_model.generalizations = {gen for gen in domain_model.generalizations if gen != target_gen}
 
-    delete_object(obj.id)
+    delete_object_by_id(obj.id)
 
 def delete_method(obj: MvMethod, target: HttpUrl) -> None:
     """Delete a Method."""
@@ -144,7 +146,7 @@ def delete_method(obj: MvMethod, target: HttpUrl) -> None:
         for param in target_method.parameters:
             delete_parameter(param, target)
 
-    delete_object(obj.id)
+    delete_object_by_id(obj.id)
 
 def delete_parameter(obj: MvParameter, target: HttpUrl) -> None:
     """Delete a Parameter."""
@@ -154,7 +156,7 @@ def delete_parameter(obj: MvParameter, target: HttpUrl) -> None:
         method = target_param.owner
         method.parameters = {param for param in method.parameters if param != target_param}
 
-    delete_object(obj.id)
+    delete_object_by_id(obj.id)
 
 def delete_package(obj: MvPackage, target: HttpUrl) -> None:
     """Delete a Package."""
@@ -163,7 +165,7 @@ def delete_package(obj: MvPackage, target: HttpUrl) -> None:
     domain_model = get_object(target)
     domain_model.packages = {package for package in domain_model.packages if package != target_package}
 
-    delete_object(obj.id)
+    delete_object_by_id(obj.id)
 
 def remove_grant(obj: MvGrant, target: HttpUrl) -> None:
     """Delete a Grant."""

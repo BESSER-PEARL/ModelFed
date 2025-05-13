@@ -7,7 +7,7 @@ from models import (
 )
 from pyecore.ecore import EAttribute, EPackage, EClass
 from storage import get_object, save_object
-from model_slot.pyEcore.helpers import map_type, parse_multiplicity
+from connectors.pyEcore.helpers import map_type, parse_multiplicity
 
 def update_domain_model(obj: MvDomainModel, target: HttpUrl) -> None:
     """Update a DomainModel from a dictionary object."""

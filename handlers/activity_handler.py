@@ -4,8 +4,7 @@ import importlib
 def get_activity_handlers(platform):
     if platform not in ["besser", "pyEcore"]:
         raise ValueError("Invalid platform. Choose 'besser' or 'pyEcore'.")
-
-    module_name = f"model_slot.{platform}"
+    module_name = f"connectors.{platform}"
     module = importlib.import_module(module_name)  # Dynamically import the module
 
     return {

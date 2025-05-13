@@ -12,7 +12,7 @@ from models import (
     MvBinaryAssociation, MvGrant
 )
 from utils import check_permission
-from model_slot.pyEcore.helpers import map_type, parse_multiplicity
+from connectors.pyEcore.helpers import map_type, parse_multiplicity
 from storage import save_object, get_object, save_grant
 
 
@@ -206,10 +206,6 @@ def create(activity: Activity):
     obj = activity.object
     obj_type = obj.type
     target = activity.target
-
-    #if obj_type != "DomainModel":
-    #    if check_permission(activity) is False:
-    #        raise PermissionError("Permission denied.")
 
     if obj_type in type_handlers:
         result = type_handlers[obj_type](obj, target)

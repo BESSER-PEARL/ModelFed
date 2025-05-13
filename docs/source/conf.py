@@ -48,8 +48,8 @@ html_title = f"{project} {release}"
 # -- Options for HTML output
 
 html_theme_options = {
-    "light_logo": "besser_logo_light.png",
-    "dark_logo": "besser_logo_dark.png"
+    "light_logo": "modelfed_logo.png",
+    "dark_logo": "modelfed_logo_dark.png"
 }
 html_theme = 'furo'
 html_static_path = ['_static']
@@ -82,4 +82,4 @@ def linkcode_resolve(domain, info):
         return None
     start, end = lines[1], lines[1] + len(lines[0]) - 1
     filename = info['module'].replace('.', '/')
-    return f"https://github.com/BESSER-PEARL/Modelverse/blob/master/{filename}.py#L{start}-L{end}"
+    return f"https://github.com/repository/{filename}.py#L{start}-L{end}"

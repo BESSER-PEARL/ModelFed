@@ -13,7 +13,7 @@ from models import (
     MvBinaryAssociation, MvGrant
 )
 from utils import check_permission
-from model_slot.besser.helpers import map_type, parse_multiplicity
+from connectors.besser.helpers import map_type, parse_multiplicity
 from storage import save_object, get_object, save_grant
 
 
@@ -175,7 +175,7 @@ def create_package(obj: MvPackage, target: HttpUrl) -> None:
         element = get_object(id_=element_id)
         elements.add(element)
 
-    new_package = Package(name=obj.name, classes=elements)
+    new_package = Package(name=obj.name, elements=elements)
 
     # Add the new package to its domain model
     domain_model.packages = domain_model.packages | {new_package}
@@ -184,7 +184,8 @@ def create_package(obj: MvPackage, target: HttpUrl) -> None:
 def create_enumeration(obj: MvEnumeration, target: HttpUrl) -> None:
     literals = set()
     for lit in obj.literals:
-        enum_literal = EnumerationLiteral(name=lit.name)
+        #enum_literal = EnumerationLiteral(name=lit.name)
+        enum_literal = create_enumeration_literal(obj=lit, target=target)
         literals.add(enum_literal)
     new_enumeration = Enumeration(name=obj.name, literals=literals)
 
@@ -201,6 +202,7 @@ def create_enumeration_literal(obj: MvEnumerationLiteral, target: HttpUrl) -> No
         enum.literals = enum.literals | {new_literal}
 
     save_object(obj.id, new_literal)
+    return new_literal
 
 def create_grant(obj: MvGrant, target: HttpUrl) -> None:
     save_grant(obj.id, obj)
@@ -228,10 +230,6 @@ def create(activity: Activity):
     obj = activity.object
     obj_type = obj.type
     target = activity.target
-
-    #if obj_type != "DomainModel":
-    #    if check_permission(activity) is False:
-    #        raise PermissionError("Permission denied.")
 
     if obj_type in type_handlers:
         result = type_handlers[obj_type](obj, target)
