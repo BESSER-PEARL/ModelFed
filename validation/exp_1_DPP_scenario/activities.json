@@ -1,0 +1,1118 @@
+{
+  "activities": [
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8000/admin/activities/digital-product-passport-001",
+          "actor": "http://127.0.0.1:8000/admin/",
+          "to": [
+              "http://127.0.0.1:8001/materialsscientist/",
+              "http://127.0.0.1:8003/industrialeng/"
+          ],
+          "object": {
+              "type": "DomainModel",
+              "id": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+              "name": "Digital_Product_Passport"
+          },
+          "timestamp": "2024-02-12T10:00:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8000/admin/activities/product_passport-002",
+          "actor": "http://127.0.0.1:8000/admin/",
+          "to": [
+              "http://127.0.0.1:8001/materialsscientist/",
+              "http://127.0.0.1:8003/industrialeng/"
+          ],
+          "object": {
+              "type": "Class",
+              "id": "http://127.0.0.1:8000/admin/classes/product_passport",
+              "name": "ProductPassport"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T10:05:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8000/admin/activities/materials_package-003",
+          "actor": "http://127.0.0.1:8000/admin/",
+          "to": [
+              "http://127.0.0.1:8001/materialsscientist/"
+          ],
+          "object": {
+              "type": "Package",
+              "id": "http://127.0.0.1:8000/admin/packages/materials",
+              "name": "Materials",
+              "owner": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+              "elements": []
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T10:10:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8000/admin/activities/supply_chain_package-004",
+          "actor": "http://127.0.0.1:8000/admin/",
+          "to": [
+              "http://127.0.0.1:8003/industrialeng/"
+          ],
+          "object": {
+              "type": "Package",
+              "id": "http://127.0.0.1:8000/admin/packages/supply_chain",
+              "name": "Supply_Chain",
+              "owner": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+              "elements": []
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T10:15:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8000/admin/activities/grant_materials_scientist-005",
+          "actor": "http://127.0.0.1:8000/admin/",
+          "to": [
+              "http://127.0.0.1:8001/materialsscientist/"
+          ],
+          "object": {
+              "type": "Grant",
+              "id": "http://127.0.0.1:8000/admin/grants/materials_scientist_access",
+              "user": "http://127.0.0.1:8001/materialsscientist/",
+              "role": "writer",
+              "modelElement": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T10:20:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8000/admin/activities/grant_industrial_eng-006",
+          "actor": "http://127.0.0.1:8000/admin/",
+          "to": [
+              "http://127.0.0.1:8003/industrialeng/"
+          ],
+          "object": {
+              "type": "Grant",
+              "id": "http://127.0.0.1:8000/admin/grants/industrial_eng_access",
+              "user": "http://127.0.0.1:8003/industrialeng/",
+              "role": "writer",
+              "modelElement": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T10:25:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8000/admin/activities/property_name-007",
+          "actor": "http://127.0.0.1:8000/admin/",
+          "to": [
+              "http://127.0.0.1:8001/materialsscientist/",
+              "http://127.0.0.1:8003/industrialeng/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8000/admin/properties/name",
+              "name": "name",
+              "elementType": "str",
+              "owner": "http://127.0.0.1:8000/admin/classes/product_passport"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T10:30:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8000/admin/activities/property_cod-008",
+          "actor": "http://127.0.0.1:8000/admin/",
+          "to": [
+              "http://127.0.0.1:8001/materialsscientist/",
+              "http://127.0.0.1:8003/industrialeng/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8000/admin/properties/cod",
+              "name": "cod",
+              "elementType": "str",
+              "owner": "http://127.0.0.1:8000/admin/classes/product_passport"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T10:35:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Update",
+          "id": "http://127.0.0.1:8000/admin/activities/rename_property_cod-009",
+          "actor": "http://127.0.0.1:8000/admin/",
+          "to": [
+              "http://127.0.0.1:8001/materialsscientist/",
+              "http://127.0.0.1:8003/industrialeng/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8000/admin/properties/cod",
+              "name": "code",
+              "elementType": "str",
+              "owner": "http://127.0.0.1:8000/admin/classes/product_passport"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T10:40:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8000/admin/activities/property_uid-010",
+          "actor": "http://127.0.0.1:8000/admin/",
+          "to": [
+              "http://127.0.0.1:8001/materialsscientist/",
+              "http://127.0.0.1:8003/industrialeng/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8000/admin/properties/UID",
+              "name": "UID",
+              "elementType": "str",
+              "owner": "http://127.0.0.1:8000/admin/classes/product_passport"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T10:45:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/hazard-011",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Class",
+              "id": "http://127.0.0.1:8001/materialsscientist/classes/hazard",
+              "name": "Hazard"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T10:50:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/hazard_property_very_high-012",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8001/materialsscientist/properties/very_high",
+              "name": "very_high",
+              "elementType": "boolean",
+              "owner": "http://127.0.0.1:8001/materialsscientist/classes/hazard"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T10:55:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/hazard_property_exed_limit-013",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8001/materialsscientist/properties/exed_limit",
+              "name": "exed_limit",
+              "elementType": "boolean",
+              "owner": "http://127.0.0.1:8001/materialsscientist/classes/hazard"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T11:00:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/recycled_material-014",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Class",
+              "id": "http://127.0.0.1:8001/materialsscientist/classes/recycled_material",
+              "name": "RecycledMaterial"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T11:05:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/property_preconsumer-015",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8001/materialsscientist/properties/preconsumer",
+              "name": "preconsumer",
+              "elementType": "str",
+              "owner": "http://127.0.0.1:8001/materialsscientist/classes/recycled_material"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T11:10:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/property_postconsumer-016",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8001/materialsscientist/properties/postconsumer",
+              "name": "postconsumer",
+              "elementType": "str",
+              "owner": "http://127.0.0.1:8001/materialsscientist/classes/recycled_material"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T11:15:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/property_renewable-017",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8001/materialsscientist/properties/renewable",
+              "name": "renewable",
+              "elementType": "str",
+              "owner": "http://127.0.0.1:8001/materialsscientist/classes/recycled_material"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T11:20:00Z"
+      },
+      {
+          "@context": [
+             "https://www.w3.org/ns/activitystreams",
+             "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/create_property_state-018",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+             "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8001/materialsscientist/properties/state",
+              "name": "state",
+              "elementType": "str",
+              "owner": "http://127.0.0.1:8001/materialsscientist/classes/recycled_material"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T11:25:00Z"
+   },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Delete",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/delete_property_state-018",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8001/materialsscientist/properties/state"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T11:25:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/chemical_prop-019",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Class",
+              "id": "http://127.0.0.1:8001/materialsscientist/classes/chemical_prop",
+              "name": "ChemicalProp"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T11:30:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/property_threshold-020",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8001/materialsscientist/properties/threshold",
+              "name": "threshold",
+              "elementType": "float",
+              "owner": "http://127.0.0.1:8001/materialsscientist/classes/chemical_prop"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T11:35:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/property_disclosure-021",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8001/materialsscientist/properties/disclosure",
+              "name": "disclosure",
+              "elementType": "str",
+              "owner": "http://127.0.0.1:8001/materialsscientist/classes/chemical_prop"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T11:40:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/property_composition-022",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8001/materialsscientist/properties/composition",
+              "name": "composition",
+              "elementType": "str",
+              "owner": "http://127.0.0.1:8001/materialsscientist/classes/chemical_prop"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T11:45:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/association_hazard_product_passport-023",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "BinaryAssociation",
+              "id": "http://127.0.0.1:8001/materialsscientist/associations/hazard-product_passport",
+              "name": "HazardToProductPassport",
+              "ends": [
+                  {
+                      "type": "Property",
+                      "id": "http://127.0.0.1:8001/materialsscientist/properties/hazard_end",
+                      "name": "hazard",
+                      "elementType": "http://127.0.0.1:8001/materialsscientist/classes/hazard",
+                      "multiplicity": "1..1"
+                  },
+                  {
+                      "type": "Property",
+                      "id": "http://127.0.0.1:8001/materialsscientist/properties/product_passport_end",
+                      "name": "product_passport",
+                      "elementType": "http://127.0.0.1:8000/admin/classes/product_passport",
+                      "multiplicity": "0..*"
+                  }
+              ]
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T11:50:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/association_recycled_material_product_passport-024",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "BinaryAssociation",
+              "id": "http://127.0.0.1:8001/materialsscientist/associations/recycled_material-product_passport",
+              "name": "RecycledMaterialToProductPassport",
+              "ends": [
+                  {
+                      "type": "Property",
+                      "id": "http://127.0.0.1:8001/materialsscientist/properties/recycled_material_end",
+                      "name": "recycled_material",
+                      "elementType": "http://127.0.0.1:8001/materialsscientist/classes/recycled_material",
+                      "multiplicity": "1..1"
+                  },
+                  {
+                      "type": "Property",
+                      "id": "http://127.0.0.1:8001/materialsscientist/properties/product_passport_end",
+                      "name": "product_passport",
+                      "elementType": "http://127.0.0.1:8000/admin/classes/product_passport",
+                      "multiplicity": "0..*"
+                  }
+              ]
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T11:55:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/association_chemical_prop_product_passport-025",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "BinaryAssociation",
+              "id": "http://127.0.0.1:8001/materialsscientist/associations/chemical_prop-product_passport",
+              "name": "ChemicalPropToProductPassport",
+              "ends": [
+                  {
+                      "type": "Property",
+                      "id": "http://127.0.0.1:8001/materialsscientist/properties/chemical_prop_end",
+                      "name": "chemical_prop",
+                      "elementType": "http://127.0.0.1:8001/materialsscientist/classes/chemical_prop",
+                      "multiplicity": "1..1"
+                  },
+                  {
+                      "type": "Property",
+                      "id": "http://127.0.0.1:8001/materialsscientist/properties/product_passport_end",
+                      "name": "product_passport",
+                      "elementType": "http://127.0.0.1:8000/admin/classes/product_passport",
+                      "multiplicity": "0..*"
+                  }
+              ]
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T12:00:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Update",
+          "id": "http://127.0.0.1:8001/materialsscientist/activities/update_materials_package-026",
+          "actor": "http://127.0.0.1:8001/materialsscientist/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Package",
+              "id": "http://127.0.0.1:8000/admin/packages/materials",
+              "name": "Materials",
+              "elements": [
+                  "http://127.0.0.1:8001/materialsscientist/classes/hazard",
+                  "http://127.0.0.1:8001/materialsscientist/classes/recycled_material",
+                  "http://127.0.0.1:8001/materialsscientist/classes/chemical_prop",
+                  "http://127.0.0.1:8001/materialsscientist/properties/very_high",
+                  "http://127.0.0.1:8001/materialsscientist/properties/exed_limit",
+                  "http://127.0.0.1:8001/materialsscientist/properties/preconsumer",
+                  "http://127.0.0.1:8001/materialsscientist/properties/postconsumer",
+                  "http://127.0.0.1:8001/materialsscientist/properties/renewable",
+                  "http://127.0.0.1:8001/materialsscientist/properties/threshold",
+                  "http://127.0.0.1:8001/materialsscientist/properties/disclosure",
+                  "http://127.0.0.1:8001/materialsscientist/properties/composition"
+              ]
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T12:05:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/lifecycle_stage-027",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Class",
+              "id": "http://127.0.0.1:8003/industrialeng/classes/lifecycle_stage",
+              "name": "LifecycleStage"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T12:10:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/property_name_lifecycle_stage-028",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8003/industrialeng/properties/name",
+              "name": "name",
+              "elementType": "str",
+              "owner": "http://127.0.0.1:8003/industrialeng/classes/lifecycle_stage"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T12:15:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/property_start_lifecycle_stage-029",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8003/industrialeng/properties/start",
+              "name": "start",
+              "elementType": "date",
+              "owner": "http://127.0.0.1:8003/industrialeng/classes/lifecycle_stage"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T12:20:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/property_end_lifecycle_stage-030",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8003/industrialeng/properties/end",
+              "name": "end",
+              "elementType": "str",
+              "owner": "http://127.0.0.1:8003/industrialeng/classes/lifecycle_stage"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T12:25:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Update",
+          "id": "http://127.0.0.1:8000/admin/activities/update_property_end_lifecycle_stage-031",
+          "actor": "http://127.0.0.1:8000/admin/",
+          "to": [
+              "http://127.0.0.1:8003/industrialeng/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8003/industrialeng/properties/end",
+              "name": "end",
+              "elementType": "date",
+              "owner": "http://127.0.0.1:8003/industrialeng/classes/lifecycle_stage"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T12:30:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/design_class-032",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Class",
+              "id": "http://127.0.0.1:8003/industrialeng/classes/design",
+              "name": "Design"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T12:35:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/manufacture_class-033",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Class",
+              "id": "http://127.0.0.1:8003/industrialeng/classes/manufacture",
+              "name": "Manufacture"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T12:40:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/use_class-034",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Class",
+              "id": "http://127.0.0.1:8003/industrialeng/classes/use",
+              "name": "Use"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T12:45:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/collect_class-035",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Class",
+              "id": "http://127.0.0.1:8003/industrialeng/classes/collect",
+              "name": "Collect"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T12:50:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/recycle_class-036",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Class",
+              "id": "http://127.0.0.1:8003/industrialeng/classes/recycle",
+              "name": "Recycle"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T12:55:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/reparation_class-037",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Class",
+              "id": "http://127.0.0.1:8003/industrialeng/classes/reparation",
+              "name": "Reparation"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T13:00:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/distribution_class-038",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Class",
+              "id": "http://127.0.0.1:8003/industrialeng/classes/distribution",
+              "name": "Distribution"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T13:05:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/generalization_lifecycle_stage_design-039",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Generalization",
+              "id": "http://127.0.0.1:8003/industrialeng/generalization/lifecycle_stage_design",
+              "general": "http://127.0.0.1:8003/industrialeng/classes/lifecycle_stage",
+              "specific": "http://127.0.0.1:8003/industrialeng/classes/design"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T13:10:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/generalization_lifecycle_stage_manufacture-040",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Generalization",
+              "id": "http://127.0.0.1:8003/industrialeng/generalization/lifecycle_stage_manufacture",
+              "general": "http://127.0.0.1:8003/industrialeng/classes/lifecycle_stage",
+              "specific": "http://127.0.0.1:8003/industrialeng/classes/manufacture"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T13:15:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/generalization_lifecycle_stage_distribution-041",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Generalization",
+              "id": "http://127.0.0.1:8003/industrialeng/generalization/lifecycle_stage_distribution",
+              "general": "http://127.0.0.1:8003/industrialeng/classes/lifecycle_stage",
+              "specific": "http://127.0.0.1:8003/industrialeng/classes/distribution"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T13:20:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/generalization_lifecycle_stage_use-042",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Generalization",
+              "id": "http://127.0.0.1:8003/industrialeng/generalization/lifecycle_stage_use",
+              "general": "http://127.0.0.1:8003/industrialeng/classes/lifecycle_stage",
+              "specific": "http://127.0.0.1:8003/industrialeng/classes/use"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T13:25:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/generalization_lifecycle_stage_recycle-043",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Generalization",
+              "id": "http://127.0.0.1:8003/industrialeng/generalization/lifecycle_stage_recycle",
+              "general": "http://127.0.0.1:8003/industrialeng/classes/lifecycle_stage",
+              "specific": "http://127.0.0.1:8003/industrialeng/classes/recycle"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T13:30:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/generalization_lifecycle_stage_collect-044",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Generalization",
+              "id": "http://127.0.0.1:8003/industrialeng/generalization/lifecycle_stage_collect",
+              "general": "http://127.0.0.1:8003/industrialeng/classes/lifecycle_stage",
+              "specific": "http://127.0.0.1:8003/industrialeng/classes/collect"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T13:35:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/association_lifecycle_stage_product_passport-045",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "BinaryAssociation",
+              "id": "http://127.0.0.1:8003/industrialeng/associations/lifecycle_stage-product_passport",
+              "name": "LifecycleStageToProductPassport",
+              "ends": [
+                  {
+                      "type": "Property",
+                      "id": "http://127.0.0.1:8003/industrialeng/properties/lifecycle_stage_end",
+                      "name": "lifecycle_stage",
+                      "elementType": "http://127.0.0.1:8003/industrialeng/classes/lifecycle_stage",
+                      "multiplicity": "0..*"
+                  },
+                  {
+                      "type": "Property",
+                      "id": "http://127.0.0.1:8000/admin/properties/product_passport_end",
+                      "name": "product_passport",
+                      "elementType": "http://127.0.0.1:8000/admin/classes/product_passport",
+                      "multiplicity": "1..1"
+                  }
+              ]
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T13:40:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/association_use_reparation-046",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "BinaryAssociation",
+              "id": "http://127.0.0.1:8003/industrialeng/associations/use-reparation",
+              "name": "UseToReparation",
+              "ends": [
+                  {
+                      "type": "Property",
+                      "id": "http://127.0.0.1:8003/industrialeng/properties/use_end",
+                      "name": "use",
+                      "elementType": "http://127.0.0.1:8003/industrialeng/classes/use",
+                      "multiplicity": "1..1"
+                  },
+                  {
+                      "type": "Property",
+                      "id": "http://127.0.0.1:8003/industrialeng/properties/reparation_end",
+                      "name": "reparation",
+                      "elementType": "http://127.0.0.1:8003/industrialeng/classes/reparation",
+                      "multiplicity": "0..*"
+                  }
+              ]
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T13:45:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/property_description-047",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8003/industrialeng/properties/description",
+              "name": "description",
+              "elementType": "str",
+              "owner": "http://127.0.0.1:8003/industrialeng/classes/reparation"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T13:50:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Create",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/property_date_set-048",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Property",
+              "id": "http://127.0.0.1:8003/industrialeng/properties/date_set",
+              "name": "date_set",
+              "elementType": "date",
+              "owner": "http://127.0.0.1:8003/industrialeng/classes/reparation"
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T13:55:00Z"
+      },
+      {
+          "@context": [
+              "https://www.w3.org/ns/activitystreams",
+              "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld"
+          ],
+          "type": "Update",
+          "id": "http://127.0.0.1:8003/industrialeng/activities/update_supply_chain_package-049",
+          "actor": "http://127.0.0.1:8003/industrialeng/",
+          "to": [
+              "http://127.0.0.1:8000/admin/"
+          ],
+          "object": {
+              "type": "Package",
+              "id": "http://127.0.0.1:8000/admin/packages/supply_chain",
+              "name": "Supply_Chain",
+              "elements": [
+                  "http://127.0.0.1:8003/industrialeng/classes/lifecycle_stage",
+                  "http://127.0.0.1:8003/industrialeng/classes/design",
+                  "http://127.0.0.1:8003/industrialeng/classes/manufacture",
+                  "http://127.0.0.1:8003/industrialeng/classes/use",
+                  "http://127.0.0.1:8003/industrialeng/classes/collect",
+                  "http://127.0.0.1:8003/industrialeng/classes/recycle",
+                  "http://127.0.0.1:8003/industrialeng/classes/reparation",
+                  "http://127.0.0.1:8003/industrialeng/classes/distribution",
+                  "http://127.0.0.1:8003/industrialeng/properties/name",
+                  "http://127.0.0.1:8003/industrialeng/properties/start",
+                  "http://127.0.0.1:8003/industrialeng/properties/end",
+                  "http://127.0.0.1:8003/industrialeng/properties/description",
+                  "http://127.0.0.1:8003/industrialeng/properties/date_set"
+              ]
+          },
+          "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
+          "timestamp": "2024-02-12T14:00:00Z"
+      }
+  ]
+}
