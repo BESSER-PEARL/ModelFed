@@ -12,10 +12,17 @@ def get_object(id_, raise_error=True):
         raise ValueError(f"Object with id '{id_}' does not exist")
     return obj
 
-def delete_object(id_):
+def delete_object_by_id(id_):
     if objects.pop(str(id_), None) is None:
         raise ValueError(f"Object with id '{id_}' does not exist")
     return True
+
+def delete_object(obj):
+    for key, value in objects.items():
+        if value == obj:
+            del objects[key]
+            return True
+    raise ValueError("Object does not exist")
 
 def save_grant(id_, grant):
     grants[str(id_)] = grant
