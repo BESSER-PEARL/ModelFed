@@ -1,10 +1,17 @@
 Vocabulary
 ==========
 
-The Modelverse Vocabulaty extends the `Activity Streams 2.0 <https://www.w3.org/TR/activitystreams-vocabulary/>`_
-Vocabulary. Only additional types for federetaion of models are listed here.
+The ModelFed Vocabulary extends the `Activity Streams 2.0 <https://www.w3.org/TR/activitystreams-vocabulary/>`_
+Vocabulary.
 
-The typical ``@context`` for Modelverse objects is as follows:
+A graphical representation of the Vocabulary concepts and their relationships is shown below:
+
+.. figure:: images/vocabulary.png
+   :alt: Modelverse Vocabulary
+   :width: 100%
+   :align: center
+
+The typical ``@context`` for ModelFed objects is as follows:
 
 .. code-block:: json
 
@@ -1633,3 +1640,34 @@ maintain
 
 admin
 ^^^^^
+
+.. code-block:: json-ld
+    
+   {
+    "@context": [
+        "https://www.w3.org/ns/activitystreams",
+        "https://BESSER-PEARL.github.io/Modelverse/ns/modelfed.jsonld"
+    ],
+    "type": "Create",
+    "id": "http://platformA.com/activities/a4c6t8",
+    "actor": "http://platformA.com/user1/",
+    "to": [
+        "http://platformB.com/user2/",
+        "http://platformC.com/user3/"
+    ],
+    "object": {
+        "type": "Class",
+        "id": "http://platformA.com/classes/c7l8s9",
+        "name": "ProductPassport",
+        "attributes": [
+          {
+            "type": "Property",
+            "id": "http://platformA.com/properties/p8b1c1",
+            "name": "name",
+            "elementType": "str"
+          }
+        ],
+        "methods": []
+    },
+    "timestamp": "2025-04-01T15:32:45Z"
+   }

@@ -1,7 +1,15 @@
-Modelverse
+ModelFed
 ==========
 
-Modelverse is a distributed ecosystem for models federation between MDE platforms.
+ModelFed is a federated protocol to standardize the collaboration (design and management) 
+of models across diverse modeling platforms. ModelFed extends the 
+`Activity Streams 2.0 <https://www.w3.org/TR/activitystreams-vocabulary/>`_ActivityStreams
+protocol to incorporate modeling concepts and introduces an API for managing server-to-server
+interactions between modeling platforms.
+
+ModelFed adopts a federated architecture, where modeling platforms maintain their own data 
+and policies but synchronize changes via a shared protocol, eliminating the need for a central 
+server while ensuring interoperability.
 
 Contents
 --------
