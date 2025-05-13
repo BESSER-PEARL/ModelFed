@@ -92,10 +92,11 @@ async def get_user_inbox(username: str):
     return {"username": username, "inbox": get_inbox(username)}
 
 # Route to get the user's Besser model
-@app.get("/{username}/besser_model")
-async def get_besser_model(username: str):
+@app.get("/{username}/besser_model/{m_id}")
+async def get_besser_model(username: str, m_id: str):
     # Get the domain model object
-    model = get_object(id_="http://127.0.0.1:8000/freddie/domainmodel/a1b2c3")
+    model_id = "http://127.0.0.1:8000/" + username + "/domainmodel/" + m_id
+    model = get_object(id_=model_id)
 
     output = f"Contents of model '{model.name}':\n"
 
@@ -148,7 +149,7 @@ async def get_besser_model(username: str):
 
             # Iterate over the classes in the package
             output += "    Elements: "
-            output += ", ".join([element.name for element in sort_by_timestamp(package.classes)])
+            output += ", ".join([element.name for element in sort_by_timestamp(package.elements)])
             output += "\n"
 
     # Return the output as plain text (with line breaks)
@@ -156,9 +157,10 @@ async def get_besser_model(username: str):
 
 # Route to retrieve and display the PyEcore model
 from pyecore.ecore import EClass, EEnum
-@app.get("/{username}/pyecore_model")
-async def get_pyecore_model(username: str):
-    model = get_object(id_="http://127.0.0.1:8000/freddie/domainmodel/a1b2c3")
+@app.get("/{username}/pyecore_model/{m_id}")
+async def get_pyecore_model(username: str, m_id: str):
+    model_id = "http://127.0.0.1:8000/" + username + "/domainmodel/" + m_id
+    model = get_object(id_=model_id)
 
     output = f"Contents of model '{model.name}':\n"
 
@@ -218,11 +220,12 @@ async def generate_model(request: Request):
     try:
         body = await request.json()
         model_id = body.get("model_id")
+        file_path = body.get("file_path")
 
         if not model_id:
             raise HTTPException(status_code=400, detail="model_id is required")
 
-        domain_model_to_code(model=get_object(model_id), file_path="besser_model/model.py")
+        domain_model_to_code(model=get_object(model_id), file_path=file_path)
         return {"message": "Model code generated successfully."}
 
     except Exception as e:
@@ -234,11 +237,15 @@ if __name__ == "__main__":
     # Configure arguments to select platform
     parser = argparse.ArgumentParser(description="Run FastAPI server with platform-based port selection.")
     parser.add_argument("--platform", choices=["besser", "pyEcore"], required=True, help="Specify the platform (besser or pyEcore)")
+    parser.add_argument("--port", type=int, default=8000, help="Port number to run the server on")
     args = parser.parse_args()
 
     # Select port based on the platform
     PLATFORM = args.platform
-    PORT = 8000 if PLATFORM == "besser" else 8001
+    PORT = args.port
+    if PLATFORM != "besser" and PLATFORM != "pyEcore":
+        logger.error("Invalid platform specified.")
+        exit(1)
 
     # Start the app
     uvicorn.run(app, host="0.0.0.0", port=PORT)
