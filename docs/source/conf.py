@@ -23,6 +23,11 @@ copyright = f'{year} {author}. All Rights Reserved'
 
 # -- General configuration
 
+html_context = {
+    "display_github": False,
+    "display_readthedocs_branding": False,
+}
+
 extensions = [
     'sphinx.ext.duration',  # measure durations of Sphinx processing
     'sphinx.ext.doctest',  
