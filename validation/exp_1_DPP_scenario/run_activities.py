@@ -40,6 +40,11 @@ for i in activity_scenario:
         output_url = actor_url.rstrip("/") + "/outbox/"
 
         try:
+            headers = {
+                "Content-Type": "application/ld+json",  # o "application/activity+json"
+                "Accept": "application/ld+json"
+            }
+
             response = requests.post(output_url, json=activity)
             print(f"POST to {output_url}")
             print(f"Status Code: {response.status_code}")
