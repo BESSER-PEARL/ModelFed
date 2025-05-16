@@ -40,7 +40,7 @@ After the activities have been executed, download the resulting model using:
 
 The model will be saved in: [output_model/dpp_besser_model.py](/output_model/dpp_besser_model.py)
 
-### Visualize the Model
+### 📊 Results
 
 You can import the generated model (`dpp_besser_model.py`) into the [BESSER modeling editor](https://editor.besser-pearl.org/) to get a graphical representation like this:
 
