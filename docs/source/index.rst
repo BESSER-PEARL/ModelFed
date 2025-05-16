@@ -1,9 +1,9 @@
 ModelFed
 ==========
 
-ModelFed is a federated protocol to standardize the collaboration (design and management) 
-of models across diverse modeling platforms. ModelFed extends the 
-`Activity Streams 2.0 <https://www.w3.org/TR/activitystreams-vocabulary/>`_ActivityStreams
+ModelFed is a federated protocol that standardizes collaborative model design and management 
+across diverse modeling platforms. ModelFed extends the 
+`Activity Streams 2.0 <https://www.w3.org/TR/activitystreams-vocabulary/>`_
 protocol to incorporate modeling concepts and introduces an API for managing server-to-server
 interactions between modeling platforms.
 
