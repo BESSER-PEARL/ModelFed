@@ -4,13 +4,6 @@ Vocabulary
 The ModelFed Vocabulary extends the `Activity Streams 2.0 <https://www.w3.org/TR/activitystreams-vocabulary/>`_
 Vocabulary.
 
-A graphical representation of the Vocabulary concepts and their relationships is shown below:
-
-.. figure:: images/vocabulary.png
-   :alt: Modelverse Vocabulary
-   :width: 100%
-   :align: center
-
 The typical ``@context`` for ModelFed objects is as follows:
 
 .. code-block:: json

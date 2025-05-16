@@ -17,8 +17,7 @@ Contents
 .. toctree::
    :maxdepth: 2
 
-   vocabulary
+   overview
    objects
-   client_to_server
    server_to_server
-   references
+   vocabulary
