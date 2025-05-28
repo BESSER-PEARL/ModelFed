@@ -225,7 +225,7 @@
           "object": {
               "type": "Class",
               "id": "http://127.0.0.1:8001/materialsscientist/classes/hazard",
-              "name": "Hazard"
+              "name": "HazardLevel"
           },
           "target": "http://127.0.0.1:8000/admin/domainmodel/digital_product_passport",
           "timestamp": "2024-02-12T10:50:00Z"

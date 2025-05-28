@@ -38,7 +38,7 @@ After the activities have been executed, download the resulting model using:
 
     $ python download_model.py
 
-The model will be saved in: [output_model/dpp_besser_model.py](/output_model/dpp_besser_model.py)
+The model will be saved in: [prototype/output_model/dpp_besser_model.py](/output_model/dpp_besser_model.py)
 
 ### 📊 Results
 
