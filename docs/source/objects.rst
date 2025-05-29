@@ -91,5 +91,64 @@ The following is the definition of an Activity to create the *LifecicleStage* cl
 Actors
 ------
 
+In ModelFed, *Actors* are the people, organizations, services, or applications that can perform activities within a model.
+
+Each modeling platform participating in Modelverse must manage a basic set of information for every actor, as required by 
+the ModelFed protocol:
+
+- ``id``: A unique identifier
+- ``type``: What kind of actor it is (e.g., person, service)
+- ``name``: A human-readable name
+- ``inbox``: Where the actor receives shared activities
+- ``outbox``: Where the actor sends activities to others
+
+The following is an example of a JSON-LD document defining a *Person* actor called *Materials Scientist*.
+
+.. code-block:: json
+
+    {
+    "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://www.modelverse.com/ns/modelverse"
+    ],
+    "type": "Person",
+    "id": "https://platformB.com/materialsscientist",
+    "name": "Materials Scientist",
+    "inbox": "https://platformA.com/materialsscientist/inbox",
+    "outbox": "https://platformA.com/materialsscientist/outbox"
+    }
+
+*Actors* collaborate by sending and receiving activities using their inbox and outbox:
+
+- The outbox is where an actor publishes activities they perform.
+- The inbox is where they receive activities shared by others.
+
+This direct actor-to-actor communication is what powers federation in Modelverse, where there’s no central hub, 
+just peers talking to each other.
+
 Grants
 ------
+
+In ModelFed, `Grants` control who can do what. They define permissions for each actor, specifying which model elements 
+an actor can interact with, and what kind of activities they are allowed to perform.
+
+A `Grant` links:
+
+- An *Actor* (e.g., a person)
+- A Model Element (what they can access)
+- A Role (what level of access they have)
+
+There are three different roles defined in ModelFed.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 80
+
+   * - *Role*
+     - *Access Level*
+   * - Administrator
+     - Full control (can edit, delete, and assign new Grants)
+   * - Editor
+     - Read and write access (but cannot delete)
+   * - Reader
+     - Read-only access

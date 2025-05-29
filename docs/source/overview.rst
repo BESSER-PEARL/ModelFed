@@ -2,8 +2,13 @@ Overview
 ========
 
 ModelFed is a protocol that enables **federated modeling activities** in collaborative environments involving 
-multiple users (referred to as *actors*) and modeling platforms. It allows actors to create, modify, and share models 
-with others through a structured set of activities defined in **JSON-LD** format.
+multiple users (referred to as *actors*) and modeling platforms. It standardizes model creation, sharing, and 
+updates among users from different servers and modeling tools, using a JSON-LD based API for server-to-server
+communication.
+
+Building on this protocol, **Modelverse** constitutes the federated and distributed
+ecosystem of platforms interconnected through ModelFed. It allows
+multiple users to work together on the same model without centralization.
 
 For example, ModelFed can support scenarios such as a collaborative modeling environment for the
 `Digital Product Passport (DPP) <https://data.europa.eu/en/news-events/news/eus-digital-product-passport-advancing-transparency-and-sustainability>`_ domain,
@@ -25,3 +30,4 @@ a user account on a platform server and expose two endpoints:
 
 Both endpoints should accept HTTP POST requests and are essential for enabling asynchronous, federated
 collaboration between users across different modeling platforms.
+
