@@ -1582,7 +1582,7 @@ Values are predefined options that can be assigned to certain properties.
 
 .. _role:
 
-role
+Role
 ~~~~
 
 +---------------+--------------------------------------------------------------------------------------------+
@@ -1594,3 +1594,29 @@ role
 +---------------+--------------------------------------------------------------------------------------------+
 | Reader        | Read-only access. Can view the object but cannot modify or delete it.                      |
 +---------------+--------------------------------------------------------------------------------------------+
+
+Primitive data types
+~~~~~~~~~~~~~~~~~~~~
+
+Although the ModelFed vocabulary allows you to define new data types, the primitive data types you can use are
+predefined and cover the most common data representations.
+
+Common primitive data types include:
+
++------------+
+| ``str``    |
++------------+
+| ``int``    |
++------------+
+| ``bool``   |
++------------+
+| ``float``  |
++------------+
+| ``date``   |
++------------+
+| ``time``   |
++------------+
+|``datetime``|
++------------+
+
+You can also extend this set by defining custom data types if needed, but these primitives form the foundation for most property values needs.
