@@ -13,11 +13,11 @@ The typical ``@context`` for ModelFed objects is as follows:
         "https://www.modelverse.com/ns/modelverse"
     ]
 
-Extended Types
---------------
+1. Extended Types
+-----------------
 
-Objects
-~~~~~~~
+1.1 Objects
+~~~~~~~~~~~
 The list of additional objects in the Modelverse Vocabulary are presented below.
 
 .. _domainModel:
@@ -456,8 +456,8 @@ Method
         "code": "return 42"
     }
 
-Activities
-~~~~~~~~~~
+1.2 Activities
+~~~~~~~~~~~~~~
 Modelverse define some additional activities that inherit from the 
 `Activity <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-activity>`_ type.
 
@@ -512,8 +512,8 @@ Clone
         "object": "http://www.modeling-platform/class/CLAS3"
     }
 
-Actors
-~~~~~~
+1.3 Actors
+~~~~~~~~~~
 The ActivityPub Vocabulary alredy defines a list of actors. The Modelverse Vocabulary only defines
 one additional actor (Agent), which is a specialized type inherited from 
 `Application <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-application>`_.
@@ -548,8 +548,8 @@ Agent
         "summary": "An agent acting on behalf of a user"
     }
 
-Access Control
-~~~~~~~~~~~~~~
+1.4 Access Control
+~~~~~~~~~~~~~~~~~~
 The Modelverse Vocabulary defines a set of access control types used to manage access to
 domain models.
 
@@ -582,40 +582,11 @@ Grant
         "actor": "https://modeling-platform/maintainer-user",
         "to": "https://other-platform/modeler-user",,
         "target": "http://www.modeling-platform/domainmodels/m1o2d3",
-        "role": "write"
+        "role": "editor"
     }
 
-Revoke
-^^^^^^
-+--------------+----------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Revoke                                  |
-+--------------+----------------------------------------------------------------------------------+
-| Description: | Represents an activity to revoke a Grant.                                        |
-+--------------+----------------------------------------------------------------------------------+
-| Extends:     | `Activity <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-activity>`_     |
-+--------------+----------------------------------------------------------------------------------+
-| Properties:  | :ref:`grant`                                                                     |
-|              |                                                                                  |
-|              | Other properties are inherited from                                              |
-|              | `Activity <https://www.w3.org/TR/activitystreams-vocabulary/#dfn-activity>`_.    |
-+--------------+----------------------------------------------------------------------------------+
-
-.. code-block:: json-ld
-    
-    {
-        "@context": [
-            "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
-        ],
-        "type": "Revoke",
-        "id": "http://www.modeling-platform/activity/revoke/a1b2c3",
-        "actor": "https://modeling-platform/maintainer-user",
-        "grant": "http://www.modeling-platform/grants/a1b2c3"
-    }
-
-
-Properties
-----------
+2. Properties
+-------------
 
 The following properties are used in the Modelverse Vocabulary.
 In the tables below, **Domain** indicates the type object the property applies to,
@@ -792,7 +763,7 @@ literals
 .. _multiplicity:
 
 multiplicity
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
 | URI:            | https://www.modelverse.com/ns/modelverse#multiplicity                            |
 +-----------------+----------------------------------------------------------------------------------+
@@ -1600,67 +1571,26 @@ grants
                 "actor": "https://modeling-platform/maintainer-user",
                 "to": "https://other-platform/modeler-user",
                 "target": "http://www.modeling-platform/domainmodels/m1o2d3",
-                "role": "write"
+                "role": "editor"
             }
         ]
     }
 
-Values
-------
-Values are predifined 
+3. Values
+---------
+Values are predefined options that can be assigned to certain properties.
 
 .. _role:
 
 role
 ~~~~
 
-.. _visit:
-
-visit
-^^^^^
-
-.. _write:
-
-write
-^^^^^
-
-.. _maintain:
-
-maintain
-^^^^^^^^
-
-.. _admin:
-
-admin
-^^^^^
-
-.. code-block:: json-ld
-    
-   {
-    "@context": [
-        "https://www.w3.org/ns/activitystreams",
-        "https://BESSER-PEARL.github.io/Modelverse/ns/modelfed.jsonld"
-    ],
-    "type": "Create",
-    "id": "http://platformA.com/activities/a4c6t8",
-    "actor": "http://platformA.com/user1/",
-    "to": [
-        "http://platformB.com/user2/",
-        "http://platformC.com/user3/"
-    ],
-    "object": {
-        "type": "Class",
-        "id": "http://platformA.com/classes/c7l8s9",
-        "name": "ProductPassport",
-        "attributes": [
-          {
-            "type": "Property",
-            "id": "http://platformA.com/properties/p8b1c1",
-            "name": "name",
-            "elementType": "str"
-          }
-        ],
-        "methods": []
-    },
-    "timestamp": "2025-04-01T15:32:45Z"
-   }
++---------------+--------------------------------------------------------------------------------------------+
+| Value         | Description                                                                                |
++===============+============================================================================================+
+| Administrator | Full control over the associated object. Can edit, delete, and create new grants for it.   |
++---------------+--------------------------------------------------------------------------------------------+
+| Editor        | Read and write access to the object. Can create and modify content but cannot delete it.   |
++---------------+--------------------------------------------------------------------------------------------+
+| Reader        | Read-only access. Can view the object but cannot modify or delete it.                      |
++---------------+--------------------------------------------------------------------------------------------+

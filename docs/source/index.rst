@@ -19,5 +19,5 @@ Contents
 
    overview
    objects
-   platform_connector
+   server_server
    vocabulary
