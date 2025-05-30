@@ -12,11 +12,11 @@
       "DataType": "mv:DataType",
       "Enumeration": "mv:Enumeration",
       "EnumerationLiteral": "mv:EnumerationLiteral",
-      "PrimitiveType": "mv:PrimitiveType",
+      "PrimitiveDataType": "mv:PrimitiveDataType",
       "Property": "mv:Property",
       "Association": "mv:Association",
       "AssociationClass": "mv:AssociationClass",
-      "BynaryAssociation": "mv:BynaryAssociation",
+      "BinaryAssociation": "mv:BinaryAssociation",
       "Generalization": "mv:Generalization",
       "GeneralizationSet": "mv:GeneralizationSet",
       "Multiplicity": "mv:Multiplicity",
@@ -26,8 +26,6 @@
       "Clone": "mv:Clone",
       "Agent": "mv:Agent",
       "Grant": "mv:Grant",
-      "Revoke": "mv:Revoke",
-      "Role": "mv:Role",
   
       "timestamp": {
         "@id": "mv:timestamp",
@@ -45,17 +43,9 @@
         "@id": "mv:literals",
         "@type": "@id"
       },
-      "minMultiplicity": {
-        "@id": "mv:minMultiplicity",
-        "@type": "xsd:integer"
-      },
-      "maxMultiplicity": {
-        "@id": "mv:maxMultiplicity",
-        "@type": "xsd:integer"
-      },
       "multiplicity": {
         "@id": "mv:multiplicity",
-        "@type": "@id"
+        "@type": "xsd:string"
       },
       "isComposite": {
         "@id": "mv:isComposite",
@@ -65,12 +55,12 @@
         "@id": "mv:isNavigable",
         "@type": "xsd:boolean"
       },
-      "typeElement": {
-        "@id": "mv:typeElement",
-        "@type": "@id"
+      "elementType": {
+        "@id": "mv:elementType"
       },
       "defaultValue": {
-        "@id": "mv:defaultValue"
+        "@id": "mv:defaultValue",
+        "@type": "xsd:string"
       },
       "parameters": {
         "@id": "mv:parameters",
@@ -133,7 +123,7 @@
         "@type": "@id"
       },
       "packages": {
-        "@id": "mv:types",
+        "@id": "mv:packages",
         "@type": "@id"
       },
       "value": {
