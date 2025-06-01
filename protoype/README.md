@@ -58,7 +58,7 @@ Download the final federated model received by `userB`:
 
     $ python examples/download_model.py
 
-The generated BESSER model will be saved in: [model_test/example_model.py](/model_test/example_model.py)
+The generated BESSER model will be saved in: [model_test/example_model.py](model_test/example_model.py)
 
 ### Visualize the Model
 
