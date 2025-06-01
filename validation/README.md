@@ -4,4 +4,4 @@ Two experiments were performed to validate the interoperability, consistency, an
 The process and results data are accessible in their respective folders:
 
 - [Experiment 1: Evaluating the consistency of the ModelFed protocol](exp_1_DPP_scenario/README.md):
-- [Experiment 2: Performance analysis](exp2_2_performance/README.md):
+- [Experiment 2: Performance analysis](exp_2_performance/README.md):
