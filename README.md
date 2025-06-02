@@ -6,8 +6,8 @@ diverse modeling platforms. It extends the [Activity Streams 2.0](https://www.w3
 This repository contains:
 
 - Full ModelFed documentation: the documentation, including the vocabulary extension of the ModelFed protocol is accesible in [this link](https://creative-tanuki-e14560.netlify.app/).
-- [Prototype implementation](prototype/README.md): A prototype with two modeling platforms implementing the ModelFed protocol to create models in a collaborative way, was developed for validation purposes.
-- [Validation results](https://anonymous.4open.science/r/ModelFed-BFCE/validation/README.md): Experimental results testing the protocol's effectiveness.
+- [Prototype implementation](prototype/README_PROT.md): A prototype with two modeling platforms implementing the ModelFed protocol to create models in a collaborative way, was developed for validation purposes.
+- [Validation results](https://anonymous.4open.science/r/ModelFed-BFCE/validation/README_VAL.md): Experimental results testing the protocol's effectiveness.
 
 ## License
 
