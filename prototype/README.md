@@ -65,5 +65,5 @@ The generated BESSER model will be saved in: [model_test/example_model.py](model
 You can import the generated model into the [BESSER modeling editor](https://editor.besser-pearl.org/) to get a graphical representation like this:
 
 <div align="center">
-  <img src="./model_test/besser_model.png" alt="Model result" width="500"/>
+  <img src="https://anonymous.4open.science/r/ModelFed-BFCE/prototype/model_test/besser_model.png" alt="Model result" width="500"/>
 </div>

@@ -9,7 +9,7 @@ This validation exercise consists of executing 50 JSON-based modeling activities
 The following figure illustrates the scenario:
 
 <div align="center">
-  <img src="./figs/dpp_case.png" alt="DPP Scenraio" width="600"/>
+  <img src="https://anonymous.4open.science/r/ModelFed-BFCE/validation/exp_1_DPP_scenario/figs/dpp_case.png" alt="DPP Scenraio" width="600"/>
 </div>
 
 ## Running the Experiment
@@ -45,5 +45,5 @@ The model will be saved in: [prototype/output_model/dpp_besser_model.py](output_
 You can import the generated model (`dpp_besser_model.py`) into the [BESSER modeling editor](https://editor.besser-pearl.org/) to get a graphical representation like this:
 
 <div align="center">
-  <img src="./figs/exp1.png" alt="DPP model" width="500"/>
+  <img src="https://anonymous.4open.science/r/ModelFed-BFCE/validation/exp_1_DPP_scenario/figs/exp1.png" alt="DPP model" width="500"/>
 </div>
