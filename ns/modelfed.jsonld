@@ -3,131 +3,131 @@
       "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
       "xsd": "http://www.w3.org/2001/XMLSchema#",
       "as": "https://www.w3.org/ns/activitystreams#",
-      "mv": "https://BESSER-PEARL.github.io/Modelverse/ns/modelverse.jsonld#",
+      "mf": "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#",
       
-      "DomainModel": "mv:DomainModel",
-      "ModelElement": "mv:ModelElement",
-      "Package": "mv:Package",
-      "Class": "mv:Class",
-      "DataType": "mv:DataType",
-      "Enumeration": "mv:Enumeration",
-      "EnumerationLiteral": "mv:EnumerationLiteral",
-      "PrimitiveDataType": "mv:PrimitiveDataType",
-      "Property": "mv:Property",
-      "Association": "mv:Association",
-      "AssociationClass": "mv:AssociationClass",
-      "BinaryAssociation": "mv:BinaryAssociation",
-      "Generalization": "mv:Generalization",
-      "GeneralizationSet": "mv:GeneralizationSet",
-      "Multiplicity": "mv:Multiplicity",
-      "Method": "mv:Method",
-      "Parameter": "mv:Parameter",
-      "Reclassify": "mv:Reclassify",
-      "Clone": "mv:Clone",
-      "Agent": "mv:Agent",
-      "Grant": "mv:Grant",
+      "DomainModel": "mf:DomainModel",
+      "ModelElement": "mf:ModelElement",
+      "Package": "mf:Package",
+      "Class": "mf:Class",
+      "DataType": "mf:DataType",
+      "Enumeration": "mf:Enumeration",
+      "EnumerationLiteral": "mf:EnumerationLiteral",
+      "PrimitiveDataType": "mf:PrimitiveDataType",
+      "Property": "mf:Property",
+      "Association": "mf:Association",
+      "AssociationClass": "mf:AssociationClass",
+      "BinaryAssociation": "mf:BinaryAssociation",
+      "Generalization": "mf:Generalization",
+      "GeneralizationSet": "mf:GeneralizationSet",
+      "Multiplicity": "mf:Multiplicity",
+      "Method": "mf:Method",
+      "Parameter": "mf:Parameter",
+      "Reclassify": "mf:Reclassify",
+      "Clone": "mf:Clone",
+      "Agent": "mf:Agent",
+      "Grant": "mf:Grant",
   
       "timestamp": {
-        "@id": "mv:timestamp",
+        "@id": "mf:timestamp",
         "@type": "xsd:dateTime"
       },
       "visibility": {
-        "@id": "mv:visibility",
+        "@id": "mf:visibility",
         "@type": "xsd:string"
       },
       "owner": {
-        "@id": "mv:owner",
+        "@id": "mf:owner",
         "@type": "@id"
       },
       "literals": {
-        "@id": "mv:literals",
+        "@id": "mf:literals",
         "@type": "@id"
       },
       "multiplicity": {
-        "@id": "mv:multiplicity",
+        "@id": "mf:multiplicity",
         "@type": "xsd:string"
       },
       "isComposite": {
-        "@id": "mv:isComposite",
+        "@id": "mf:isComposite",
         "@type": "xsd:boolean"
       },
       "isNavigable": {
-        "@id": "mv:isNavigable",
+        "@id": "mf:isNavigable",
         "@type": "xsd:boolean"
       },
       "elementType": {
-        "@id": "mv:elementType"
+        "@id": "mf:elementType"
       },
       "defaultValue": {
-        "@id": "mv:defaultValue",
+        "@id": "mf:defaultValue",
         "@type": "xsd:string"
       },
       "parameters": {
-        "@id": "mv:parameters",
+        "@id": "mf:parameters",
         "@type": "@id"
       },
       "code": {
-        "@id": "mv:code",
+        "@id": "mf:code",
         "@type": "xsd:string"
       },
       "methods": {
-        "@id": "mv:methods",
+        "@id": "mf:methods",
         "@type": "@id"
       },
       "isAbstract": {
-        "@id": "mv:isAbstract",
+        "@id": "mf:isAbstract",
         "@type": "xsd:boolean"
       },
       "isReadOnly": {
-        "@id": "mv:isReadOnly",
+        "@id": "mf:isReadOnly",
         "@type": "xsd:boolean"
       },
       "ends": {
-        "@id": "mv:ends",
+        "@id": "mf:ends",
         "@type": "@id"
       },
       "association": {
-        "@id": "mv:association",
+        "@id": "mf:association",
         "@type": "@id"
       },
       "general": {
-        "@id": "mv:general",
+        "@id": "mf:general",
         "@type": "@id"
       },
       "specific": {
-        "@id": "mv:specific",
+        "@id": "mf:specific",
         "@type": "@id"
       },
       "generalizations": {
-        "@id": "mv:generalizations",
+        "@id": "mf:generalizations",
         "@type": "@id"
       },
       "isDisjoint": {
-        "@id": "mv:isDisjoint",
+        "@id": "mf:isDisjoint",
         "@type": "xsd:boolean"
       },
       "isComplete": {
-        "@id": "mv:isComplete",
+        "@id": "mf:isComplete",
         "@type": "xsd:boolean"
       },
       "classes": {
-        "@id": "mv:classes",
+        "@id": "mf:classes",
         "@type": "@id"
       },
       "types": {
-        "@id": "mv:types",
+        "@id": "mf:types",
         "@type": "@id"
       },
       "associations": {
-        "@id": "mv:associations",
+        "@id": "mf:associations",
         "@type": "@id"
       },
       "packages": {
-        "@id": "mv:packages",
+        "@id": "mf:packages",
         "@type": "@id"
       },
       "value": {
-        "@id": "mv:value",
+        "@id": "mf:value",
         "@type": "xsd:string"
       }
     }

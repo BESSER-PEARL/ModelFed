@@ -63,7 +63,7 @@ The following is the definition of an Activity to create the *LifecicleStage* cl
     {
     "@context": [
         "https://www.w3.org/ns/activitystreams",
-        "https://www.modelverse.com/ns/modelverse"
+        "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
     ],
     "type": "Create",
     "id": "http://platformA.com/activities/a1c2t3",
@@ -109,7 +109,7 @@ The following is an example of a JSON-LD document defining a *Person* actor call
     {
     "@context": [
     "https://www.w3.org/ns/activitystreams",
-    "https://www.modelverse.com/ns/modelverse"
+    "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
     ],
     "type": "Person",
     "id": "https://platformB.com/materialsscientist",

@@ -10,7 +10,7 @@ The typical ``@context`` for ModelFed objects is as follows:
 
     "@context": [
         "https://www.w3.org/ns/activitystreams",
-        "https://www.modelverse.com/ns/modelverse"
+        "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
     ]
 
 1. Extended Types
@@ -26,7 +26,7 @@ Domain Model
 ^^^^^^^^^^^^
 
 +--------------+---------------------------------------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#DomainModel                                                          |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#DomainModel                                        |
 +--------------+---------------------------------------------------------------------------------------------------------------+
 | Description: | Represents a domain model that defines the structure and relationships                                        |
 |              | of entities within a specific domain.                                                                         |
@@ -43,7 +43,7 @@ Domain Model
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "DomainModel",
         "id": "http://www.modeling-platform/domainmodel/a1b2c3",
@@ -55,7 +55,7 @@ Domain Model
 ModelElement
 ^^^^^^^^^^^^
 +--------------+---------------------------------------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#ModelElement                                                         |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#ModelElement                                       |
 +--------------+---------------------------------------------------------------------------------------------------------------+
 | Description: | Represents a model element as part of a domain model. This class is **abstract**.                             |
 +--------------+---------------------------------------------------------------------------------------------------------------+
@@ -71,7 +71,7 @@ ModelElement
 Package
 ^^^^^^^
 +--------------+------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Package                       |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#Package     |
 +--------------+------------------------------------------------------------------------+
 | Description: | Represents a package that groups a set of model elements.              |
 +--------------+------------------------------------------------------------------------+
@@ -87,7 +87,7 @@ Package
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Package",
         "id": "http://www.modeling-platform/package/p1d2e3",
@@ -104,7 +104,7 @@ Package
 Type
 ^^^^
 +--------------+------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Type                          |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#Type        |
 +--------------+------------------------------------------------------------------------+
 | Description: | Represents a type in the model. This class is **abstract**             |
 +--------------+------------------------------------------------------------------------+
@@ -118,7 +118,7 @@ Type
 Class
 ^^^^^
 +--------------+----------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Class                             |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#Class           |
 +--------------+----------------------------------------------------------------------------+
 | Description: | Represents a class in the model.                                           |
 +--------------+----------------------------------------------------------------------------+
@@ -134,7 +134,7 @@ Class
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Class",
         "id": "http://www.modeling-platform/class/c1d2e3",
@@ -151,7 +151,7 @@ Class
 DataType
 ^^^^^^^^
 +--------------+----------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Enumeration                             |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#Enumeration           |
 +--------------+----------------------------------------------------------------------------------+
 | Description: | This class is **abstract** and represents data types.                            |
 +--------------+----------------------------------------------------------------------------------+
@@ -165,7 +165,7 @@ DataType
 Enumeration
 ^^^^^^^^^^^
 +--------------+----------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Enumeration                             |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#Enumeration           |
 +--------------+----------------------------------------------------------------------------------+
 | Description: | Represents an enumeration in the model.                                          |
 +--------------+----------------------------------------------------------------------------------+
@@ -181,7 +181,7 @@ Enumeration
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Enumeration",
         "id": "http://www.modeling-platform/enumerations/e1f2g3",
@@ -197,7 +197,7 @@ Enumeration
 EnumerationLiteral
 ^^^^^^^^^^^^^^^^^^
 +--------------+----------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#EnumerationLiteral                      |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#EnumerationLiteral    |
 +--------------+----------------------------------------------------------------------------------+
 | Description: | Represents a literal value of an enumeration.                                    |
 +--------------+----------------------------------------------------------------------------------+
@@ -213,7 +213,7 @@ EnumerationLiteral
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "EnumerationLiteral",
         "id": "http://www.modeling-platform/enumerationliterals/l1m2n3",
@@ -227,7 +227,7 @@ EnumerationLiteral
 PrimitiveDataType
 ^^^^^^^^^^^^^^^^^
 +--------------+----------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#PrimitiveDataType                       |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#PrimitiveDataType     |
 +--------------+----------------------------------------------------------------------------------+
 | Description: | Represents a primitive data type in the model.                                   |
 +--------------+----------------------------------------------------------------------------------+
@@ -241,7 +241,7 @@ PrimitiveDataType
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "PrimitiveDataType",
         "id": "http://www.modeling-platform/primitivedatatype/p1d2e3",
@@ -254,7 +254,7 @@ PrimitiveDataType
 TypedElement
 ^^^^^^^^^^^^
 +--------------+-----------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#TypedElement                       |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#TypedElement     |
 +--------------+-----------------------------------------------------------------------------+
 | Description: | Typed element is an **abstract** class that is used to represent            | 
 |              | elements that have a type.                                                  |
@@ -271,7 +271,7 @@ TypedElement
 Property
 ^^^^^^^^
 +--------------+-------------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Property                                   |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#Property                 |
 +--------------+-------------------------------------------------------------------------------------+
 | Description: | A property can represents an attribute of a class or an end of an association.      |
 +--------------+-------------------------------------------------------------------------------------+
@@ -288,7 +288,7 @@ Property
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Property",
         "id": "http://www.modeling-platform/property/p1d2e3",
@@ -303,7 +303,7 @@ Property
 Association
 ^^^^^^^^^^^
 +--------------+----------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Association                             |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#Association           |
 +--------------+----------------------------------------------------------------------------------+
 | Description: | Represents a relationship between classes.                                       |
 +--------------+----------------------------------------------------------------------------------+
@@ -319,7 +319,7 @@ Association
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Association",
         "id": "http://www.modeling-platform/associations/a1b2c3",
@@ -336,7 +336,7 @@ Association
 BinaryAssociation
 ^^^^^^^^^^^^^^^^^
 +--------------+----------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#BinaryAssociation                       |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#BinaryAssociation     |
 +--------------+----------------------------------------------------------------------------------+
 | Description: | Represents a binary association between two classes.                             |
 +--------------+----------------------------------------------------------------------------------+
@@ -350,7 +350,7 @@ BinaryAssociation
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "BinaryAssociation",
         "id": "http://www.modeling-platform/associations/b1c2d3",
@@ -366,7 +366,7 @@ BinaryAssociation
 Generalization
 ^^^^^^^^^^^^^^
 +--------------+----------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Generalization                          |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#Generalization        |
 +--------------+----------------------------------------------------------------------------------+
 | Description: | Represents a generalization relationship between a general and a specific class. |
 +--------------+----------------------------------------------------------------------------------+
@@ -382,7 +382,7 @@ Generalization
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Generalization",
         "id": "http://www.modeling-platform/generalizations/g1h2i3",
@@ -395,7 +395,7 @@ Generalization
 Parameter
 ^^^^^^^^^
 +--------------+----------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Parameter                               |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#Parameter             |
 +--------------+----------------------------------------------------------------------------------+
 | Description: | Represents a parameter of a method.                                              |
 +--------------+----------------------------------------------------------------------------------+
@@ -411,7 +411,7 @@ Parameter
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Parameter",
         "id": "http://www.modeling-platform/parameter/p1q2r3",
@@ -425,7 +425,7 @@ Parameter
 Method
 ^^^^^^
 +--------------+----------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Method                                  |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#Method                |
 +--------------+----------------------------------------------------------------------------------+
 | Description: | Represents a method of a class.                                                  |
 +--------------+----------------------------------------------------------------------------------+
@@ -441,7 +441,7 @@ Method
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Method",
         "id": "http://www.modeling-platform/methods/m1n2o3",
@@ -464,7 +464,7 @@ Modelverse define some additional activities that inherit from the
 Reclassify
 ^^^^^^^^^^
 +--------------+----------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Reclassify                              |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#Reclassify            |
 +--------------+----------------------------------------------------------------------------------+
 | Description: | Represents an activity to reclassify an element to a different type.             |
 +--------------+----------------------------------------------------------------------------------+
@@ -479,7 +479,7 @@ Reclassify
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Reclassify",
         "id": "http://www.modeling-platform/activity/reclassify/a1b2c3",
@@ -490,7 +490,7 @@ Reclassify
 Clone
 ^^^^^
 +--------------+----------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Clone                                   |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#Clone                 |
 +--------------+----------------------------------------------------------------------------------+
 | Description: | Represents an activity to clone an object.                                       |
 +--------------+----------------------------------------------------------------------------------+
@@ -505,7 +505,7 @@ Clone
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Clone",
         "id": "http://www.modeling-platform/activity/clone/a1b2c3",
@@ -523,7 +523,7 @@ one additional actor (Agent), which is a specialized type inherited from
 Agent
 ^^^^^
 +--------------+--------------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Agent                                       |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#Agent                     |
 +--------------+--------------------------------------------------------------------------------------+
 | Description: | Represents an agent that acts on behalf of a user or system.                         |
 +--------------+--------------------------------------------------------------------------------------+
@@ -540,7 +540,7 @@ Agent
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Agent",
         "id": "http://www.modeling-platform/agents/a1b2c3",
@@ -558,7 +558,7 @@ domain models.
 Grant
 ^^^^^
 +--------------+----------------------------------------------------------------------------------+
-| URI:         | https://www.modelverse.com/ns/modelverse#Grant                                   |
+| URI:         | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#Grant                 |
 +--------------+----------------------------------------------------------------------------------+
 | Description: | Represents an activity to grant access to a resource.                            |
 +--------------+----------------------------------------------------------------------------------+
@@ -575,7 +575,7 @@ Grant
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Grant",
         "id": "http://www.modeling-platform/domainmodel/grants/a1b2c3",
@@ -598,7 +598,7 @@ as *True* if the property can have multiple values.
 timestamp
 ~~~~~~~~~
 +-----------------+--------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#timestamp                       |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#timestamp     |
 +-----------------+--------------------------------------------------------------------------+
 | Description:    | Represents the object creation datetime. The timestamp value should be   |
 |                 | auto-generated for all kind of activities and objects.                   |
@@ -615,7 +615,7 @@ timestamp
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Class",
         "id": "http://www.modeling-platform/class/c1d2e3",
@@ -628,7 +628,7 @@ timestamp
 visibility
 ~~~~~~~~~~
 +-----------------+---------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#visibility                       |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#visibility     |
 +-----------------+---------------------------------------------------------------------------+
 | Description:    | Represents the visibility of a model element (e.g., public, private).     |
 +-----------------+---------------------------------------------------------------------------+
@@ -644,7 +644,7 @@ visibility
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Class",
         "id": "http://www.modeling-platform/classes/c1d2e3",
@@ -657,7 +657,7 @@ visibility
 owner
 ~~~~~
 +-----------------+--------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#owner                           |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#owner         |
 +-----------------+--------------------------------------------------------------------------+
 | Description:    | Represents the owner of an attribute, property, method, etc.             |
 +-----------------+--------------------------------------------------------------------------+
@@ -674,7 +674,7 @@ owner
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Method",
         "id": "http://www.modeling-platform/methods/m1e2t3",
@@ -687,7 +687,7 @@ owner
 attributes
 ~~~~~~~~~~
 +-----------------+---------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#attributes                       |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#attributes     |
 +-----------------+---------------------------------------------------------------------------+
 | Description:    | Represents the attributes of a class.                                     |
 +-----------------+---------------------------------------------------------------------------+
@@ -704,7 +704,7 @@ attributes
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Class",
         "id": "http://www.modeling-platform/classes/c1d2e3",
@@ -725,7 +725,7 @@ attributes
 literals
 ~~~~~~~~
 +-----------------+---------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#literals                         |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#literals       |
 +-----------------+---------------------------------------------------------------------------+
 | Description:    | Represents the literals of an enumeration.                                |
 +-----------------+---------------------------------------------------------------------------+
@@ -742,7 +742,7 @@ literals
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Enumeration",
         "id": "http://www.modeling-platform/enumeration/e1f2g3",
@@ -765,7 +765,7 @@ literals
 multiplicity
 ~~~~~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#multiplicity                            |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#multiplicity          |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the multiplicity of a property.                                       |
 +-----------------+----------------------------------------------------------------------------------+
@@ -781,7 +781,7 @@ multiplicity
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Property",
         "id": "http://www.modeling-platform/properties/p1r2op3",
@@ -795,7 +795,7 @@ multiplicity
 isComposite
 ~~~~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#isComposite                             |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#isComposite           |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Indicates whether the property is composite.                                     |
 +-----------------+----------------------------------------------------------------------------------+
@@ -811,7 +811,7 @@ isComposite
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Property",
         "id": "http://www.modeling-platform/properties/p1d2e3",
@@ -826,7 +826,7 @@ isComposite
 isNavigable
 ~~~~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#isNavigable                             |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#isNavigable           |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Indicates whether the property is navigable.                                     |
 +-----------------+----------------------------------------------------------------------------------+
@@ -842,7 +842,7 @@ isNavigable
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Property",
         "id": "http://www.modeling-platform/properties/p1d2e3",
@@ -858,7 +858,7 @@ isNavigable
 elementType
 ~~~~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#elementType                             |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#elementType           |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the type of an element.                                               |
 +-----------------+----------------------------------------------------------------------------------+
@@ -881,7 +881,7 @@ elementType
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Method",
         "id": "http://www.modeling-platform/methods/m1d2e3",
@@ -894,7 +894,7 @@ elementType
 defaultValue
 ~~~~~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#defaultValue                            |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#defaultValue          |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the default value of a parameter.                                     |
 +-----------------+----------------------------------------------------------------------------------+
@@ -910,7 +910,7 @@ defaultValue
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Parameter",
         "id": "http://www.modeling-platform/parameters/p1q2r3",
@@ -925,7 +925,7 @@ defaultValue
 parameters
 ~~~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#parameters                              |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#parameters            |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the parameters of a method.                                           |
 +-----------------+----------------------------------------------------------------------------------+
@@ -942,7 +942,7 @@ parameters
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Method",
         "id": "http://www.modeling-platform/methods/m1n2o3",
@@ -971,7 +971,7 @@ parameters
 code
 ~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#code                                    |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#code                  |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the code of a method.                                                 |
 +-----------------+----------------------------------------------------------------------------------+
@@ -987,7 +987,7 @@ code
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Method",
         "id": "http://www.modeling-platform/method/m1n2o3",
@@ -1005,7 +1005,7 @@ code
 methods
 ~~~~~~~
 +-----------------+---------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#methods                          |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#methods        |
 +-----------------+---------------------------------------------------------------------------+
 | Description:    | Represents the methods of a class.                                        |
 +-----------------+---------------------------------------------------------------------------+
@@ -1022,7 +1022,7 @@ methods
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Class",
         "id": "http://www.modeling-platform/classes/c1d2e3",
@@ -1047,7 +1047,7 @@ methods
 isAbstract
 ~~~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#isAbstract                              |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#isAbstract            |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Indicates whether the method or class is abstract.                               |
 +-----------------+----------------------------------------------------------------------------------+
@@ -1063,7 +1063,7 @@ isAbstract
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Class",
         "id": "http://www.modeling-platform/classes/c1d2e3",
@@ -1077,7 +1077,7 @@ isAbstract
 isId
 ~~~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#isId                                    |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#isId                  |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Indicates whether the property is an identifier.                                 |
 +-----------------+----------------------------------------------------------------------------------+
@@ -1093,7 +1093,7 @@ isId
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Property",
         "id": "http://www.modeling-platform/properties/p1d2e3",
@@ -1108,7 +1108,7 @@ isId
 ends
 ~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#ends                                    |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#ends                  |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the ends of an association.                                           |
 +-----------------+----------------------------------------------------------------------------------+
@@ -1125,7 +1125,7 @@ ends
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Association",
         "id": "http://www.modeling-platform/associations/a1b2c3",
@@ -1142,7 +1142,7 @@ ends
 general
 ~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#general                                 |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#general               |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the general element in a generalization relationship.                 |
 +-----------------+----------------------------------------------------------------------------------+
@@ -1159,7 +1159,7 @@ general
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Generalization",
         "id": "http://www.modeling-platform/generalization/g1h2i3",
@@ -1173,7 +1173,7 @@ general
 specific
 ~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#specific                                |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#specific              |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the specific element in a generalization relationship.                |
 +-----------------+----------------------------------------------------------------------------------+
@@ -1190,7 +1190,7 @@ specific
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Generalization",
         "id": "http://www.modeling-platform/generalizations/g1h2i3",
@@ -1205,7 +1205,7 @@ specific
 value
 ~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#value                                   |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#value                 |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the value of an enumeration literal.                                  |
 +-----------------+----------------------------------------------------------------------------------+
@@ -1221,7 +1221,7 @@ value
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "EnumerationLiteral",
         "id": "http://www.modeling-platform/enumerationliterals/l1m2n3",
@@ -1235,7 +1235,7 @@ value
 generalizations
 ~~~~~~~~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#generalizations                         |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#generalizations       |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the generalization relationships of a domain model.                   |
 +-----------------+----------------------------------------------------------------------------------+
@@ -1252,7 +1252,7 @@ generalizations
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "DomainModel",
         "id": "http://www.modeling-platform/domainmodel/m1d2e3",
@@ -1273,7 +1273,7 @@ generalizations
 elements
 ~~~~~~~~
 +-----------------+---------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#classes                          |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#classes        |
 +-----------------+---------------------------------------------------------------------------+
 | Description:    | Represents the model elements contained in a package                      |
 +-----------------+---------------------------------------------------------------------------+
@@ -1290,7 +1290,7 @@ elements
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Package",
         "id": "http://www.modeling-platform/package/p1d2e3",
@@ -1307,7 +1307,7 @@ elements
 types
 ~~~~~
 +-----------------+----------------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#types                                         |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#types                       |
 +-----------------+----------------------------------------------------------------------------------------+
 | Description:    | Represents the types contained in a domain model including classes, enumerations, etc. |
 +-----------------+----------------------------------------------------------------------------------------+
@@ -1324,7 +1324,7 @@ types
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "DomainModel",
         "id": "http://www.modeling-platform/domainmodel/a1b2c3",
@@ -1340,7 +1340,7 @@ types
 associations
 ~~~~~~~~~~~~
 +-----------------+-----------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#associations                       |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#associations     |
 +-----------------+-----------------------------------------------------------------------------+
 | Description:    | Represents the associations contained in a domain model.                    |
 +-----------------+-----------------------------------------------------------------------------+
@@ -1357,7 +1357,7 @@ associations
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "DomainModel",
         "id": "http://www.modeling-platform/domainmodels/a1b2c3",
@@ -1382,7 +1382,7 @@ associations
 packages
 ~~~~~~~~
 +-----------------+---------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#packages                         |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#packages       |
 +-----------------+---------------------------------------------------------------------------+
 | Description:    | Represents the packages contained in a domain model.                      |
 +-----------------+---------------------------------------------------------------------------+
@@ -1399,7 +1399,7 @@ packages
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "DomainModel",
         "id": "http://www.modeling-platform/domainmodels/a1b2c3",
@@ -1415,7 +1415,7 @@ packages
 interfaces
 ~~~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#interfaces                              |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#interfaces            |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the interfaces implemented by an agent.                               |
 +-----------------+----------------------------------------------------------------------------------+
@@ -1431,7 +1431,7 @@ interfaces
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Agent",
         "id": "http://www.modeling-platform/agent/a1b2c3",
@@ -1448,7 +1448,7 @@ interfaces
 underlyingModel
 ~~~~~~~~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#underlyingModel                         |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#underlyingModel       |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the underlying model used by an agent.                                |
 +-----------------+----------------------------------------------------------------------------------+
@@ -1464,7 +1464,7 @@ underlyingModel
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Agent",
         "id": "http://www.modeling-platform/agent/a1b2c3",
@@ -1478,7 +1478,7 @@ underlyingModel
 adaptability
 ~~~~~~~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#adaptability                            |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#adaptability          |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the adaptability of an agent.                                         |
 +-----------------+----------------------------------------------------------------------------------+
@@ -1494,7 +1494,7 @@ adaptability
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Agent",
         "id": "http://www.modeling-platform/agent/a1b2c3",
@@ -1509,7 +1509,7 @@ mediaTypes
 ~~~~~~~~~~
 
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#mediaTypes                              |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#mediaTypes            |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the media types supported by an agent.                                |
 +-----------------+----------------------------------------------------------------------------------+
@@ -1525,7 +1525,7 @@ mediaTypes
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "Agent",
         "id": "http://www.modeling-platform/agent/a1b2c3",
@@ -1542,7 +1542,7 @@ mediaTypes
 grants
 ~~~~~~
 +-----------------+----------------------------------------------------------------------------------+
-| URI:            | https://www.modelverse.com/ns/modelverse#grants                                  |
+| URI:            | https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld#grants                |
 +-----------------+----------------------------------------------------------------------------------+
 | Description:    | Represents the grants associated with a domain model.                            |
 +-----------------+----------------------------------------------------------------------------------+
@@ -1559,7 +1559,7 @@ grants
     {
         "@context": [
             "https://www.w3.org/ns/activitystreams",
-            "https://www.modelverse.com/ns/modelverse"
+            "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
         ],
         "type": "DomainModel",
         "id": "http://www.modeling-platform/domainmodels/a1b2c3",

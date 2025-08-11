@@ -3,7 +3,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8000/admin/activities/digital-product-passport-001",
@@ -22,7 +22,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8000/admin/activities/product_passport-002",
@@ -42,7 +42,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8000/admin/activities/materials_package-003",
@@ -63,7 +63,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8000/admin/activities/supply_chain_package-004",
@@ -84,7 +84,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8000/admin/activities/grant_materials_scientist-005",
@@ -105,7 +105,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8000/admin/activities/grant_industrial_eng-006",
@@ -126,7 +126,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8000/admin/activities/property_name-007",
@@ -148,7 +148,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8000/admin/activities/property_cod-008",
@@ -170,7 +170,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Update",
           "id": "http://127.0.0.1:8000/admin/activities/rename_property_cod-009",
@@ -192,7 +192,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8000/admin/activities/property_uid-010",
@@ -214,7 +214,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/hazard-011",
@@ -233,7 +233,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/hazard_property_very_high-012",
@@ -254,7 +254,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/hazard_property_exed_limit-013",
@@ -275,7 +275,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/recycled_material-014",
@@ -294,7 +294,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/property_preconsumer-015",
@@ -315,7 +315,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/property_postconsumer-016",
@@ -336,7 +336,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/property_renewable-017",
@@ -357,7 +357,7 @@
       {
           "@context": [
              "https://www.w3.org/ns/activitystreams",
-             "https://www.modelverse.com/ns/modelverse"
+             "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/create_property_state-018",
@@ -378,7 +378,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Delete",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/delete_property_state-018",
@@ -396,7 +396,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/chemical_prop-019",
@@ -415,7 +415,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/property_threshold-020",
@@ -436,7 +436,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/property_disclosure-021",
@@ -457,7 +457,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/property_composition-022",
@@ -478,7 +478,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/association_hazard_product_passport-023",
@@ -513,7 +513,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/association_recycled_material_product_passport-024",
@@ -548,7 +548,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/association_chemical_prop_product_passport-025",
@@ -583,7 +583,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Update",
           "id": "http://127.0.0.1:8001/materialsscientist/activities/update_materials_package-026",
@@ -615,7 +615,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/lifecycle_stage-027",
@@ -634,7 +634,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/property_name_lifecycle_stage-028",
@@ -655,7 +655,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/property_start_lifecycle_stage-029",
@@ -676,7 +676,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/property_end_lifecycle_stage-030",
@@ -697,7 +697,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Update",
           "id": "http://127.0.0.1:8000/admin/activities/update_property_end_lifecycle_stage-031",
@@ -718,7 +718,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/design_class-032",
@@ -737,7 +737,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/manufacture_class-033",
@@ -756,7 +756,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/use_class-034",
@@ -775,7 +775,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/collect_class-035",
@@ -794,7 +794,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/recycle_class-036",
@@ -813,7 +813,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/reparation_class-037",
@@ -832,7 +832,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/distribution_class-038",
@@ -851,7 +851,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/generalization_lifecycle_stage_design-039",
@@ -871,7 +871,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/generalization_lifecycle_stage_manufacture-040",
@@ -891,7 +891,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/generalization_lifecycle_stage_distribution-041",
@@ -911,7 +911,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/generalization_lifecycle_stage_use-042",
@@ -931,7 +931,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/generalization_lifecycle_stage_recycle-043",
@@ -951,7 +951,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/generalization_lifecycle_stage_collect-044",
@@ -971,7 +971,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/association_lifecycle_stage_product_passport-045",
@@ -1006,7 +1006,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/association_use_reparation-046",
@@ -1041,7 +1041,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/property_description-047",
@@ -1062,7 +1062,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Create",
           "id": "http://127.0.0.1:8003/industrialeng/activities/property_date_set-048",
@@ -1083,7 +1083,7 @@
       {
           "@context": [
               "https://www.w3.org/ns/activitystreams",
-              "https://www.modelverse.com/ns/modelverse"
+              "https://besser-pearl.github.io/ModelFed/ns/modelfed.jsonld"
           ],
           "type": "Update",
           "id": "http://127.0.0.1:8003/industrialeng/activities/update_supply_chain_package-049",
